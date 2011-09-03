@@ -8,7 +8,7 @@ class CoursesProxy {
         $this->database = $database;
     }
 
-    public function getCourses() {
+    public function getCourses($params = null) {
         $sql = "SELECT * FROM courses";
         $res = $this->database->query($sql);
 

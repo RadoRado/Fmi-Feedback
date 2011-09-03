@@ -8,7 +8,11 @@ class TeachersProxy {
         $this->database = $database;
     }
     
-    public function getTeachers($id) {
+    public function getTeachers($params = null) {
+        
+    }
+    
+    public function getTeachersByCourseId($params = null) {
         
     }
 
