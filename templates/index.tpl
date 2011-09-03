@@ -5,9 +5,8 @@
 	<meta name="content-language" content="english" /> 
 	<link rel="stylesheet" type="text/css" href="styles/main.css" /> 
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<link rel="stylesheet" href="http://dev.jquery.com/view/trunk/plugins/autocomplete/demo/main.css" type="text/css" />
-	<link rel="stylesheet" href="http://dev.jquery.com/view/trunk/plugins/autocomplete/jquery.autocomplete.css" type="text/css" />
-	<script type="text/javascript" src="http://dev.jquery.com/view/trunk/plugins/autocomplete/jquery.autocomplete.js"></script>
+	<link type="text/css" href="javascript/ui/css/start/jquery-ui-1.8.16.custom.css" rel="stylesheet">
+        <script type="text/javascript" src="javascript/ui/js/jquery-ui-1.8.16.custom.min.js"></script>
 	<script type="text/javascript" src="javascript/main.js"></script> 
 	<script type="text/javascript" src="javascript/ajax.js"></script> 
 </head> 
@@ -15,7 +14,7 @@
 <div class="wholecenter">
 	
 	<div class="courses">
-		<input type="text" class="panelselect" id="coursebox" onblur="findCourseId(this)" />
+		<input type="text" class="panelselect" id="coursebox" />
 	</div>
 	<div class="courses">
 		<select class="panelselect" id="teacherbox"></select>

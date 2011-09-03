@@ -1,6 +1,5 @@
 <?php
 
-header("Content-Type: text/html; charset=utf-8");
 header('Content-type: application/json');
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: x-requested-with");

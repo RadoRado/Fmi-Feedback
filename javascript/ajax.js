@@ -47,18 +47,24 @@ function getCourses()
 			'params': {}
 		},
 		success: function(data){
-			if(data['success'])
+			if(typeof(data['success']) === "string" && data['success'] == "true")
 			{
+                                console.log(data);
 				ajaxSuggestResp = data['data'];
 				for(var i in ajaxSuggestResp)
 				{
 					ajaxSuggestRespSuggests[ajaxSuggestResp[i]['name']] = ajaxSuggestResp[i]['id'];
 					ajaxSuggestRespNamesOnly.push(ajaxSuggestResp[i]['name']);
 				}
-				$("#coursebox").autocomplete(ajaxSuggestRespNamesOnly);
-			}
+                                console.log(ajaxSuggestRespNamesOnly);
+				$("#coursebox").autocomplete({source : ajaxSuggestRespNamesOnly});
+			} else {
+                            console.log("something went wrong on getCourses()");
+                        }
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			console.log(textStatus + ' ' + errorThrown);
 		}
 	});
 }
-
 getCourses();
