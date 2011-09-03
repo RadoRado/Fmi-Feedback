@@ -17,7 +17,7 @@ $configuration["CLASS_EXTENSION"] = "php";
  * If other behaviour is desired, write a function and change the ADAPT_FUNCTION parameter value
  */
 $configuration["PRODUCTION"] = false;
-$configuration["FOLDER_AFTER_DOC_ROOT"] = "leaderboard";
+$configuration["FOLDER_AFTER_DOC_ROOT"] = "fmifeedback";
 $configuration["ADAPT_FUNCTION"] = "fmifeedback_adaptClassName";
 
 function fmifeedback_adaptClassName($className) {
