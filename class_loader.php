@@ -5,7 +5,7 @@
  * CLASS_FOLDER points to the folder relative to the root directory!!
  * CLASS_EXTENSION is the file extension of the PHP file where the class resides		
  */
-$configuration["CLASS_FOLDER"] = "classes";
+$configuration["CLASS_FOLDERS"] = array("classes", "ajax");
 $configuration["CLASS_EXTENSION"] = "php";
 
 
@@ -35,6 +35,11 @@ function fmifeedback_autoload($className) {
 
     // check if we are not in production mode - there can be more folders to the path
     $extraFolder = ($configuration["PRODUCTION"] == false ? DIRECTORY_SEPARATOR . $configuration["FOLDER_AFTER_DOC_ROOT"] : "");
-    $path = $_SERVER["DOCUMENT_ROOT"] . $extraFolder . DIRECTORY_SEPARATOR . $configuration["CLASS_FOLDER"] . DIRECTORY_SEPARATOR . $className . "." . $configuration["CLASS_EXTENSION"];
-    require_once($path);
+    foreach ($configuration["CLASS_FOLDERS"] as $classFolder) {
+        $path = $_SERVER["DOCUMENT_ROOT"] . $extraFolder . DIRECTORY_SEPARATOR . $classFolder . DIRECTORY_SEPARATOR . $className . "." . $configuration["CLASS_EXTENSION"];
+        if (file_exists($path)) {
+            require_once($path);
+            break;
+        }
+    }
 }
