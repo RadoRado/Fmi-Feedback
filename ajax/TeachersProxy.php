@@ -1,12 +1,6 @@
 <?php
 
-class TeachersProxy {
-
-    private $database;
-
-    public function __construct($database) {
-        $this->database = $database;
-    }
+class TeachersProxy extends DatabaseAware {
 
     public function getTeachers($params = null) {
         $sql = "SELECT * FROM teachers";

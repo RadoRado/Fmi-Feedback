@@ -1,12 +1,6 @@
 <?php
 
-class CoursesProxy {
-
-    private $database;
-
-    public function __construct($database) {
-        $this->database = $database;
-    }
+class CoursesProxy extends DatabaseAware {
 
     public function getCourses($params = null) {
         $sql = "SELECT * FROM courses";
@@ -14,7 +8,7 @@ class CoursesProxy {
 
         $resultArray = array();
         $resultArray["data"] = array();
-        
+
         while ($row = ($this->database->fetchAssoc($res))) {
             $resultArray["data"][] = array("id" => $row["uid"], "name" => $row["name"]);
         }

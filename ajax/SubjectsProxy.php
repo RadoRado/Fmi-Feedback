@@ -1,16 +1,11 @@
 <?php
 
-class SubjectsProxy {
-
-    private $database;
-
-    public function __construct($database) {
-        $this->database = $database;
-    }
+class SubjectsProxy extends DatabaseAware {
 
     public function getSubjects($params = null) {
-        
+        return null;
     }
+
 }
 
 ?>
