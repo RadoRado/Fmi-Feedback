@@ -2,7 +2,7 @@
 
 /**
  * Configuration for auto-loading classes
- * CLASS_FOLDER points to the folder relative to the root directory!!
+ * CLASS_FOLDERS points is an array of class-containing folders that are relative to the root directory!!
  * CLASS_EXTENSION is the file extension of the PHP file where the class resides		
  */
 $configuration["CLASS_FOLDERS"] = array("classes", "ajax");
@@ -25,8 +25,6 @@ function fmifeedback_adaptClassName($className) {
     return $className;
 }
 
-spl_autoload_register("fmifeedback_autoload");
-
 function fmifeedback_autoload($className) {
     global $configuration;
 
@@ -36,10 +34,21 @@ function fmifeedback_autoload($className) {
     // check if we are not in production mode - there can be more folders to the path
     $extraFolder = ($configuration["PRODUCTION"] == false ? DIRECTORY_SEPARATOR . $configuration["FOLDER_AFTER_DOC_ROOT"] : "");
     foreach ($configuration["CLASS_FOLDERS"] as $classFolder) {
-        $path = $_SERVER["DOCUMENT_ROOT"] . $extraFolder . DIRECTORY_SEPARATOR . $classFolder . DIRECTORY_SEPARATOR . $className . "." . $configuration["CLASS_EXTENSION"];
+        $path = $_SERVER["DOCUMENT_ROOT"]
+                . $extraFolder
+                . DIRECTORY_SEPARATOR
+                . $classFolder
+                . DIRECTORY_SEPARATOR
+                . $className
+                . "."
+                . $configuration["CLASS_EXTENSION"];
+
         if (file_exists($path)) {
             require_once($path);
             break;
         }
     }
 }
+
+/* Register a class-loading function because of possible collisions with Smarty's __autoload*/
+spl_autoload_register("fmifeedback_autoload");
