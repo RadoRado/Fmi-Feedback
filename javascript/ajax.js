@@ -1,14 +1,14 @@
-function getTeachers(variable)
+function getTeachers(courseID)
 {
 	$.ajax({
 		dataType: 'json',
-		url: basePath,
+		url: FMIFeedback.basePath,
 		type: 'POST',
 		data: {
 			'class':'TeachersProxy',
 			'method':'getTeachers',
 			'params': {
-				'courseId':variable
+				'courseId':courseID
 			}
 		},
 		success: function(data){
@@ -28,7 +28,7 @@ function getTeachers(variable)
 			}
 		},
 		error: function(jqXHR, textStatus, errorThrown){
-			alert(textStatus + ' ' + errorThrown);
+			console.log(textStatus + ' ' + errorThrown);
 		}
 	});
 }
@@ -37,7 +37,7 @@ function getCourses()
 {
 	$.ajax({
 		dataType: 'json',
-		url: basePath,
+		url: FMIFeedback.basePath,
 		context: this,
 		type: 'POST',
 		cache: false,
@@ -50,14 +50,14 @@ function getCourses()
 			if(typeof(data['success']) === "string" && data['success'] == "true")
 			{
                                 console.log(data);
-				ajaxSuggestResp = data['data'];
-				for(var i in ajaxSuggestResp)
+				FMIFeedback.ajaxSuggestResp = data['data'];
+				for(var i in FMIFeedback.ajaxSuggestResp)
 				{
-					ajaxSuggestRespSuggests[ajaxSuggestResp[i]['name']] = ajaxSuggestResp[i]['id'];
-					ajaxSuggestRespNamesOnly.push(ajaxSuggestResp[i]['name']);
+					FMIFeedback.ajaxSuggestRespSuggests[FMIFeedback.ajaxSuggestResp[i]['name']] = FMIFeedback.ajaxSuggestResp[i]['id'];
+					FMIFeedback.ajaxSuggestRespNamesOnly.push(FMIFeedback.ajaxSuggestResp[i]['name']);
 				}
-                                console.log(ajaxSuggestRespNamesOnly);
-				$("#coursebox").autocomplete({source : ajaxSuggestRespNamesOnly});
+                                console.log(FMIFeedback.ajaxSuggestRespNamesOnly);
+				$("#coursebox").autocomplete({source : FMIFeedback.ajaxSuggestRespNamesOnly});
 			} else {
                             console.log("something went wrong on getCourses()");
                         }

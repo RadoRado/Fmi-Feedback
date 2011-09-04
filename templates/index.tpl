@@ -1,13 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml"> 
 <head> 
-	<title>TITLE GOES HERE</title> 
-	<meta name="content-language" content="english" /> 
+	<title>FMI Feedback</title> 
 	<link rel="stylesheet" type="text/css" href="styles/main.css" /> 
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<link type="text/css" href="javascript/ui/css/start/jquery-ui-1.8.16.custom.css" rel="stylesheet">
+        
         <script type="text/javascript" src="javascript/ui/js/jquery-ui-1.8.16.custom.min.js"></script>
-	<script type="text/javascript" src="javascript/main.js"></script> 
+	
+        <script type="text/javascript" src="javascript/main.js"></script> 
 	<script type="text/javascript" src="javascript/ajax.js"></script> 
 </head> 
 <body> 
