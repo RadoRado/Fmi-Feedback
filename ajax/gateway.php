@@ -1,8 +1,7 @@
 <?php
 header('Content-type: application/json');
 
-require_once("../config/db_config.php");
-require_once("../class_loader.php");
+require_once("../include_me.php");
 
 $database = new Database($db_config);
 $database->setEncoding("UTF8");
