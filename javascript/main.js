@@ -67,17 +67,7 @@ var FMIFeedback = {};
         $(ev).parent().find('.happy').attr('src',imagePath+'icon_happy_gray.png').removeClass('selected');
         $(ev).parent().find('.sad').attr('src',imagePath+'icon_sad_gray.png').removeClass('selected');
         return ev;
-    }
-
-    function findCourseId(data)
-    {
-        if(undefined !== FMIFeedback.ajaxSuggestRespSuggests[$(data).val()])
-        {
-            getTeachers(FMIFeedback.ajaxSuggestRespSuggests[$(data).val()]);
-        }
-    }
-
-
+    }    
 })();
 String.prototype.format = function() {
     var formatted = this;
