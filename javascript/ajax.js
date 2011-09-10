@@ -48,7 +48,11 @@ function sendFeedback(dataObject) {
         dataType: 'json',
         url: FMIFeedback.basePath,
         type: 'POST',
-        data : dataObject,
+        data : {
+            'class':'FeedbackProxy',
+            'method':'sendFeedback',
+            params : dataObject
+        },
         success : function(data) {
             
         },

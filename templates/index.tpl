@@ -74,10 +74,6 @@
                 <div class="courses">
                     Специалност:
                     <select id="subjects">
-                        <option value="1">Course 1</option>
-                        <option value="2">Course 2</option>
-                        <option value="3">Course 3</option>
-                        <option value="4">Course 4</option>
                     </select>
                 </div>
                 <div class="courses">
