@@ -27,7 +27,7 @@
                 <textarea id="positive" class="textarea"></textarea>
             </div>
             <div class="courses">
-                <textarea id="positive" class="textarea"></textarea>
+                <textarea id="negative" class="textarea"></textarea>
             </div>
 
             <br class="clear" />
@@ -88,7 +88,7 @@
             <br class="clear" />
 
             <div class="whole">
-                <input type="button" value="Изпрати"/>
+                <input id="sendButton" type="button" value="Изпрати"/>
             </div>
 
         </div>

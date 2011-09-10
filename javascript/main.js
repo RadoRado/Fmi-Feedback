@@ -58,6 +58,25 @@ FMIFeedback.util = {}; /*holds utility methods*/
                 $('#info').fadeOut('slow');
             }
         });
+        
+        /*sending logic*/
+        $("#sendButton").click(function() {
+           // validation later
+           var courseId = findCourseId($("#coursebox").val());
+           var teacherId = $("#teacherbox").val();
+           var positiveText = $("#positive").val();
+           var negativeText = $("#negative").val();
+           
+           var name = "";
+           var subjectId = -1;
+           
+           // questions later
+           if($("#anonymous").is(":checked")) {
+               name = $("#name").val();
+               subjectId = $("#subjects").val();
+               
+           }
+        });
 	
     });
 

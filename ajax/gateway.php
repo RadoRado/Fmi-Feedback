@@ -10,7 +10,8 @@ $database->setEncoding("UTF8");
 $proxyArray = array(
     "CoursesProxy" => array("getCourses"),
     "TeachersProxy" => array("getTeachers"),
-    "SubjectsProxy" => array("getSubjects"));
+    "SubjectsProxy" => array("getSubjects"),
+    "FeedbackProxy" => array("sendFeedback"));
 
 function valid_call($class, $methodName) {
     global $proxyArray;

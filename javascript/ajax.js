@@ -13,6 +13,7 @@ FMIFeedback.util.appendToCombo = function(componentId /*string*/, data /*object*
                 )
             );
     }
+    return true;
 }
 
 function getTeachers(courseID)
@@ -35,6 +36,21 @@ function getTeachers(courseID)
                     console.log("error");
                 }
             }
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            console.log(textStatus + ' ' + errorThrown);
+        }
+    });
+}
+
+function sendFeedback(dataObject) {
+    $.ajax({
+        dataType: 'json',
+        url: FMIFeedback.basePath,
+        type: 'POST',
+        data : dataObject,
+        success : function(data) {
+            
         },
         error: function(jqXHR, textStatus, errorThrown){
             console.log(textStatus + ' ' + errorThrown);
@@ -114,3 +130,4 @@ function getCourses()
 }
 
 getCourses();
+getSubjects();
