@@ -4,7 +4,7 @@
         <title>FMI Feedback</title> 
         <link rel="stylesheet" type="text/css" href="styles/main.css" /> 
         <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <link type="text/css" href="javascript/ui/css/start/jquery-ui-1.8.16.custom.css" rel="stylesheet">
+        <link type="text/css" href="javascript/ui/css/start/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
 
             <script type="text/javascript" src="javascript/ui/js/jquery-ui-1.8.16.custom.min.js"></script>
 
