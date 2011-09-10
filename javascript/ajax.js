@@ -42,6 +42,29 @@ function getTeachers(courseID)
     });
 }
 
+function getSubjects() {
+    $.ajax({
+        dataType : 'json',
+        url: FMIFeedback.basePath,
+        type : "POST",
+        data : {
+            'class':'SubjectsProxy',
+            'method':'getSubjects'
+        },
+        success : function(data) {
+            if(data['success'])
+            {
+                if(FMIFeedback.util.appendToCombo("subjects", data, "id", "name") == false) {
+                    console.log("error");
+                }
+            }
+        }, 
+        error: function(jqXHR, textStatus, errorThrown){
+            console.log(textStatus + ' ' + errorThrown);
+        }
+    });
+}
+
 function findCourseId(name)
 {
     console.log(name);
