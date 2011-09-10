@@ -1,3 +1,20 @@
+FMIFeedback.util.appendToCombo = function(componentId /*string*/, data /*object*/, valueKey/*string*/, textKey/*string*/) {
+    if(typeof(componentId) !== "string" || typeof(data) !== "object" || typeof(valueKey) !== "string" || typeof(textKey) !== "string") {
+        return false;
+    }
+    
+    $("#{0}".format(componentId)).find("option").remove();
+    for(var i in data["data"]) {
+        $("#{0}".format(componentId)).append(
+            '<option value="{0}">{1}</option>'.format
+            (
+                data['data'][i][valueKey],
+                data['data'][i][textKey]
+                )
+            );
+    }
+}
+
 function getTeachers(courseID)
 {
     $.ajax({
@@ -14,16 +31,8 @@ function getTeachers(courseID)
         success: function(data){
             if(data['success'])
             {
-                $('#teacherbox').find('option').remove();
-                for(var i in data['data'])
-                {
-                    $('#teacherbox').append(
-                        '<option value="{0}">{1}</option>'.format
-                        (
-                            data['data'][i]['id'],
-                            data['data'][i]['name']
-                            )
-                        );
+                if(FMIFeedback.util.appendToCombo("teacherbox", data, "id", "name") == false) {
+                    console.log("error");
                 }
             }
         },

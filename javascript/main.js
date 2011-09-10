@@ -1,4 +1,6 @@
 var FMIFeedback = {};
+FMIFeedback.util = {}; /*holds utility methods*/
+
 (function() {
     /* variables go here */
     FMIFeedback.basePath = "ajax/gateway.php";
@@ -69,6 +71,7 @@ var FMIFeedback = {};
         return ev;
     }    
 })();
+
 String.prototype.format = function() {
     var formatted = this;
     for (var i = 0; i < arguments.length; i++) {
