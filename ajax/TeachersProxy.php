@@ -9,7 +9,7 @@ class TeachersProxy extends DatabaseAware {
                     SELECT teacher_id 
                     FROM teacher_to_course 
                     WHERE course_id = %d)";
-        
+         
         $sql = sprintf($sql, mysql_real_escape_string($params["courseId"]));
         $res = $this->database->query($sql);
 
@@ -22,9 +22,4 @@ class TeachersProxy extends DatabaseAware {
 
         return $resultArray;
     }
-
-    public function getTeachersByCourseId($params = null) {
-        
-    }
-
 }
