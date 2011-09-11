@@ -26,10 +26,10 @@
             <br class="clear" />
 
             <div class="courses">
-                <textarea id="positive" class="textarea"></textarea>
+                <textarea id="positive" name="positive" class="textarea"></textarea>
             </div>
             <div class="courses">
-                <textarea id="negative" class="textarea"></textarea>
+                <textarea id="negative" name="negative" class="textarea"></textarea>
             </div>
 
             <br class="clear" />
@@ -72,7 +72,7 @@
             <br class="clear" />
 
             <div class="whole">
-                <input id="sendButton" type="button" value="Изпрати"/>
+                <input id="sendButton" type="submit" name="sumbit" value="Изпрати"/>
             </div>
 </form>
         </div>
