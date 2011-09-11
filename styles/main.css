@@ -88,17 +88,24 @@ table {
 	width:100%;
 }
 
-.radiowrapper
-{
-	width:50px;
-	cursor:pointer;
-	cursor:hand;
-}
-
 .radio
 {
-	display:none;
+	width:50px;
+	height: 50px;
+	cursor:pointer;
+	cursor:hand;
+	
+	background-repeat: no-repeat;
+	
+	float:left;
 }
+
+.radiowrapper .sad { background-image: url("../images/icon_sad_gray.png"); }
+.radiowrapper .sad:hover, .radiowrapper .sad.selected { background-image: url("../images/icon_sad_color.png"); }
+.radiowrapper .neutral { background-image: url("../images/icon_neutral_gray.png"); }
+.radiowrapper .neutral:hover, .radiowrapper .neutral.selected { background-image: url("../images/icon_neutral_color.png"); }
+.radiowrapper .happy { background-image: url("../images/icon_happy_gray.png"); }
+.radiowrapper .happy:hover, .radiowrapper .happy.selected { background-image: url("../images/icon_happy_color.png"); }
 
 #info
 {

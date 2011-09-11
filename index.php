@@ -11,7 +11,7 @@ $sql = "SELECT * FROM questions";
 $res = $database->query($sql);
 
 while ($row = $database->fetchObject($res)) {
-    $questions[$row->id] = $row->text;
+    $questions[$row->uid] = $row->text;
 }
 
 
