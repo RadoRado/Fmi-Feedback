@@ -12,6 +12,7 @@ $res = $database->query($sql);
 
 while ($row = $database->fetchObject($res)) {
     $questions[$row->id] = $row->text;
+    $questions[$row->uid] = $row->text;
 }
 
 
@@ -19,4 +20,3 @@ $smarty->setTemplateDir("templates/");
 $smarty->assign("questions", $questions);
 
 $smarty->display("index.tpl");
-?>

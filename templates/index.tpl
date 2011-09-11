@@ -2,9 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"> 
     <head> 
         <title>FMI Feedback</title> 
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
         <link rel="stylesheet" type="text/css" href="styles/main.css" /> 
         <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <link type="text/css" href="javascript/ui/css/start/jquery-ui-1.8.16.custom.css" rel="stylesheet">
+        <link type="text/css" href="javascript/ui/css/start/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
 
             <script type="text/javascript" src="javascript/ui/js/jquery-ui-1.8.16.custom.min.js"></script>
 
@@ -13,7 +15,7 @@
     </head> 
     <body> 
         <div class="wholecenter">
-
+<form method="post">
             <div class="courses">
                 <input type="text" class="panelselect" id="coursebox" />
             </div>
@@ -33,33 +35,19 @@
             <br class="clear" />
 
             <div class="whole" id="questions">
-                <div>
-                    Quastion 1: 
-                    <img src="images/icon_sad_gray.png" class="radiowrapper sad" alt="" />
-                    <img src="images/icon_neutral_gray.png" class="radiowrapper neutral" alt="" />
-                    <img src="images/icon_happy_gray.png" class="radiowrapper happy" alt="" />
-                    <input type="radio" name="group1" class="radio" value="1" />
-                    <input type="radio" name="group1" class="radio" value="0" />
-                    <input type="radio" name="group1" class="radio" value="-1" />
-                </div>
-                <div>
-                    Quastion 2: 
-                    <img src="images/icon_sad_gray.png" class="radiowrapper sad" alt="" />
-                    <img src="images/icon_neutral_gray.png" class="radiowrapper neutral" alt="" />
-                    <img src="images/icon_happy_gray.png" class="radiowrapper happy" alt="" />
-                    <input type="radio" name="group1" class="radio" value="1" />
-                    <input type="radio" name="group1" class="radio" value="0" />
-                    <input type="radio" name="group1" class="radio" value="-1" />
-                </div>
-                <div>
-                    Quastion 3: 
-                    <img src="images/icon_sad_gray.png" class="radiowrapper sad" alt="" />
-                    <img src="images/icon_neutral_gray.png" class="radiowrapper neutral" alt="" />
-                    <img src="images/icon_happy_gray.png" class="radiowrapper happy" alt="" />
-                    <input type="radio" name="group1" class="radio" value="1" />
-                    <input type="radio" name="group1" class="radio" value="0" />
-                    <input type="radio" name="group1" class="radio" value="-1" />
-                </div>
+            	{foreach from=$questions key=id item=text}
+            	<div>
+					{$text}:
+					<div class="radiowrapper">
+						<div class="radio sad"></div>
+						<div class="radio neutral"></div>
+						<div class="radio happy"></div>
+						
+						<div style="clear:both;"></div>
+						<input type="hidden" name="question[{$id}]" value="" />
+					</div>
+				</div>
+            	{/foreach}
             </div>
 
             <br class="clear" />
@@ -86,7 +74,7 @@
             <div class="whole">
                 <input id="sendButton" type="button" value="Изпрати"/>
             </div>
-
+</form>
         </div>
     </body> 
 </html>

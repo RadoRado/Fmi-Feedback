@@ -10,14 +10,10 @@ $configuration["CLASS_EXTENSION"] = "php";
 
 
 /**
- * Turn PRODUCTION to true, if uploaded to a web-host
- * The FOLDER_AFTER_DOC_ROOT parameter is the path, after the document root, where the code resides
  * ADAPT_FUNCTION points to the function name, that is mapped to every class name
  * for example class Database has file database.php
  * If other behaviour is desired, write a function and change the ADAPT_FUNCTION parameter value
  */
-$configuration["PRODUCTION"] = false;
-$configuration["FOLDER_AFTER_DOC_ROOT"] = "fmifeedback";
 $configuration["ADAPT_FUNCTION"] = "fmifeedback_adaptClassName";
 
 function fmifeedback_adaptClassName($className) {
@@ -31,11 +27,8 @@ function fmifeedback_autoload($className) {
     // adapt the class name to the file name
     $className = call_user_func($configuration["ADAPT_FUNCTION"], $className);
 
-    // check if we are not in production mode - there can be more folders to the path
-    $extraFolder = ($configuration["PRODUCTION"] == false ? DIRECTORY_SEPARATOR . $configuration["FOLDER_AFTER_DOC_ROOT"] : "");
     foreach ($configuration["CLASS_FOLDERS"] as $classFolder) {
-        $path = $_SERVER["DOCUMENT_ROOT"]
-                . $extraFolder
+        $path = dirname(__FILE__)
                 . DIRECTORY_SEPARATOR
                 . $classFolder
                 . DIRECTORY_SEPARATOR
