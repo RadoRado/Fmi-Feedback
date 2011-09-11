@@ -4,7 +4,9 @@ abstract class DatabaseAware {
 
     protected $database;
 
-    protected function escapeParams(&$params) {
+    /*
+    I dont think we need this now
+	protected function escapeParams(&$params) {
         foreach ($params as $key => &$value) {
             if (is_array($value)) {
                 $this->escapeParams($value);
@@ -13,6 +15,7 @@ abstract class DatabaseAware {
             }
         }
     }
+	*/
 
     public function __construct($database) {
         $this->database = $database;

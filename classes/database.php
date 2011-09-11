@@ -1,236 +1,173 @@
 <?php
 
-require_once("idatabase.php");
-
 /**
- * @version 0.2
- * @author RadoRado (a.k.a Rado)
- * Should be more generic in the bright future
- * For now, it's going to work with MySQL
- * The class requires config_util.php(Config class) It's up to the user to include it
+ * @author Stormbreaker
  */
-class Database implements IDatabase {
-
-    // ----------------------------------------
-    // PRIVATE FIELDS
-    // ----------------------------------------
-    /**
-     * @var string Holds the last executed query
-     */
-    private $last_query = "";
-    /**
-     * @var Holds the connection link to the database.
-     */
-    private $connection = null;
-    /**
-     * @var The basic configuration options for a database connection
-     */
-    private $db_config = array(
-        "DB_USER" => "",
-        "DB_PASS" => "",
-        "DB_NAME" => "",
-        "DB_HOST" => ""
-    );
-    private $errors = array(
-        "ESCAPE_ERROR" => "Error on escaping when called %s function",
-        "CHECK_RESULT_ERROR" => "There was error with %s SQL statement.Error : %s",
-        "DATABASE_CONNECTION_ERROR" => "Error connecting to MySQL database. %s",
-        "SELECTING_DATABASE_ERROR" => "Error selecting database with name %s. %s");
-    /**
-     * @var bool Flag to indicate if magic quotes are active on the current server
-     */
-    private $magic_quotes_active = null;
-    /**
-     * @var bool Flag to indicate if mysql_real_escape_string function exists (PHP version >= 4.3.0)
-     */
-    private $real_escape_string_exists = null;
-
-    // ----------------------------------------
-    // CONSTRUCTOR METHOD
-    // ----------------------------------------
-    public function __construct($config, $create_table_name = false) {
-        Config::apply($this->db_config, $config);
-        $this->magic_quotes_active = get_magic_quotes_gpc();
-        $this->real_escape_string_exists = function_exists("mysql_real_escape_string"); // i.e. PHP >= v4.3.0
-        $this->openConnection($create_table_name);
-    }
-
-    // ----------------------------------------
-    // INTERFACE METHODS
-    // ----------------------------------------
-
-    /**
-     * Performs MySQL database query.
-     * Values should be escaped by now.
-     * @param <string> $sql - the SQL statement
-     * @return <handler> link to the MySQL resource
-     */
-    public function query($sql) {
-        $this->last_query = $sql;
-        $res = mysql_query($sql, $this->connection);
-        $this->check_result($res); // if there's an error, an exception will be thrown
-
-        return $res;
-    }
-
-    /**
-     * Sets the encoding of the database using SET NAMES query
-     * @param <string> $encoding
-     * @return void
-     */
-    public function setEncoding($encoding) {
-        $this->query("SET NAMES " . $encoding);
-    }
-
-    /**
-     * Wrapper for mysql_fetch_assoc
-     * @param <Resource> $result
-     * @return <array> Associative array containing the next row from the query
-     */
-    public function fetchAssoc($result) {
-        return mysql_fetch_assoc($result);
-    }
-
-    /**
-     * Wrapper for mysql_affected_rows
-     * @return <integer> The number of the rows affected after the last UPDATE | INSERT | DELETE
-     */
-    public function affectedRows() {
-        return mysql_affected_rows($this->connection);
-    }
-
-    /**
-     * Wrapper for mysql_fetch_object
-     * @param <Resource> $result
-     * @return <Object> Object, containing the next row from the query
-     */
-    public function fetchObject($result) {
-        return mysql_fetch_object($result);
-    }
-
-    /**
-     * Wrapper for mysql_fetch_array
-     * @param <Resource> $result
-     * @return <array> Associative array containing the next row from the query
-     */
-    public function fetchArray($result) {
-        return mysql_fetch_array($result);
-    }
-
-    /**
-     * Wrapper for mysql_error
-     * @return <string> The last error from querying the database
-     */
-    public function lastError() {
-        return mysql_error($this->connection);
-    }
-
-    /**
-     * Wrapper for mysql_insert_id
-     * @return <integer> The last id from an INSERT query
-     */
-    public function lastInsertedId() {
-        return mysql_insert_id($this->connection);
-    }
-
-    /**
-     * Wrapper for mysql_num_rows
-     * @param <Resource> $result
-     * @return <integer> number of rows that were SELECTed
-     */
-    public function numRows($result) {
-        return mysql_num_rows($result);
-    }
-
-    /**
-     * Opens connection to a MySQL database.
-     * If there's an error, an Exception will be thrown
-     * @param <boolean> $createTable - if true, database with the given name is created
-     * @return void
-     */
-    public function openConnection($createTable = false) {
-        $this->connection = mysql_connect(
-                        $this->db_config["DB_HOST"],
-                        $this->db_config["DB_USER"],
-                        $this->db_config["DB_PASS"]);
-
-        if (!$this->connection) { /* Something went wrong */
-            throw new Exception(sprintf($this->errors["DATABASE_CONNECTION_ERROR"], mysql_error()));
-        } else {
-            if ($createTable == true) {
-                $this->query("CREATE DATABASE " . $this->db_config["DB_NAME"]);
-            }
-            $select = mysql_select_db($this->db_config["DB_NAME"], $this->connection);
-            if (!$select) {
-                throw new Exception(sprintf($this->errors["SELECTING_DATABASE_ERROR"], $this->db_config["DB_NAME"], mysql_error()));
-            }
-        }
-    }
-
-    /**
-     * Returns the link to the database
-     * @return <Link identifier>
-     */
-    public function getConnection() {
-        return $this->connection;
-    }
-
-    /**
-     * Closes the connection to the MySQL database
-     * and unsets the link to it
-     */
-    public function closeConnection() {
-        if (isset($this->connection)) {
-            // don't actually care if it returns false
-            mysql_close($this->connection);
-            unset($this->connection);
-        }
-    }
-
-    /**
-     * Sanitizes the given parameter
-     * So it's not dangerous to be put in the database
-     * This method performs mysql_real_escape_string (or addslashes, if PHP version is < 4.3.0)
-     * Checks if magic_quotes is active and removes any useless slashes
-     * This method has the functionality to apply user-provided functions to $value
-     * Those functions are passed as an array of strings (the second parameter)
-     * @param  $value - the value that's going to be escaped
-     * @param $more_functions - optional parameter, an array of strings that are
-     * user-provided function names, that should be applied to the $value
-     * @return the sanitized $value
-     */
-    public function escape($value, $more_functions = null /* array of strings */) {
-        if ($this->real_escape_string_exists) { // PHP >= v4.3.0
-            if ($this->magic_quotes_active) {
-                $value = stripslashes($value);
-            }
-            $value = mysql_real_escape_string($value);
-        } else { // <= PHP v4.3.0
-            if (!$this->magic_quotes_active) {
-                $value = addslashes($value);
-            }
-        }
-
-        if ($more_functions != null) {
-            foreach ($more_functions as $func) {
-                $res = call_user_func($func, $value);
-                if (!$res) { /* False value means error */
-                    throw new Exception(sprintf($this->errors["ESCAPE_ERROR"]), $func);
-                }
-                $value = $res;
-            }
-        }
-        return $value;
-    }
-
-    // ----------------------------------------
-    // PRIVATE METHODS
-    // ----------------------------------------
-    private function check_result($sql_res) {
-        if (!$sql_res) {
-            throw new Exception(sprintf($this->errors["CHECK_RESULT_ERROR"], $this->last_query, mysql_error()));
-        }
-    }
+class Database extends PDO
+{
+	const MYSQL_TIMESTAMP = '%Y-%m-%d %H:%M:%S';
+	const MYSQL_DATE = '%Y-%m-%d';
+	
+	public function __construct($dsn, $username = null, $password = null, $driver_options = null)
+	{
+		parent::__construct($dsn, $username, $password, $driver_options);
+		$this->setAttribute(PDO::ATTR_STATEMENT_CLASS, array ('StormPDOStatement', array($this)));
+		$this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$this->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
+	}
+	
+	/**
+	 * Execute SQL and return num of affected rows
+	 * 
+	 * @param string Query
+	 * @param string Parameters
+	 * @return int Num affected rows
+	 */
+	public function exec($statement, $values = null)
+	{
+		if ( is_array($values) )
+		{
+			$stmt = $this->prepare($statement);
+			$stmt->execute($values);
+			
+			return $stmt->rowCount();
+		}
+		else
+			return parent::exec($statement);
+	}
+	
+	/**
+	 * Execute query and return StormPDOStatement
+	 * 
+	 * @param string $statement
+	 * @param mixed $var
+	 * @param mixed $obj1
+	 * @param mixed $obj2
+	 * @return
+	 */
+	public function query($statement, $var = null, $obj1 = null, $obj2 = null)
+	{
+		if ( is_array($var) )
+		{
+			$stmt = $this->prepare($statement);
+		
+			$stmt->execute($var);
+			return $stmt;
+		}
+		else
+			return parent::query($statement);
+	}
+	
+	/**
+	 * Get the time difference and display in current language
+	 * 
+	 * @param int $time UNIX timestamp of the date and time
+	 * @param array $lang Array with language constants
+	 * @return string
+	 */
+	public static function TimeElapsed($time, $lang)
+	{
+		$t = strtotime('now') - $time;
+				
+		$y = (int)strftime('%Y', $t) - 1970;
+		if ( $y > 0 )
+			return ( $y - 1970 ) . ' ' . ( $y == 1 ? $lang['years_1'] : $lang['years'] );
+		
+		$m = (int)strftime('%m', $t) - 1;
+		if ( $m > 0 )
+			return $m . ' ' . ( $m == 1 ? $lang['months_1'] : $lang['months'] );
+			
+		$w = (int)strftime('%W', $t);
+		if ( $w > 0 )
+			return $w . ' ' . ( $w == 1 ? $lang['weeks_1'] : $lang['weeks'] );
+			
+		$d = (int)strftime('%d', $t) - 1;
+		if ( $d > 0 )
+			return $d . ' ' . ( $d == 1 ? $lang['days_1'] : $lang['days'] );
+			
+		$H = (int)strftime('%H', $t) - (int)strftime('%H', 0);
+		if ( $H > 0 )
+			return $H . ' ' . ( $H == 1 ? $lang['hours_1'] : $lang['hours'] );
+			
+		$M = (int)strftime('%M', $t);
+		if ( $M > 0 )
+			return $M . ' ' . ( $M == 1 ? $lang['minutes_1'] : $lang['minutes'] );
+			
+		$S = (int)strftime('%S', $t);
+		if ( $S > 0 )
+			return $S . ' ' . ( $S == 1 ? $lang['seconds_1'] : $lang['seconds'] );
+	}
 
 }
 
+class StormPDOStatement extends PDOStatement
+{
+	protected $pdo;
+	/**
+	 * PSPDOStatement::__construct()
+	 * 
+	 * @param mixed $pdo
+	 * @return
+	 */
+	protected function __construct($pdo)
+	{
+		$this->pdo = $pdo;
+	}
+	
+	/**
+	 * PSPDOStatement::execute()
+	 * 
+	 * @param mixed $params
+	 * @return
+	 */
+	public function execute($params = array())
+	{
+		if ( is_array($params) )
+		foreach ( $params as $key => $value )
+		{
+			if ( is_int($key) )
+				$key += 1;
+            else
+                $key = ':'.$key;
+			
+			if ( is_array($value) )
+				$this->bindValue($key, $value[0], $value[1]);
+			elseif ( is_int($value) )
+				$this->bindValue($key, $value, PDO::PARAM_INT);
+			elseif ( is_bool($value) )
+				$this->bindValue($key, $value, PDO::PARAM_BOOL);
+			elseif ( is_null($value) )
+				$this->bindValue($key, $value, PDO::PARAM_NULL);
+			else
+				$this->bindValue($key, $value);
+		}
+		
+		parent::execute();
+		
+		return $this;
+	}
+	
+	/**
+	 * PSPDOStatement::fetch()
+	 * 
+	 * @param mixed $fetch_style
+	 * @param mixed $cursor_orientation
+	 * @param integer $cursor_offset
+	 * @return
+	 */
+	public function fetch( $fetch_style = PDO::FETCH_OBJ, $cursor_orientation = PDO::FETCH_ORI_NEXT, $cursor_offset = 0 )
+	{
+		return parent::fetch($fetch_style, $cursor_orientation, $cursor_offset);
+	}
+	
+	public function fetchAllColumn($index = 0)
+	{
+		$ar = array();
+		
+		while ( $c = $this->fetchColumn($index) )
+			$ar[] = $c;
+			
+		return $ar;
+	}
+}
+?>

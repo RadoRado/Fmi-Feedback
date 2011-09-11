@@ -9,8 +9,8 @@ class SubjectsProxy extends DatabaseAware {
         $resultArray = array();
         $resultArray["data"] = array();
 
-        while ($row = ($this->database->fetchAssoc($res))) {
-            $resultArray["data"][] = array("id" => $row["uid"], "name" => $row["name"]);
+        while ($row = $res->fetch()) {
+            $resultArray["data"][] = array("id" => $row->uid, "name" => $row->name);
         }
 
         return $resultArray;

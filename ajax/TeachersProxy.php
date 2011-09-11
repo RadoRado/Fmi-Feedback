@@ -8,16 +8,17 @@ class TeachersProxy extends DatabaseAware {
                 IN(
                     SELECT teacher_id 
                     FROM teacher_to_course 
-                    WHERE course_id = %d)";
+                    WHERE course_id = ?)";
          
-        $sql = sprintf($sql, $this->database->escape($params["courseId"]));
-        $res = $this->database->query($sql);
+        $res = $this->database->query($sql, array(
+			(int)$params["courseId"]
+		));
 
         $resultArray = array();
         $resultArray["data"] = array();
 
-        while ($row = ($this->database->fetchAssoc($res))) {
-            $resultArray["data"][] = array("id" => $row["uid"], "name" => $row["name"]);
+        while ($row = $res->fetch()) {
+            $resultArray["data"][] = array("id" => $row->uid, "name" => $row->name);
         }
 
         return $resultArray;
