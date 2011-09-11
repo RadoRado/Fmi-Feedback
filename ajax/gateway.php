@@ -6,7 +6,6 @@ require_once("../include_me.php");
 $proxyArray = array(
     "CoursesProxy" => array("getCourses"),
     "TeachersProxy" => array("getTeachers"),
-    "SubjectsProxy" => array("getSubjects"),
     "FeedbackProxy" => array("sendFeedback"));
 
 function valid_call($class, $methodName) {
