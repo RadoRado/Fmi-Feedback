@@ -30,13 +30,22 @@ else
 {
 	$questions = array(); // array that will hold the questions
 	// will move to class in the future
-	$sql = "SELECT * FROM questions";
-	$res = $database->query($sql);
+	$questionsQuery = "SELECT * FROM questions";
+	$questionsRes = $database->query($questionsQuery);
 	
-	while ($row = $res->fetch()) {
+	while ($row = $questionsRes->fetch()) {
 	    $questions[$row->uid] = $row->text;
 	}
-	
 	$smarty->assign("questions", $questions);
-	$smarty->display("index.tpl");
+	
+        $subjects = array();
+        $subjectsQuery = "SELECT * FROM subjects";
+        $subjectsRes = $database->query($subjectsQuery);
+        
+        while ($row = $subjectsRes->fetch()) {
+	    $subjects[$row->uid] = $row->name;
+	}
+	$smarty->assign("subjects", $subjects);
+        
+        $smarty->display("index.tpl");
 }

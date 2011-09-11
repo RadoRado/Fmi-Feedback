@@ -8,73 +8,76 @@
         <script src="http://code.jquery.com/jquery-latest.js"></script>
         <link type="text/css" href="javascript/ui/css/start/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
 
-            <script type="text/javascript" src="javascript/ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+        <script type="text/javascript" src="javascript/ui/js/jquery-ui-1.8.16.custom.min.js"></script>
 
-            <script type="text/javascript" src="javascript/main.js"></script> 
-            <script type="text/javascript" src="javascript/ajax.js"></script> 
+        <script type="text/javascript" src="javascript/main.js"></script> 
+        <script type="text/javascript" src="javascript/ajax.js"></script> 
     </head> 
     <body> 
         <div class="wholecenter">
-<form method="post">
-            <div class="courses">
-                <input type="text" class="panelselect" id="coursebox" />
-            </div>
-            <div class="courses">
-                <select class="panelselect" id="teacherbox"></select>
-            </div>
-
-            <br class="clear" />
-
-            <div class="courses">
-                <textarea id="positive" name="positive" class="textarea"></textarea>
-            </div>
-            <div class="courses">
-                <textarea id="negative" name="negative" class="textarea"></textarea>
-            </div>
-
-            <br class="clear" />
-
-            <div class="whole" id="questions">
-            	{foreach from=$questions key=id item=text}
-            	<div>
-					{$text}:
-					<div class="radiowrapper">
-						<div class="radio sad"></div>
-						<div class="radio neutral"></div>
-						<div class="radio happy"></div>
-						
-						<div style="clear:both;"></div>
-						<input type="hidden" name="question[{$id}]" value="" />
-					</div>
-				</div>
-            	{/foreach}
-            </div>
-
-            <br class="clear" />
-
-            <div class="whole">
-                <input type="checkbox" id="anonymous" />Не искам да съм анонимен!
-            </div>
-
-            <br class="clear" />
-
-            <div class="whole" id="info">
+            <form method="post">
                 <div class="courses">
-                    Специалност:
-                    <select id="subjects">
-                    </select>
+                    <input type="text" class="panelselect" id="coursebox" />
                 </div>
                 <div class="courses">
-                    Име: <input type="text" id="name" />
+                    <select class="panelselect" id="teacherbox"></select>
                 </div>
-            </div>
 
-            <br class="clear" />
+                <br class="clear" />
 
-            <div class="whole">
-                <input id="sendButton" type="submit" name="sumbit" value="Изпрати"/>
-            </div>
-</form>
+                <div class="courses">
+                    <textarea id="positive" name="positive" class="textarea"></textarea>
+                </div>
+                <div class="courses">
+                    <textarea id="negative" name="negative" class="textarea"></textarea>
+                </div>
+
+                <br class="clear" />
+
+                <div class="whole" id="questions">
+                    {foreach from=$questions key=id item=text}
+                        <div>
+                            {$text}:
+                            <div class="radiowrapper">
+                                <div class="radio sad"></div>
+                                <div class="radio neutral"></div>
+                                <div class="radio happy"></div>
+
+                                <div style="clear:both;"></div>
+                                <input type="hidden" name="question[{$id}]" value="" />
+                            </div>
+                        </div>
+                    {/foreach}
+                </div>
+
+                <br class="clear" />
+
+                <div class="whole">
+                    <input type="checkbox" id="anonymous" />Не искам да съм анонимен!
+                </div>
+
+                <br class="clear" />
+
+                <div class="whole" id="info">
+                    <div class="courses">
+                        Специалност:
+                        <select id="subjects">
+                            {foreach from=$subjects key=id item=name}
+                                <option value="{$id}">{$name}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                    <div class="courses">
+                        Име: <input type="text" id="name" />
+                    </div>
+                </div>
+
+                <br class="clear" />
+
+                <div class="whole">
+                    <input id="sendButton" type="submit" name="sumbit" value="Изпрати"/>
+                </div>
+            </form>
         </div>
     </body> 
 </html>

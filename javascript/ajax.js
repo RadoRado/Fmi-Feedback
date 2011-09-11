@@ -134,4 +134,3 @@ function getCourses()
 }
 
 getCourses();
-getSubjects();
