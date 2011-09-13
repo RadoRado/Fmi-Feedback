@@ -6,7 +6,7 @@ $smarty->setTemplateDir("templates/");
 
 if ( isset($_POST['positive']) )
 {
-	$feedback->insertFeedback($_POST['positive'], $_POST['negative'], $_POST['question']);
+	$feedback->insertFeedback($_POST['positive'], $_POST['negative'], $_POST['question'], $_POST['student_name'], $_POST['student_subject']);
 	
 	$smarty->display("feedback_thanks.tpl");
 }

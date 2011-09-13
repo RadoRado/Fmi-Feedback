@@ -61,14 +61,14 @@
                 <div class="whole" id="info">
                     <div class="courses">
                         Специалност:
-                        <select id="subjects">
+                        <select id="subjects" name="student_subject">
                             {foreach from=$subjects key=id item=name}
                                 <option value="{$id}">{$name}</option>
                             {/foreach}
                         </select>
                     </div>
                     <div class="courses">
-                        Име: <input type="text" id="name" />
+                        Име: <input type="text" name="student_name" id="name" />
                     </div>
                 </div>
 
