@@ -14,7 +14,7 @@ FMIFeedback.util.appendToCombo = function(componentId /*string*/, data /*object*
             );
     }
     return true;
-}
+};
 
 function getTeachers(courseID)
 {
@@ -105,7 +105,7 @@ function getCourses()
             }
         },
         error: function(jqXHR, textStatus, errorThrown){
-            console.log(textStatus + ' ' + errorThrown);
+            console.log("There was an error : {0}".format(textStatus + ' ' + errorThrown));
         }
     });
 }
