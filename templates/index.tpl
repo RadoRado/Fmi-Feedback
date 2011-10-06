@@ -18,18 +18,26 @@
         <div class="wholecenter">
             <form method="post">
                 <div class="courses">
+                    <label for="coursebox">Име на предмета(autocomplete e):</label>
+                    <br />
                     <input type="text" class="panelselect" id="coursebox" />
                 </div>
                 <div class="courses">
+                    <label for="teacherbox">Име на преподавателя :</label>
+                    <br />
                     <select class="panelselect" id="teacherbox"></select>
                 </div>
 
                 <br class="clear" />
 
                 <div class="courses">
+                    <label for="positive">Вашето позитивно мнение :)</label>
+                    <br />
                     <textarea id="positive" name="positive" class="textarea"></textarea>
                 </div>
                 <div class="courses">
+                    <label for="negative">Вашето негативно мнение :|</label>
+                    <br />
                     <textarea id="negative" name="negative" class="textarea"></textarea>
                 </div>
 

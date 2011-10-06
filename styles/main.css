@@ -78,6 +78,11 @@ table {
 	margin-left:100px;
 }
 
+label
+{
+    margin-left : 100px;
+}
+
 #questions
 {
 	padding-left:50px;
