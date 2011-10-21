@@ -52,18 +52,21 @@ class feedback extends DatabaseAware {
         ));
 
         $feedbackId = $this->database->lastInsertId();
-
+        $ratingSum = 0;
         // Insert question ratings
         if (is_array($questions)) {
             foreach ($questions as $questionId => $rating) {
                 if ($rating === '' || $rating < -1 || $rating > 1)
                     continue;
-
+                $ratingSum += (int) $rating;
                 $this->database->exec("INSERT INTO question_to_feedback (feedback_id, question_id, rating) VALUES (?, ?, ?)", array(
                     (int) $feedbackId, (int) $questionId, (int) $rating
                 ));
             }
         }
+
+        // update the rating field in the feedback table
+        $this->database->exec("UPDATE feedback SET rating = ? WHERE uid = ? LIMIT 1", array($ratingSum, $feedbackId));
 
         return $feedbackId;
     }
@@ -75,8 +78,9 @@ class feedback extends DatabaseAware {
 
         $uid = $res->fetchColumn();
 
-        if ($uid !== false)
+        if ($uid !== false) {
             return $uid;
+        }
 
         $this->database->exec("INSERT INTO students (name, subject_id) VALUES (?, ?)", array(
             $name, (int) $subject_id

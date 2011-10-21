@@ -62,7 +62,7 @@
                 <br class="clear" />
 
                 <div class="whole">
-                    <input type="checkbox" id="anonymous" />Не искам да съм анонимен!
+                    <input type="checkbox" id="anonymous" /><strong>Не искам да съм анонимен!</strong>
                 </div>
 
                 <br class="clear" />
