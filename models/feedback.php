@@ -31,6 +31,8 @@ class feedback extends DatabaseAware {
      * Inserts the given feedback into the database.
      * Also inserts all related things to the feedback as the student name (if provided)
      * And the answers to the questions
+	 * @param Integer $courseId - the unique id of the course
+	 * @param Integer $teacherId - the unique id of the teacher
      * @param String $positiveText
      * @param String $negativeText
      * @param Array $questions
@@ -38,7 +40,12 @@ class feedback extends DatabaseAware {
      * @param Integer $studentSubjectId - if provided, delegates to insertStudent method
      * @return Integer, the created feedback Id 
      */
-    public function insertFeedback($positiveText, $negativeText, $questions, $studentName = '', $studentSubjectId = '') {
+    public function insertFeedback($courseId, $teacherId, $positiveText, $negativeText, $questions, $studentName = '', $studentSubjectId = '') {
+        // check if the courseId or teacherId are correct (!= -1)
+        if($courseId == -1 || $teacherId == -1) {
+        	throw new Exception("Something is fishy. Try again");
+        }
+        
         // Insert student info (If available)
         if (!empty($studentName) && is_numeric($studentSubjectId) && $this->validateSubject($studentSubjectId)) {
             $studentId = $this->insertStudent($studentName, $studentSubjectId);
@@ -47,8 +54,8 @@ class feedback extends DatabaseAware {
         }
 
         // Insert feedback info
-        $this->database->exec("INSERT INTO feedback (positive_text, negative_text, student_id) VALUES (?, ?, ?)", array(
-            $positiveText, $negativeText, $studentId
+        $this->database->exec("INSERT INTO feedback (course_id, teacher_id, positive_text, negative_text, student_id) VALUES (?, ?, ?, ?, ?)", array(
+            (int) $courseId, (int) $teacherId, $positiveText, $negativeText, $studentId
         ));
 
         $feedbackId = $this->database->lastInsertId();
