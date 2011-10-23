@@ -16,6 +16,7 @@
     </head> 
     <body> 
         <div class="wholecenter">
+        	До момента са дадени {$totalFeedback} обратни връзки!
             <form method="post">
                 <div class="courses">
                     <label for="coursebox">Име на предмета(autocomplete e):</label>

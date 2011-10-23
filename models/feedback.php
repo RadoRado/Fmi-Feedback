@@ -26,6 +26,13 @@ class feedback extends DatabaseAware {
 
         return $subjects;
     }
+	
+	public function getFeedbackCount() {
+		$query = "SELECT COUNT(uid) as CNT FROM feedback";
+		$res = $this->database->query($query);
+		$row = $res->fetch();
+		return $row->CNT;
+	}
 
     /**
      * Inserts the given feedback into the database.
