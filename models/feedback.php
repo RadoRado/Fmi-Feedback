@@ -30,8 +30,7 @@ class feedback extends DatabaseAware {
 	public function getFeedbackCount() {
 		$query = "SELECT COUNT(uid) as CNT FROM feedback";
 		$res = $this->database->query($query);
-		$row = $res->fetch();
-		return $row->CNT;
+		return $res->fetchColumn();
 	}
 
     /**
