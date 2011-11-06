@@ -16,16 +16,20 @@
     </head> 
     <body> 
         <div class="wholecenter">
+        	До момента са дадени {$totalFeedback} обратни връзки!
             <form method="post">
                 <div class="courses">
                     <label for="coursebox">Име на предмета(autocomplete e):</label>
                     <br />
                     <input type="text" class="panelselect" id="coursebox" />
+                    <input type="hidden" id="courseId" name="courseId" value="-1" />
                 </div>
                 <div class="courses">
                     <label for="teacherbox">Име на преподавателя :</label>
                     <br />
-                    <select class="panelselect" id="teacherbox"></select>
+                    <select class="panelselect" name="teacherbox" id="teacherbox">
+                    	<option value="-1">Изберете предмет</option>
+                    </select>
                 </div>
 
                 <br class="clear" />
@@ -62,7 +66,7 @@
                 <br class="clear" />
 
                 <div class="whole">
-                    <input type="checkbox" id="anonymous" />Не искам да съм анонимен!
+                    <input type="checkbox" id="anonymous" /><strong>Не искам да съм анонимен!</strong>
                 </div>
 
                 <br class="clear" />
