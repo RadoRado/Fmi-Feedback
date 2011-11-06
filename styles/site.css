@@ -1,0 +1,106 @@
+html {
+	/*
+    background: none repeat scroll 0 0 #DDDDDD;
+    */
+    background-image: url('../images/background-pattern.png'); 
+}
+
+select {
+	width: 215px;
+	height: 42px;
+}
+
+#header {
+	margin: 0 auto;
+	width: 891px;
+	
+}
+
+#header_bg {
+	margin: 0 auto;
+	height: 202px;
+	background-image: url('../images/header-repeat.png'); 
+	background-repeat: repeat-x;
+	
+}
+
+#arrows_background {
+	margin: 40px auto;
+	height: 1600px;
+	width: 900px;
+	background-image: url('../images/arrows-background.png');
+	background-repeat:no-repeat;
+}
+
+.first_question {
+	float: left;
+    margin-left: 305px;
+    margin-top: 10px;
+}
+
+
+.second_question {
+    float: left;
+    margin-left: 305px;
+    margin-top: 110px;
+}
+
+.emoticons_1 {
+	float: right;
+	margin-right: 180px;
+	margin-top: -40px;
+	position: relative;
+}
+
+.emoticons_2 {
+    float: left;
+    left: 66px;
+    margin-top: 100px;
+    position: relative;
+}
+
+.div_possitive_feedback {
+	float: left;
+	resize: none;
+	margin: 333px 0 0 130px;
+}
+
+.div_negative_feedback {
+	float: left;
+	resize: none;
+	margin: 333px 0 0 80px;
+}
+
+.input_possitive_feedback {
+	width: 284px;
+	height: 252px;
+}
+
+.input_negative_feedback {
+	width: 284px;
+	height: 252px;
+}
+
+#owl_question {
+	float: left;
+    margin-left: 130px;
+	margin-top: 180px;
+    width: 547px;
+    height: 213px;
+}
+
+#student_answer{
+	background-image: url("../images/student-answer.png");
+    background-repeat: no-repeat;
+    float: right;
+    height: 291px;
+    margin: -40px 150px;
+    width: 692px;
+}
+
+#ready_button {
+    float: right;
+    height: 102px;
+    margin: -20px 380px;
+    width: 311px;
+}
