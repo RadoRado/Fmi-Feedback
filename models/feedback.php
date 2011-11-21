@@ -69,8 +69,9 @@ class feedback extends DatabaseAware {
         // Insert question ratings
         if (is_array($questions)) {
             foreach ($questions as $questionId => $rating) {
-                if ($rating === '' || $rating < -1 || $rating > 1)
+                if ($rating === '' || $rating < -1 || $rating > 1) {
                     continue;
+				}
                 $ratingSum += (int) $rating;
                 $this->database->exec("INSERT INTO question_to_feedback (feedback_id, question_id, rating) VALUES (?, ?, ?)", array(
                     (int) $feedbackId, (int) $questionId, (int) $rating
@@ -109,5 +110,3 @@ class feedback extends DatabaseAware {
     }
 
 }
-
-?>
