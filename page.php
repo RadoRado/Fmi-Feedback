@@ -9,6 +9,8 @@
     <title>
     .: ФМИ feedback система :.
     </title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="javascript/main.js"></script>
 </head>
 <body>
 
@@ -19,6 +21,13 @@
 	</div>
 
 </div>
+
+<div id="completedWrapper">
+	<div id='completed'>
+		<img width='227' height='85' src='images/exp-bar.png' >
+	</div>
+</div>
+
 <form>
 <div id='arrows_background'>
 	
@@ -59,7 +68,7 @@
 			Благодарим за вашата информация! <br>
 			Искате ли да кажете вашите <br>
 			<em>име</em> и <em>специалност</em>?<br>
-			<input type="checkbox" name="authenicated" value="yes" /> Да, разбира се! <br>
+			<input id="checkme" type="checkbox" name="authenicated" value="yes" /> Да, разбира се! <br>
 		</div>
 	<img class = 'owl' width='547' height='213' src='images/owl-question.png' >
 	</div>

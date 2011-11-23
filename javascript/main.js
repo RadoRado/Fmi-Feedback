@@ -61,3 +61,48 @@ FMIFeedback.util = {}; /*holds utility methods*/
         });
     });
 })();
+
+
+//Moves the Exp bar while scrolling
+
+$(document).ready(function () {  
+  var top = $('#completed').offset().top - parseFloat($('#completed').css('marginTop').replace(/auto/, 0));
+  $(window).scroll(function (event) {
+  	
+    // what the y position of the scroll is
+    var y = $(this).scrollTop();
+  
+    if (y >= top) {
+      $('#completed').addClass('fixed');
+    } else {
+      $('#completed').removeClass('fixed');
+    }
+  });
+});
+
+
+$(document).ready(function(){
+
+		//Hide div w/id extra
+	   $("#student_answer").css("display","none");
+	   $("#ready_button").css("margin-top","10px");
+
+		// Add onclick handler to checkbox w/id checkme
+	   $("#checkme").click(function(){
+
+		// If checked
+		if ($("#checkme").is(":checked"))
+		{
+			//show the hidden div
+			$("#student_answer").show("fast");
+			$("#ready_button").css("margin-top","-20px");
+		}
+		else
+		{
+			//otherwise, hide it
+			$("#student_answer").hide("fast");
+			$("#ready_button").css("margin-top","10px");
+		}
+	  });
+
+	});

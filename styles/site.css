@@ -193,3 +193,24 @@ input.student_name{
 #ready_button:active {    
 	background-position: bottom;
 }
+
+
+#completedWrapper { 
+  right: 10px;
+  position: absolute;
+  margin-left: 35px;
+  width: 227px;
+}
+
+#completed {
+  position: absolute;
+  top: 0;
+  /* just used to show how to include the margin in the effect */
+  margin-top: 20px;
+  padding-top: 19px;
+}
+
+#completed.fixed {
+  position: fixed;
+  top: 0;
+}
