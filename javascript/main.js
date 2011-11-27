@@ -26,7 +26,8 @@ FMIFeedback.util = {}; /*holds utility methods*/
         return true;
     };
 
-    /* Autoloaders go here */
+    /****** Autoloaders go here ******/
+    
     $(document).ready(function(){
         $('.radio').click(function(){
             var $wrapper = $(this).parents('.radiowrapper');
@@ -106,3 +107,18 @@ $(document).ready(function(){
 	  });
 
 	});
+	
+	
+$(document).ready(function(){
+	
+		if ( $.browser.msie || $.browser.mozilla || $.browser.opera) 
+		{
+    		$("input.student_name").css( "margin-bottom","0px" );
+ 		} 
+ 		else 
+ 		{
+    	$("input.student_name").css( "margin-bottom","5px" );
+ 		}	
+	});
+	
+	 
