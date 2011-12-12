@@ -19,5 +19,5 @@ if (isset($_POST['positive'])) {
 	$smarty -> assign("questions", $feedback -> getQuestions());
 	$smarty -> assign("subjects", $feedback -> getSubjects());
 	$smarty -> assign("totalFeedback", $feedback -> getFeedbackCount());
-	$smarty -> display("index.tpl");
+	$smarty -> display("index_styled.tpl");
 }

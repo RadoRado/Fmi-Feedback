@@ -27,7 +27,7 @@ label.feedback {
 	
 	margin: 0 0 0 20px;
 }
-select {
+select, input {
 	width: 215px;
 	height: 42px;
 }
