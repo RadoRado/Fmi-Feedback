@@ -24,7 +24,7 @@
 	</div>
 
 </div>
-<form>
+<form method="post" action="">
 <div id='arrows_background'>
 	
 	<div class="first_question">
@@ -38,48 +38,55 @@
                     </select>
 	</div>
 	
-	<div class='emoticons_1'>
-	<img width='42' height='42' src='images/emoticon1.png' >
-	<img width='42' height='42' src='images/emoticon2.png' >
-	<img width='42' height='42' src='images/emoticon3.png' >
-	</div>
 	
-	<div class='emoticons_2'>
-	<img width='42' height='42' src='images/emoticon1.png' >
-	<img width='42' height='42' src='images/emoticon2.png' >
-	<img width='42' height='42' src='images/emoticon3.png' >
-	</div>
+	<div class="radiowrapper emoticons_1">
+                                <div class="radio sad"></div>
+                                <div class="radio neutral"></div>
+                                <div class="radio happy"></div>
+                                <input type="hidden" name="courseEmoticon" value="" />
+    </div>
+	
+	<div class="radiowrapper emoticons_2">
+                                <div class="radio sad"></div>
+                                <div class="radio neutral"></div>
+                                <div class="radio happy"></div>
+                                <input type="hidden" name="subjectEmoticon" value="" />
+    </div>
 	
 	<div class = 'div_possitive_feedback' >
 	<label class='feedback'>Вашето позитивно мнение:</label>
 	<br>
-	<textarea class = 'input_possitive_feedback' rows="2" cols="20"></textarea>
+	<textarea class = 'input_possitive_feedback' rows="2" cols="20" name="positive"></textarea>
 	</div>
 
-	<div class = 'div_negative_feedback' >
-	<label class='feedback'>Вашето негативно мнение:</label>
+	<div class="div_negative_feedback" >
+	<label class="feedback">Вашето негативно мнение:</label>
 	<br>
-	<textarea class = 'input_negative_feedback' rows="2" cols="20"></textarea>
+	<textarea class="input_negative_feedback" rows="2" cols="20" name="negative"></textarea>
 	</div>
 
-	<div id='owl_question'>
-		<div id='owl_question_text'>
+	<div id="owl_question">
+		<div id="owl_question_text">
 			Благодарим за вашата информация! <br>
 			Искате ли да кажете вашите <br>
 			<em>име</em> и <em>специалност</em>?<br>
 			<input type="checkbox" name="authenicated" value="yes" /> Да, разбира се! <br>
 		</div>
-	<img class = 'owl' width='547' height='213' src='images/owl-question.png' >
+	<img class="owl" width="547" height="213" src="images/owl-question.png" />
 	</div>
 
 	<div id='student_answer'>
 	<div id='student_answer_text'>
 		Казвам се:&nbsp <input type='text' class='student_name'></textarea> <br>
-		<var class='student_row2' >и изучавам: <var>&nbsp <select></select> <br>
+		<var class='student_row2' >и изучавам: <var>&nbsp <select id="subjects" name="student_subject">
+                            {foreach from=$subjects key=id item=name}
+                                <option value="{$id}">{$name}</option>
+                            {/foreach}
+                        </select> <br>
 	</div>
 	</div>
 
-	<input id = 'ready_button' type='submit' value='' />
+	<input id = 'sendButton' type='submit' value='' />
 
 	
 </div>

@@ -105,11 +105,11 @@ label
 	float:left;
 }
 
-.radiowrapper .sad { background-image: url("../images/icon_sad_gray.png"); }
+.radiowrapper .sad { background-image: url("../images/emoticon1.png"); }
 .radiowrapper .sad:hover, .radiowrapper .sad.selected { background-image: url("../images/icon_sad_color.png"); }
-.radiowrapper .neutral { background-image: url("../images/icon_neutral_gray.png"); }
+.radiowrapper .neutral { background-image: url("../images/images/emoticon2.png"); }
 .radiowrapper .neutral:hover, .radiowrapper .neutral.selected { background-image: url("../images/icon_neutral_color.png"); }
-.radiowrapper .happy { background-image: url("../images/icon_happy_gray.png"); }
+.radiowrapper .happy { background-image: url("../images/emoticon3.png"); }
 .radiowrapper .happy:hover, .radiowrapper .happy.selected { background-image: url("../images/icon_happy_color.png"); }
 
 #info

@@ -170,7 +170,7 @@ input.student_name{
 	postition: absolute;
 }
 
-#ready_button, #ready_button:hover, #ready_button:active {
+#sendButton, #sendButton:hover, #sendButton:active {
 	background: url('../images/ready-buttons.png') no-repeat 0 0;
 	border: none;
     
@@ -214,4 +214,17 @@ input.student_name{
 #completed.fixed {
   position: fixed;
   top: 0;
+}
+
+.radiowrapper .sad { background-image: url("../images/emoticon1.png"); }
+.radiowrapper .sad:hover, .radiowrapper .sad.selected { background-image: url("../images/icon_sad_color.png"); }
+.radiowrapper .neutral { background-image: url("../images/emoticon2.png"); }
+.radiowrapper .neutral:hover, .radiowrapper .neutral.selected { background-image: url("../images/icon_neutral_color.png"); }
+.radiowrapper .happy { background-image: url("../images/emoticon3.png"); }
+.radiowrapper .happy:hover, .radiowrapper .happy.selected { background-image: url("../images/icon_happy_color.png"); }
+
+.radio {
+	display : inline-block;
+	width : 42px;
+	height : 42px;
 }
