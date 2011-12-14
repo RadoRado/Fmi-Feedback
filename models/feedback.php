@@ -61,7 +61,7 @@ class feedback extends DatabaseAware {
 
         // Insert feedback info
         $this->database->exec("INSERT INTO feedback (course_id, teacher_id, positive_text, negative_text, student_id, course_rating, teacher_rating) VALUES (?, ?, ?, ?, ?, ?, ?)", array(
-            (int) $courseId, (int) $teacherId, $positiveText, $negativeText, (int) $studentId, (int) $courseRating, (int) $teacherRating
+            (int) $courseId, (int) $teacherId, $positiveText, $negativeText, $studentId, (int) $courseRating, (int) $teacherRating
         ));
 
         $feedbackId = $this->database->lastInsertId();
