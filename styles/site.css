@@ -145,7 +145,7 @@ input.student_name {
 	border:none;
 	float:right;
 	height:102px;
-	margin:-20px 380px;
+	margin:0px 380px;
 	width:311px;
 }
 #ready_button {

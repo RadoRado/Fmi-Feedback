@@ -22,6 +22,7 @@ FMIFeedback.util = {};
 	};
 
 	$(document).ready(function() {
+		$(".neutral").addClass("selected");
 		$('.radio').click(function() {
 			var $wrapper = $(this).parents('.radiowrapper');
 
