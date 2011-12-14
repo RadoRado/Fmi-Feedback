@@ -4,11 +4,11 @@
         <title>FMI Feedback</title> 
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-        <link rel="stylesheet" type="text/css" href="styles/main.css" /> 
+        <link rel="stylesheet" type="text/css" href="styles/site.css" /> 
     </head> 
     <body> 
-        <div class="wholecenter">
-			<h2>Оценката е записана!</h2>
+        <div>
+			<h2>Благодаря за обратната връзка. Твоето мнение е важно за бъдещето на Факултета :)</h2>
         </div>
     </body> 
 </html>
