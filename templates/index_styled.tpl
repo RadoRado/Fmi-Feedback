@@ -24,6 +24,12 @@
 	</div>
 
 </div>
+
+<div id="completedWrapper">
+<div id='completed'>	
+<img width='227' height='85' src='images/exp-bar.png' />	
+</div>	
+</div>
 <form method="post" action="">
 <div id='arrows_background'>
 	
@@ -67,10 +73,13 @@
 
 	<div id="owl_question">
 		<div id="owl_question_text">
-			Благодарим за вашата информация! <br>
-			Искате ли да кажете вашите <br>
-			<em>име</em> и <em>специалност</em>?<br>
-			<input type="checkbox" name="authenicated" value="yes" /> Да, разбира се! <br>
+			Благодарим за вашата информация! 
+			<br/>
+			Искате ли да кажете вашите 
+			<br/>
+			<em>име</em> и <em>специалност</em>?
+			<br />
+			<input type="checkbox" name="authenicated" id="checkme" value="yes" />
 		</div>
 	<img class="owl" width="547" height="213" src="images/owl-question.png" />
 	</div>

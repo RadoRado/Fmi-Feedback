@@ -43,14 +43,6 @@ FMIFeedback.util = {};
 
 			$wrapper.find('input[type=hidden]').val(val);
 		});
-
-		$('#anonymous').click(function() {
-			if($(this).is(':checked')) {
-				$('#info').fadeIn('slow');
-			} else {
-				$('#info').fadeOut('slow');
-			}
-		});
 		var top = $('#completed').offset().top - parseFloat($('#completed').css('marginTop').replace(/auto/, 0));
 		$(window).scroll(function(event) {
 
@@ -73,7 +65,7 @@ FMIFeedback.util = {};
 			// If checked
 			if($("#checkme").is(":checked")) {
 				//show the hidden div
-				$("#student_answer").show("fast");
+				$("#student_answer").show(800);
 				$("#ready_button").css("margin-top", "-20px");
 			} else {
 				//otherwise, hide it
