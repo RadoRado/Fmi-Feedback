@@ -20,7 +20,6 @@ FMIFeedback.util = {};
 		}
 		return true;
 	};
-	/****** Autoloaders go here ******/
 
 	$(document).ready(function() {
 		$('.radio').click(function() {
@@ -34,12 +33,13 @@ FMIFeedback.util = {};
 
 			// Change the hidden field
 			var val;
-			if($(this).hasClass('sad'))
+			if($(this).hasClass('sad')) {
 				val = -1;
-			else if($(this).hasClass('neutral'))
+			} else if($(this).hasClass('neutral')) {
 				val = 0;
-			else
+			} else {
 				val = 1;
+			}
 
 			$wrapper.find('input[type=hidden]').val(val);
 		});
@@ -51,10 +51,6 @@ FMIFeedback.util = {};
 				$('#info').fadeOut('slow');
 			}
 		});
-	});
-	//Moves the Exp bar while scrolling
-
-	$(document).ready(function() {
 		var top = $('#completed').offset().top - parseFloat($('#completed').css('marginTop').replace(/auto/, 0));
 		$(window).scroll(function(event) {
 
@@ -67,9 +63,6 @@ FMIFeedback.util = {};
 				$('#completed').removeClass('fixed');
 			}
 		});
-	});
-	$(document).ready(function() {
-
 		//Hide div w/id extra
 		$("#student_answer").css("display", "none");
 		$("#ready_button").css("margin-top", "10px");
@@ -88,10 +81,6 @@ FMIFeedback.util = {};
 				$("#ready_button").css("margin-top", "10px");
 			}
 		});
-	});
-
-	$(document).ready(function() {
-
 		if($.browser.msie || $.browser.mozilla || $.browser.opera) {
 			$("input.student_name").css("margin-bottom", "0px");
 		} else {

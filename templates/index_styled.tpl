@@ -75,9 +75,9 @@
 	<img class="owl" width="547" height="213" src="images/owl-question.png" />
 	</div>
 
-	<div id='student_answer'>
-	<div id='student_answer_text'>
-		Казвам се:&nbsp <input type='text' class='student_name'></textarea> <br>
+	<div id="student_answer">
+	<div id="student_answer_text">
+		Казвам се:&nbsp <input type="text" class="student_name" name="student_name"></textarea> <br>
 		<var class='student_row2' >и изучавам: <var>&nbsp <select id="subjects" name="student_subject">
                             {foreach from=$subjects key=id item=name}
                                 <option value="{$id}">{$name}</option>
@@ -86,7 +86,7 @@
 	</div>
 	</div>
 
-	<input id = 'sendButton' type='submit' value='' />
+	<input id="sendButton" type="submit" value="" />
 
 	
 </div>

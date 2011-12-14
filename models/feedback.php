@@ -46,7 +46,7 @@ class feedback extends DatabaseAware {
      * @param Integer $studentSubjectId - if provided, delegates to insertStudent method
      * @return Integer, the created feedback Id 
      */
-    public function insertFeedback($courseId, $teacherId, $positiveText, $negativeText, $questions, $studentName = '', $studentSubjectId = '') {
+    public function insertFeedback($courseId, $teacherId, $positiveText, $negativeText, $courseRating, $teacherRating, $studentName = '', $studentSubjectId = '') {
         // check if the courseId or teacherId are correct (!= -1)
         if($courseId == -1 || $teacherId == -1) {
         	throw new Exception("Something is fishy. Try again");
@@ -60,28 +60,11 @@ class feedback extends DatabaseAware {
         }
 
         // Insert feedback info
-        $this->database->exec("INSERT INTO feedback (course_id, teacher_id, positive_text, negative_text, student_id) VALUES (?, ?, ?, ?, ?)", array(
-            (int) $courseId, (int) $teacherId, $positiveText, $negativeText, $studentId
+        $this->database->exec("INSERT INTO feedback (course_id, teacher_id, positive_text, negative_text, student_id, course_rating, teacher_rating) VALUES (?, ?, ?, ?, ?, ?, ?)", array(
+            (int) $courseId, (int) $teacherId, $positiveText, $negativeText, (int) $studentId, (int) $courseRating, (int) $teacherRating
         ));
 
         $feedbackId = $this->database->lastInsertId();
-        $ratingSum = 0;
-        // Insert question ratings
-        if (is_array($questions)) {
-            foreach ($questions as $questionId => $rating) {
-                if ($rating === '' || $rating < -1 || $rating > 1) {
-                    continue;
-				}
-                $ratingSum += (int) $rating;
-                $this->database->exec("INSERT INTO question_to_feedback (feedback_id, question_id, rating) VALUES (?, ?, ?)", array(
-                    (int) $feedbackId, (int) $questionId, (int) $rating
-                ));
-            }
-        }
-
-        // update the rating field in the feedback table
-        $this->database->exec("UPDATE feedback SET rating = ? WHERE uid = ? LIMIT 1", array($ratingSum, $feedbackId));
-
         return $feedbackId;
     }
 
