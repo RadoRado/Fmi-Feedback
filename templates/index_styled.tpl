@@ -10,7 +10,8 @@
 
         <script type="text/javascript" src="javascript/additional_prototypes.js"></script> 
         <script type="text/javascript" src="javascript/main.js"></script> 
-        <script type="text/javascript" src="javascript/ajax.js"></script> 
+        <script type="text/javascript" src="javascript/ajax.js"></script>
+                <script type="text/javascript" src="javascript/index.js"></script>  
     <title>
     	ФМИ feedback система
     </title>

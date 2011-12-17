@@ -1,9 +1,9 @@
-FMIFeedback.Server = (function() {
+namespace("FMI.Feedback.Server", function() {
 	return {
 		getTeachers : function(courseID) {
 			$.ajax({
 				dataType : 'json',
-				url : FMIFeedback.basePath,
+				url : FMI.Feedback.basePath,
 				type : 'POST',
 				data : {
 					'class' : 'TeachersProxy',
@@ -14,8 +14,10 @@ FMIFeedback.Server = (function() {
 				},
 				success : function(data) {
 					if(data['success']) {
-						if(FMIFeedback.util.appendToCombo("teacherbox", data, "id", "name") == false) {
-							console.log("error");
+						var cnt = FMI.Feedback.Util.appendToCombo("teacherbox", data, "id", "name");
+
+						if(cnt === 0) {
+							alert("No teachers found");
 						}
 					}
 				},
@@ -26,15 +28,15 @@ FMIFeedback.Server = (function() {
 		},
 		findCourseId : function(name) {
 			console.log(name);
-			if(undefined !== FMIFeedback.ajaxSuggestRespSuggests[name]) {
-				return FMIFeedback.ajaxSuggestRespSuggests[name];
+			if(undefined !== FMI.Feedback.ajaxSuggestRespSuggests[name]) {
+				return FMI.Feedback.ajaxSuggestRespSuggests[name];
 			}
 			return -1;
 		},
 		getCourses : function() {
 			$.ajax({
 				dataType : 'json',
-				url : FMIFeedback.basePath,
+				url : FMI.Feedback.basePath,
 				context : this,
 				type : 'POST',
 				cache : false,
@@ -47,13 +49,13 @@ FMIFeedback.Server = (function() {
 					console.log(this);
 					var self = this;
 					if( typeof (data['success']) === "string" && data['success'] == "true") {
-						FMIFeedback.ajaxSuggestResp = data['data'];
-						for(var i in FMIFeedback.ajaxSuggestResp) {
-							FMIFeedback.ajaxSuggestRespSuggests[FMIFeedback.ajaxSuggestResp[i]['name']] = FMIFeedback.ajaxSuggestResp[i]['id'];
-							FMIFeedback.ajaxSuggestRespNamesOnly.push(FMIFeedback.ajaxSuggestResp[i]['name']);
+						FMI.Feedback.ajaxSuggestResp = data['data'];
+						for(var i in FMI.Feedback.ajaxSuggestResp) {
+							FMI.Feedback.ajaxSuggestRespSuggests[FMI.Feedback.ajaxSuggestResp[i]['name']] = FMI.Feedback.ajaxSuggestResp[i]['id'];
+							FMI.Feedback.ajaxSuggestRespNamesOnly.push(FMI.Feedback.ajaxSuggestResp[i]['name']);
 						}
 						$("#coursebox").autocomplete({
-							source : FMIFeedback.ajaxSuggestRespNamesOnly,
+							source : FMI.Feedback.ajaxSuggestRespNamesOnly,
 							select : function(event, ui) {
 								var courseId = self.findCourseId(ui.item.value);
 								console.log(courseId);
@@ -71,4 +73,4 @@ FMIFeedback.Server = (function() {
 			});
 		}
 	}
-})().getCourses();
+});
