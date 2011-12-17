@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" type="text/css" href="styles/site.css" />
      <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <link type="text/css" href="javascript/ui/css/start/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+        <link type="text/css" href="javascript/ui/css/smoothness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
 
         <script type="text/javascript" src="javascript/ui/js/jquery-ui-1.8.16.custom.min.js"></script>
 
