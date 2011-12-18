@@ -5,6 +5,10 @@ require_once ("include_me.php");
 $smarty = new Smarty();
 $smarty -> setTemplateDir("templates/");
 
+$captchaHtml = recaptcha_get_html($recaptchaPublicKey);
+
+
+
 if (isset($_POST['positive'])) {
 	try {
 
@@ -19,5 +23,6 @@ if (isset($_POST['positive'])) {
 	$smarty -> assign("questions", $feedback -> getQuestions());
 	$smarty -> assign("subjects", $feedback -> getSubjects());
 	$smarty -> assign("totalFeedback", $feedback -> getFeedbackCount());
+	$smarty -> assign("recaptcha", $captchaHtml);
 	$smarty -> display("index_styled.tpl");
 }

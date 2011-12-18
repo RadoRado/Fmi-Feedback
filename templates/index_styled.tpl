@@ -96,11 +96,15 @@
 	</div>
 	</div>
 
+<div id="recaptcha">
+{strip}
+{$recaptcha}
+{/strip}
+</div>
 	<input id="sendButton" type="submit" value="" />
 
 	
 </div>
-
 
 </form>
 
