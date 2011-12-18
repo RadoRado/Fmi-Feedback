@@ -1,0 +1,16 @@
+.button {
+  padding:5px;
+  background-color: #dcdcdc;
+  border: 1px solid #666;
+  color:#000;
+  text-decoration:none;
+  cursor: hand;
+}
+
+.yes {
+	background-color: #6EAC2C;
+}
+
+.no {
+	background-color : #CD0A0A;
+}

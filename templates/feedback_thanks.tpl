@@ -5,9 +5,16 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
         <link rel="stylesheet" type="text/css" href="styles/site.css" /> 
+        <link rel="stylesheet" type="text/css" href="styles/thanks.css" /> 
     </head> 
     <body> 
         <div>
+        	<form>
+        		А би ли желал образованието да бъде като игра ?
+        		<br />
+        		<input type="button" value="Да" class="button yes" />
+        		<input type="button" value="Не" class="button no" />
+        	</form>
 			<h2>Благодаря за обратната връзка. Твоето мнение е важно за бъдещето на Факултета :)</h2>
         </div>
     </body> 
