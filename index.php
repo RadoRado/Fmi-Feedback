@@ -7,12 +7,16 @@ $smarty -> setTemplateDir("templates/");
 
 $captchaHtml = recaptcha_get_html($recaptchaPublicKey);
 
-
-
 if (isset($_POST['positive'])) {
 	try {
-
-		$feedback -> insertFeedback($_POST["courseId"], $_POST["teacherbox"], $_POST['positive'], $_POST['negative'], $_POST["courseEmoticon"], $_POST["subjectEmoticon"] , $_POST['student_name'], $_POST['student_subject']);
+		$resp = recaptcha_check_answer($recaptchaPrivateKey, $_SERVER["REMOTE_ADDR"], $_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]);
+		if(!$resp->is_valid) {
+			throw new Exception($resp->error, 1);
+			
+		}
+		
+		
+		$feedback -> insertFeedback($_POST["courseId"], $_POST["teacherbox"], $_POST['positive'], $_POST['negative'], $_POST["courseEmoticon"], $_POST["subjectEmoticon"], $_POST['student_name'], $_POST['student_subject']);
 		$smarty -> display("feedback_thanks.tpl");
 	} catch(Exception $e) {
 		$smarty -> assign("errorMessage", $e -> getMessage());
