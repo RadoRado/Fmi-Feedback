@@ -10,7 +10,7 @@
     <body> 
         <div>
         	<form>
-        		А би ли желал образованието да бъде като игра ?
+        		<h2>А би ли желал образованието да бъде като игра ?</h2>
         		<br />
         		<input type="button" value="Да" class="button yes" />
         		<input type="button" value="Не" class="button no" />
