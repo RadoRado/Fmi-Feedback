@@ -7,6 +7,7 @@ namespace("FMI.Feedback.Thanks", function() {
 });
 
 $(document).ready(function() {
+	$("#thankYouMessage").hide();
 	$(".button").click(function() {
 		var payload = $(this).attr("class").replace("button ", ""), feedbackId = $("#feedbackId").val();
 
@@ -22,7 +23,8 @@ $(document).ready(function() {
 				}
 			},
 			success : function(data) {
-				console.log(data);
+				$("#gamifiedEducation").hide("fast");
+				$("#thankYouMessage").show("fast");
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
 				console.log(textStatus + ' ' + errorThrown);

@@ -15,14 +15,14 @@
     </head> 
     <body> 
         <div>
-        	<form>
+        	<form id="gamifiedEducation">
         		<input type="hidden" value="{$feedbackId}" id="feedbackId" />
         		<h2>А би ли желал образованието да бъде като игра ?</h2>
         		<br />
         		<input type="button" value="Да" class="button yes" />
         		<input type="button" value="Не" class="button no" />
         	</form>
-			<h2>Благодаря за обратната връзка. Твоето мнение е важно за бъдещето на Факултета :)</h2>
+			<h2 id="thankYouMessage">Благодаря за обратната връзка. Твоето мнение е важно за бъдещето на Факултета :)</h2>
         </div>
     </body> 
 </html>
