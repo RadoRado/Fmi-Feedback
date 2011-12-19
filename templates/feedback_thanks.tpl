@@ -3,13 +3,20 @@
     <head> 
         <title>FMI Feedback</title> 
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
+				
         <link rel="stylesheet" type="text/css" href="styles/site.css" /> 
         <link rel="stylesheet" type="text/css" href="styles/thanks.css" /> 
+        
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script type="text/javascript" src="javascript/additional_prototypes.js"></script> 
+        <script type="text/javascript" src="javascript/main.js"></script>
+        <script type="text/javascript" src="javascript/thanks_jquery.js"></script>
+         
     </head> 
     <body> 
         <div>
         	<form>
+        		<input type="hidden" value="{$feedbackId}" id="feedbackId" />
         		<h2>А би ли желал образованието да бъде като игра ?</h2>
         		<br />
         		<input type="button" value="Да" class="button yes" />

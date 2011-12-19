@@ -16,7 +16,9 @@ if (isset($_POST['positive'])) {
 		}
 		
 		
-		$feedback -> insertFeedback($_POST["courseId"], $_POST["teacherbox"], $_POST['positive'], $_POST['negative'], $_POST["courseEmoticon"], $_POST["subjectEmoticon"], $_POST['student_name'], $_POST['student_subject']);
+		$feedbackId = $feedback -> insertFeedback($_POST["courseId"], $_POST["teacherbox"], $_POST['positive'], $_POST['negative'], $_POST["courseEmoticon"], $_POST["subjectEmoticon"], $_POST['student_name'], $_POST['student_subject']);
+		
+		$smarty -> assign("feedbackId", $feedbackId);
 		$smarty -> display("feedback_thanks.tpl");
 	} catch(Exception $e) {
 		$smarty -> assign("errorMessage", $e -> getMessage());
