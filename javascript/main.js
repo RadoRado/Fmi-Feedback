@@ -35,7 +35,7 @@ namespace("FMI.Feedback", function() {
 				$("#{0}".format(componentId)).find("option").remove();
 				for(var i in data["data"]) {
 					cnt++;
-					$("#{0}".format(componentId)).append('<option value="{0}">{1}</option>'.format(data['data'][i][valueKey], data['data'][i][textKey]));
+					$("#{0}".format(componentId)).append('<option value="{0}">{1}</option>'.format(data['data'][i][valueKey], data['data'][i][textKey])).trigger('change');
 				}
 				return cnt;
 			}

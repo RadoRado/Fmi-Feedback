@@ -9,14 +9,26 @@
         <script type="text/javascript" src="javascript/ui/js/jquery-ui-1.8.16.custom.min.js"></script>
 
         <script type="text/javascript" src="javascript/additional_prototypes.js"></script> 
+        <script type="text/javascript" src="javascript/validator.js"></script>
         <script type="text/javascript" src="javascript/main.js"></script> 
         <script type="text/javascript" src="javascript/ajax.js"></script>
-                <script type="text/javascript" src="javascript/index.js"></script>  
+                <script type="text/javascript" src="javascript/index.js"></script>
+				
+		<script>
+			$(function(){
+				{$validatorCode}
+			});
+		</script>		
+		
     <title>
     	ФМИ feedback система
     </title>
 </head>
 <body>
+
+<div id="error_message_wrap">
+	<div id="error_message" {if !$error}style="display: none;"{/if}>{$error}</div>
+</div>
 
 <div id='header_bg'>
 
@@ -31,11 +43,11 @@
 <img width='227' height='85' src='images/exp-bar.png' />	
 </div>	
 </div>
-<form method="post" action="">
+<form id="just_form" method="post" action="">
 <div id='arrows_background'>
 	
 	<div class="first_question">
-	   <input type="text" class="panelselect" id="coursebox" />
+	   <input type="text" class="panelselect" id="coursebox" name="coursebox" />
        <input type="hidden" id="courseId" name="courseId" value="-1" />
 	</div>
 	
@@ -50,14 +62,14 @@
                                 <div class="radio sad"></div>
                                 <div class="radio neutral"></div>
                                 <div class="radio happy"></div>
-                                <input type="hidden" name="courseEmoticon" value="" />
+                                <input type="hidden" name="courseEmoticon" value="0" />
     </div>
 	
 	<div class="radiowrapper emoticons_2">
                                 <div class="radio sad"></div>
                                 <div class="radio neutral"></div>
                                 <div class="radio happy"></div>
-                                <input type="hidden" name="subjectEmoticon" value="" />
+                                <input type="hidden" name="subjectEmoticon" value="0" />
     </div>
 	
 	<div class = 'div_possitive_feedback' >

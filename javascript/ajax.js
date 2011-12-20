@@ -57,9 +57,10 @@ namespace("FMI.Feedback.Server", function() {
 						$("#coursebox").autocomplete({
 							source : FMI.Feedback.ajaxSuggestRespNamesOnly,
 							select : function(event, ui) {
+								$("#coursebox").trigger('change');
 								var courseId = self.findCourseId(ui.item.value);
 								console.log(courseId);
-								$("#courseId").val(courseId);
+								$("#courseId").val(courseId).trigger('change');
 								self.getTeachers(courseId);
 							}
 						});

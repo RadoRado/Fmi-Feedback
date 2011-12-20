@@ -225,3 +225,36 @@ input.student_name {
 	margin: 0 380px;
 	height: 150px;
 }
+
+#error_message_wrap
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	
+	text-align: center;
+
+	z-index: 15;
+}
+#error_message
+{
+	width: 450px;	
+	
+	margin: 10px auto;
+	font-weight: bold;
+	font-size: 26px;
+	padding: 5px;
+	vertical-align: middle;
+	
+	background-color: white;
+	background-color: rgba(255, 255, 255, 0.95);
+	border: 1px dashed black;
+	box-shadow: 0 2px 15px #ccc;
+	
+	/* Error image */
+	padding-left: 30px;
+	background-image: url('../images/error.png');
+	background-position: 10px center;
+	background-repeat: no-repeat;
+}
