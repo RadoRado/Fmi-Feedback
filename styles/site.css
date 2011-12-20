@@ -115,7 +115,7 @@ em {
 	background-repeat:no-repeat;
 	float:right;
 	height:291px;
-	margin:-40px 150px;
+	margin:-40px 150px -80px 150px;
 	width:692px;
 }
 #student_answer_text {
@@ -147,6 +147,8 @@ input.student_name {
 	height:102px;
 	margin:0px 380px;
 	width:311px;
+	
+	cursor: pointer;
 }
 #ready_button {
 	background-position:top;
@@ -196,6 +198,8 @@ input.student_name {
 	display:inline-block;
 	width:42px;
 	height:42px;
+	
+	cursor: pointer;
 }
 #completedWrapper {
 	right:10px;
@@ -213,4 +217,11 @@ input.student_name {
 #completed.fixed {
 	position:fixed;
 	top:0;
+}
+
+#recaptcha
+{
+	float: right;
+	margin: 0 380px;
+	height: 150px;
 }
