@@ -32,6 +32,9 @@ class FormValidator {
 		$this -> fields = $array;
 	}
 
+	/**
+	 * Similar to json_encode, turns PHP aray to JavaScript Object
+	 */
 	private function ArrayToJSOptions($array) {
 		$o = '{';
 		$i = 0;
