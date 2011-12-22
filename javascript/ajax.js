@@ -17,7 +17,9 @@ namespace("FMI.Feedback.Server", function() {
 						var cnt = FMI.Feedback.Util.appendToCombo("teacherbox", data, "id", "name");
 
 						if(cnt === 0) {
-							alert("No teachers found");
+							FMI.Feedback.Linker.open({
+								componentId : "linkerWindow"
+							});
 						}
 					}
 				},
