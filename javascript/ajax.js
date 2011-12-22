@@ -15,7 +15,6 @@ namespace("FMI.Feedback.Server", function() {
 				success : function(data) {
 					if(data['success']) {
 						var cnt = FMI.Feedback.Util.appendToCombo("teacherbox", data, "uid", "name"), courseLabel = "";
-						var cnt = FMI.Feedback.Util.appendToCombo("teacherbox", data, "uid", "name");
 
 						if(cnt === 0) {
 							courseLabel = $("#coursebox").val();
