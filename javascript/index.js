@@ -1,7 +1,6 @@
 $(document).ready(function() {
 	FMI.Feedback.Server.getCourses();
 	
-	$(".neutral").addClass("selected");
 	$('.radio').click(function() {
 		var $wrapper = $(this).parents('.radiowrapper');
 
@@ -35,14 +34,8 @@ $(document).ready(function() {
 			$('#completed').removeClass('fixed');
 		}
 	});
-	//Hide div w/id extra
-	$("#student_answer").css("display", "none");
-	$("#ready_button").css("margin-top", "10px");
-
-	// Add onclick handler to checkbox w/id checkme
-	$("#checkme").click(function() {
-
-		// If checked
+	
+	function show_hide_answer() {
 		if($("#checkme").is(":checked")) {
 			//show the hidden div
 			$("#student_answer").show(800);
@@ -52,6 +45,13 @@ $(document).ready(function() {
 			$("#student_answer").hide("fast");
 			$("#ready_button").css("margin-top", "10px");
 		}
+	}
+	//Hide div w/id extra
+	show_hide_answer();
+	
+	// Add onclick handler to checkbox w/id checkme
+	$("#checkme").click(function() {
+		show_hide_answer();
 	});
 	if($.browser.msie || $.browser.mozilla || $.browser.opera) {
 		$("input.student_name").css("margin-bottom", "0px");

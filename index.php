@@ -17,7 +17,7 @@ $validator->SetRequiredFields(array(
 	'courseEmoticon' => array('regex' => '/^(-1|0|1)$/', 'message' => 'И да искаш повече не можеш да дадеш :)'),
 	'subjectEmoticon' => array('regex' => '/^(-1|0|1)$/', 'message' => 'И да искаш повече не можеш да дадеш :)'),
 	
-	'student_name' => array('regex' => '/./', 'dependson' => 'authenicated', 'message' => 'Щом си маркирал, че ще си напишеш името поне го направи :)'),
+	'student_name' => array('regex' => '/./', 'dependson' => 'authenticated', 'message' => 'Щом си маркирал, че ще си напишеш името поне го направи :)'),
 	'student_subject' => array('regex' => '/^[0-9]+$/', 'dependson' => 'authenticated', 'message' => 'Щом си си въвел името поне кажи и специалността :)')
 ));
 $smarty->assign("validatorCode", $validator->GetMetaJS('#just_form', '#error_message'));
@@ -25,15 +25,15 @@ $smarty->assign("validatorCode", $validator->GetMetaJS('#just_form', '#error_mes
 if (isset($_POST['positive'])) {
 	try {
 		$resp = recaptcha_check_answer($recaptchaPrivateKey, $_SERVER["REMOTE_ADDR"], $_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]);
-		if(!$resp->is_valid) {
-			$smarty->assign("error", "Невалидна captcha, пробвай се пак");
+		
+		if ( !$validator->IsValid($_POST) ) {
+			$smarty->assign("error", $validator->GetErrorMessage());
 			in_the_end();
 			exit;
 		}
 		
-		if ( !$validator->IsValid($_POST) )
-		{
-			$smarty->assign("error", $validator->GetErrorMessage());
+		if(!$resp->is_valid) {
+			$smarty->assign("error", "Невалидна captcha, пробвай се пак");
 			in_the_end();
 			exit;
 		}
@@ -43,17 +43,42 @@ if (isset($_POST['positive'])) {
 		$smarty -> assign("feedbackId", $feedbackId);
 		$smarty -> display("feedback_thanks.tpl");
 	} catch(Exception $e) {
-		$smarty -> assign("errorMessage", $e -> getMessage());
-		$smarty -> display("error_page.tpl");
+		$smarty -> assign("error", $e -> getMessage());
+		in_the_end();
 	}
 
 } else {
 	in_the_end();
 }
 
-function in_the_end()
-{
+function assign_to_smarty($smarty, $names) {
+	foreach ( $names as $k ) {
+		if ( isset($_POST[$k])) {
+			$smarty -> assign($k, htmlspecialchars($_POST[$k]));
+		}
+		else {
+			$smarty -> assign($k, '');
+		}
+	}
+}
+
+function in_the_end() {
 	global $smarty, $feedback, $captchaHtml;	
+	
+	// Keep the input contents if there was an error
+	assign_to_smarty($smarty, array(
+		'coursebox', 'courseId', 'teacherbox', 'positive', 'negative', 'authenticated', 'student_name', 'student_subject'
+	));
+	
+	$smarty -> assign("courseEmoticon", isset($_POST['courseEmoticon']) ? (int)$_POST['courseEmoticon'] : 0);
+	$smarty -> assign("subjectEmoticon", isset($_POST['subjectEmoticon']) ? (int)$_POST['subjectEmoticon'] : 0);
+	
+	if ( isset($_POST['courseId']) && is_numeric($_POST['courseId']) ) {
+		$teacherList = $feedback->getTeachers($_POST['courseId']);
+		$smarty -> assign("teacherList", $teacherList);
+	}
+	else
+		$smarty -> assign("teacherList", array());
 	
 	$smarty -> assign("questions", $feedback -> getQuestions());
 	$smarty -> assign("subjects", $feedback -> getSubjects());

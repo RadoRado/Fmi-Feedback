@@ -48,41 +48,45 @@
 <div id='arrows_background'>
 	
 	<div class="first_question">
-	   <input type="text" class="panelselect" id="coursebox" name="coursebox" />
-       <input type="hidden" id="courseId" name="courseId" value="-1" />
+	   <input type="text" class="panelselect" id="coursebox" name="coursebox" value="{$coursebox}" />
+       <input type="hidden" id="courseId" name="courseId" value="{$courseId}" />
 	</div>
 	
 	<div class="second_question">
 	                    <select class="panelselect" name="teacherbox" id="teacherbox">
-                    	<option value="-1">Изберете предмет</option>
-                    </select>
+							{foreach from=$teacherList item=v}
+							<option value="{$v['uid']}" {if $teacherbox == $v['uid']}selected="selected"{/if}>{$v['name']}</option>
+							{foreachelse}
+							<option value="-1">Изберете предмет</option>
+							{/foreach}
+				        </select>
 	</div>
 	
 	
 	<div class="radiowrapper emoticons_1">
-                                <div class="radio sad"></div>
-                                <div class="radio neutral"></div>
-                                <div class="radio happy"></div>
-                                <input type="hidden" name="courseEmoticon" value="0" />
+                                <div class="radio sad {if $courseEmoticon == -1}selected{/if}"></div>
+                                <div class="radio neutral {if $courseEmoticon == 0}selected{/if}"></div>
+                                <div class="radio happy {if $courseEmoticon == 1}selected{/if}"></div>
+                                <input type="hidden" name="courseEmoticon" value="{$courseEmoticon}" />
     </div>
 	
 	<div class="radiowrapper emoticons_2">
-                                <div class="radio sad"></div>
-                                <div class="radio neutral"></div>
-                                <div class="radio happy"></div>
-                                <input type="hidden" name="subjectEmoticon" value="0" />
+                                <div class="radio sad {if $subjectEmoticon == -1}selected{/if}"></div>
+                                <div class="radio neutral {if $subjectEmoticon == 0}selected{/if}"></div>
+                                <div class="radio happy {if $subjectEmoticon == 1}selected{/if}"></div>
+                                <input type="hidden" name="subjectEmoticon" value="{$subjectEmoticon}" />
     </div>
 	
 	<div class = 'div_possitive_feedback' >
 	<label class='feedback'>Вашето позитивно мнение:</label>
 	<br>
-	<textarea class = 'input_possitive_feedback' rows="2" cols="20" name="positive"></textarea>
+	<textarea class = 'input_possitive_feedback' rows="2" cols="20" name="positive">{$positive}</textarea>
 	</div>
 
 	<div class="div_negative_feedback" >
 	<label class="feedback">Вашето негативно мнение:</label>
 	<br>
-	<textarea class="input_negative_feedback" rows="2" cols="20" name="negative"></textarea>
+	<textarea class="input_negative_feedback" rows="2" cols="20" name="negative">{$negative}</textarea>
 	</div>
 
 	<div id="owl_question">
@@ -93,17 +97,17 @@
 			<br/>
 			<em>име</em> и <em>специалност</em>?
 			<br />
-			<input type="checkbox" name="authenicated" id="checkme" value="yes" />
+			<input type="checkbox" name="authenticated" id="checkme" value="yes" {if $authenticated}checked="checked"{/if} />
 		</div>
 	<img class="owl" width="547" height="213" src="images/owl-question.png" />
 	</div>
 
 	<div id="student_answer">
 	<div id="student_answer_text">
-		Казвам се:&nbsp <input type="text" class="student_name" name="student_name"></textarea> <br>
+		Казвам се:&nbsp <input type="text" class="student_name" name="student_name" value="{$student_name}"> <br>
 		<var class='student_row2' >и изучавам: <var>&nbsp <select id="subjects" name="student_subject">
                             {foreach from=$subjects key=id item=name}
-                                <option value="{$id}">{$name}</option>
+                                <option value="{$id}" {if $student_subject == $id}selected="selected"{/if}>{$name}</option>
                             {/foreach}
                         </select> <br>
 	</div>

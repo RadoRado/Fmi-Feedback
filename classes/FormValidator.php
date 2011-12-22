@@ -159,7 +159,7 @@ class FormValidator {
 					$this -> ErrorMessage = $options['message'];
 					return false;
 				}
-			} else if ((empty($array[$name]) && (!isset($options['dependson']) || isset($array[$options['dependson']]) || !empty($array[$options['dependson']])) && (!isset($options['required']) || $options['required'] == true)) || (!empty($array[$name]) && !(bool)preg_match($options['regex'], $array[$name]))) {
+			} else if (($array[$name] == '' && (!isset($options['dependson']) || isset($array[$options['dependson']]) || !empty($array[$options['dependson']])) && (!isset($options['required']) || $options['required'] == true)) || (!empty($array[$name]) && !(bool)preg_match($options['regex'], $array[$name]))) {
 				$this -> ErrorMessage = $options['message'];
 				return false;
 			}
