@@ -27,6 +27,21 @@ class feedback extends DatabaseAware {
         return $subjects;
     }
 	
+	public function getTeachers($courseId) {
+		$sql = "SELECT uid, name FROM teachers 
+                WHERE uid
+                IN(
+                    SELECT teacher_id 
+                    FROM teacher_to_course 
+                    WHERE course_id = ?)";
+         
+        $res = $this->database->query($sql, array(
+			(int)$courseId
+		));
+		
+		return $res->fetchAll(PDO::FETCH_ASSOC);
+	}
+	
 	public function getFeedbackCount() {
 		$query = "SELECT COUNT(uid) as CNT FROM feedback";
 		$res = $this->database->query($query);

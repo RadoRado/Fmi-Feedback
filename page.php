@@ -68,7 +68,7 @@
 			Благодарим за вашата информация! <br>
 			Искате ли да кажете вашите <br>
 			<em>име</em> и <em>специалност</em>?<br>
-			<input id="checkme" type="checkbox" name="authenicated" value="yes" /> Да, разбира се! <br>
+			<input id="checkme" type="checkbox" name="authenticated" value="yes" /> Да, разбира се! <br>
 		</div>
 	<img class = 'owl' width='547' height='213' src='images/owl-question.png' >
 	</div>
