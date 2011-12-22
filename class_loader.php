@@ -25,14 +25,14 @@ function fmifeedback_autoload($className) {
     global $configuration;
 
     // adapt the class name to the file name
-    $className = call_user_func($configuration["ADAPT_FUNCTION"], $className);
+    $lowerCaseClassName = call_user_func($configuration["ADAPT_FUNCTION"], $className);
 
     foreach ($configuration["CLASS_FOLDERS"] as $classFolder) {
         $path = dirname(__FILE__)
                 . DIRECTORY_SEPARATOR
                 . $classFolder
                 . DIRECTORY_SEPARATOR
-                . $className
+                . $lowerCaseClassName
                 . "."
                 . $configuration["CLASS_EXTENSION"];
 
