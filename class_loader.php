@@ -40,6 +40,20 @@ function fmifeedback_autoload($className) {
             require_once($path);
             break;
         }
+        
+        // Try with the untouched class name
+        $path = dirname(__FILE__)
+                . DIRECTORY_SEPARATOR
+                . $classFolder
+                . DIRECTORY_SEPARATOR
+                . $className
+                . "."
+                . $configuration["CLASS_EXTENSION"];
+                
+        if (file_exists($path)) {
+            require_once($path);
+            break;
+        }
     }
 }
 

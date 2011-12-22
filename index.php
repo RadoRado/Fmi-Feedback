@@ -2,8 +2,6 @@
 
 header("Content-Type: text/html; charset=utf-8");
 require_once ("include_me.php");
-// todo : fix the upper/lower case naming conventions that break the class loader
-require_once("classes/FormValidator.php");
 
 $smarty = new Smarty();
 $smarty -> setTemplateDir("templates/");
