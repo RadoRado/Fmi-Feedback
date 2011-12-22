@@ -122,7 +122,7 @@
 </form>
 
 <div id="linkerWindow" style="visibility:hidden">
-<p class="title">Кой преподава по {0} ?</p>
+<p>Кой преподава по <span class="courseTitle"></span></p>
 </div>
 
 </body>
