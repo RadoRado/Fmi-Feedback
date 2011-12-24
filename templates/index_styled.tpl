@@ -126,7 +126,12 @@
 </form>
 
 <div id="linkerWindow" style="visibility:hidden">
-<p>Кой преподава по <span class="courseTitle"></span></p>
+<p>Кой преподава по <span class="courseTitle"></span>?</p>
+<br />
+<label for="teachersAutoComplete">Име на преподавателя:</label>
+<input id="teachersAutoComplete" type="text" />
+<br />
+<input type="button" value="Готов съм!" id="imReadyLinking" />
 </div>
 
 </body>

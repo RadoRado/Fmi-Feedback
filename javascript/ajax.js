@@ -14,12 +14,14 @@ namespace("FMI.Feedback.Server", function() {
 				},
 				success : function(data) {
 					if(data['success']) {
-						var cnt = FMI.Feedback.Util.appendToCombo("teacherbox", data, "uid", "name"), courseLabel = "";
+						var cnt = FMI.Feedback.Util.appendToCombo("teacherbox", data, "id", "name"), courseLabel = "";
 
 						if(cnt === 0) {
 							courseLabel = $("#coursebox").val();
 							FMI.Feedback.Linker.open({
 								componentId : "linkerWindow",
+								teachersInputId : "teachersAutoComplete",
+								readyButtonId : "imReadyLinking",
 								courseLabel : courseLabel
 							});
 						}

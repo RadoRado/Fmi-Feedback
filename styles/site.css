@@ -258,3 +258,8 @@ input.student_name {
 	background-position: 10px center;
 	background-repeat: no-repeat;
 }
+
+.courseTitle {
+	color : red;
+	font-weight: bold;
+}
