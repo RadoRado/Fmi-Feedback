@@ -12,31 +12,14 @@ namespace("FMI.Feedback.Server", function() {
 						'courseId' : courseID
 					}
 				},
-				success : function(data) {
-					//callback(data);
-					if(data['success']) {
-						console.log(data);
-						var cnt = FMI.Feedback.Util.appendToCombo("teacherbox", data, "uid", "name"), courseLabel = "";
-
-						if(cnt === 0) {
-							courseLabel = $("#coursebox").val();
-							FMI.Feedback.Linker.open({
-								componentId : "linkerWindow",
-								teachersInputId : "teachersAutoComplete",
-								readyButtonId : "imReadyLinking",
-								courseLabel : courseLabel
-							});
-						}
-					}
-				},
+				success : callback,
 				error : function(jqXHR, textStatus, errorThrown) {
 					console.log(textStatus + ' ' + errorThrown);
 				}
 			});
 		},
 		findCourseId : function(name) {
-			console.log(name);
-			if(undefined !== FMI.Feedback.ajaxSuggestRespSuggests[name]) {
+			if(FMI.Feedback.ajaxSuggestRespSuggests[name] !== undefined) {
 				return FMI.Feedback.ajaxSuggestRespSuggests[name];
 			}
 			return -1;

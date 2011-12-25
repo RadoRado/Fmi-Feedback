@@ -14,11 +14,28 @@ $(document).ready(function() {
 					$("#coursebox").trigger('change');
 					var courseId = self.findCourseId(ui.item.value);
 					$("#courseId").val(courseId).trigger('change');
-					self.getTeachers(courseId);
+					self.getTeachers(courseId, handleTeachersCombo);
 				}
 			});
 		}
 	});
+	
+	var handleTeachersCombo = function(data) {
+		if(data['success']) {
+			console.log(data);
+			var cnt = FMI.Feedback.Util.appendToCombo("teacherbox", data, "uid", "name"), courseLabel = "";
+
+			if(cnt === 0) {
+				courseLabel = $("#coursebox").val();
+				FMI.Feedback.Linker.open({
+					componentId : "linkerWindow",
+					teachersInputId : "teachersAutoComplete",
+					readyButtonId : "imReadyLinking",
+					courseLabel : courseLabel
+				});
+			}
+		}
+	};
 
 	$('.radio').click(function() {
 		var $wrapper = $(this).parents('.radiowrapper');
