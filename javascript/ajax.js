@@ -1,6 +1,6 @@
 namespace("FMI.Feedback.Server", function() {
 	return {
-		getTeachers : function(courseID) {
+		getTeachers : function(courseID, callback) {
 			$.ajax({
 				dataType : 'json',
 				url : FMI.Feedback.basePath,
@@ -13,6 +13,7 @@ namespace("FMI.Feedback.Server", function() {
 					}
 				},
 				success : function(data) {
+					//callback(data);
 					if(data['success']) {
 						console.log(data);
 						var cnt = FMI.Feedback.Util.appendToCombo("teacherbox", data, "uid", "name"), courseLabel = "";
@@ -40,7 +41,7 @@ namespace("FMI.Feedback.Server", function() {
 			}
 			return -1;
 		},
-		getCourses : function() {
+		getCourses : function(callback) {
 			$.ajax({
 				dataType : 'json',
 				url : FMI.Feedback.basePath,
@@ -52,29 +53,7 @@ namespace("FMI.Feedback.Server", function() {
 					'method' : 'getCourses',
 					'params' : {}
 				},
-				success : function(data) {
-					console.log(this);
-					var self = this;
-					if( typeof (data['success']) === "string" && data['success'] == "true") {
-						FMI.Feedback.ajaxSuggestResp = data['data'];
-						for(var i in FMI.Feedback.ajaxSuggestResp) {
-							FMI.Feedback.ajaxSuggestRespSuggests[FMI.Feedback.ajaxSuggestResp[i]['name']] = FMI.Feedback.ajaxSuggestResp[i]['id'];
-							FMI.Feedback.ajaxSuggestRespNamesOnly.push(FMI.Feedback.ajaxSuggestResp[i]['name']);
-						}
-						$("#coursebox").autocomplete({
-							source : FMI.Feedback.ajaxSuggestRespNamesOnly,
-							select : function(event, ui) {
-								$("#coursebox").trigger('change');
-								var courseId = self.findCourseId(ui.item.value);
-								console.log(courseId);
-								$("#courseId").val(courseId).trigger('change');
-								self.getTeachers(courseId);
-							}
-						});
-					} else {
-						console.log("something went wrong on getCourses()");
-					}
-				},
+				success : callback,
 				error : function(jqXHR, textStatus, errorThrown) {
 					console.log("There was an error : {0}".format(textStatus + ' ' + errorThrown));
 				}

@@ -1,6 +1,25 @@
 $(document).ready(function() {
-	FMI.Feedback.Server.getCourses();
-	
+	FMI.Feedback.Server.getCourses(function(data) {
+		console.log(data);
+		var self = FMI.Feedback.Server;
+		if(data["success"]) {
+			FMI.Feedback.ajaxSuggestResp = data["data"];
+			for(var i in FMI.Feedback.ajaxSuggestResp) {
+				FMI.Feedback.ajaxSuggestRespSuggests[FMI.Feedback.ajaxSuggestResp[i]["name"]] = FMI.Feedback.ajaxSuggestResp[i]["id"];
+				FMI.Feedback.ajaxSuggestRespNamesOnly.push(FMI.Feedback.ajaxSuggestResp[i]["name"]);
+			}
+			$("#coursebox").autocomplete({
+				source : FMI.Feedback.ajaxSuggestRespNamesOnly,
+				select : function(event, ui) {
+					$("#coursebox").trigger('change');
+					var courseId = self.findCourseId(ui.item.value);
+					$("#courseId").val(courseId).trigger('change');
+					self.getTeachers(courseId);
+				}
+			});
+		}
+	});
+
 	$('.radio').click(function() {
 		var $wrapper = $(this).parents('.radiowrapper');
 
@@ -34,7 +53,6 @@ $(document).ready(function() {
 			$('#completed').removeClass('fixed');
 		}
 	});
-	
 	function show_hide_answer() {
 		if($("#checkme").is(":checked")) {
 			//show the hidden div
@@ -46,9 +64,10 @@ $(document).ready(function() {
 			$("#ready_button").css("margin-top", "10px");
 		}
 	}
+
 	//Hide div w/id extra
 	show_hide_answer();
-	
+
 	// Add onclick handler to checkbox w/id checkme
 	$("#checkme").click(function() {
 		show_hide_answer();
