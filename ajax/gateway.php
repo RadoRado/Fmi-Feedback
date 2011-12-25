@@ -3,28 +3,35 @@ header('Content-type: application/json');
 
 require_once ("../include_me.php");
 
-$proxyArray = array("CoursesProxy" => array("getCourses"), "TeachersProxy" => array("getTeachers"), "FeedbackProxy" => array("sendFeedback"), "FollowUp" => array("count"));
-
-function valid_call($class, $methodName) {
-	global $proxyArray;
-	if (isset($proxyArray[$class])) {
-		return in_array($methodName, $proxyArray[$class]);
-	} else {
-		return false;
+class Gateway extends DatabaseAware {
+	private $proxyArray = array("CoursesProxy" => array("getCourses"), "TeachersProxy" => array("getTeachers"), "FeedbackProxy" => array("sendFeedback"), "FollowUp" => array("count"));
+	
+	public function delegate($request, $model) {
+		if($this->isValidCall($request["class"], $request["method"])) {
+			$proxy = new $request["class"]($this->database);
+			$result = array();
+			if (isset($request["params"])) {
+				$result = $proxy -> $request["method"]($model, $request["params"]);
+			} else {
+				$result = $proxy -> $request["method"]($model);
+			}
+			$result["success"] = "true";
+		
+			return json_encode($result);
+		} else {
+			return json_encode(array("success" => "false"));
+		}
+	}
+	
+	private function isValidCall($className, $methodName) {
+		if (isset($this->proxyArray[$className])) {
+			return in_array($methodName, $this->proxyArray[$className]);
+		} else {
+			return false;
+		}
 	}
 }
 
-if (valid_call($_POST["class"], $_POST["method"])) {
-	$proxy = new $_POST["class"]($database);
-	$result = array();
-	if (isset($_POST["params"])) {
-		$result = $proxy -> $_POST["method"]($feedback, $_POST["params"]);
-	} else {
-		$result = $proxy -> $_POST["method"]($feedback);
-	}
-	$result["success"] = "true";
-
-	echo json_encode($result);
-} else {
-	echo json_encode(array("success" => "false"));
-}
+$gateway = new Gateway($database);
+$res = $gateway->delegate($_POST, $feedback);
+echo $res;
