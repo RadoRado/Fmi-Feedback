@@ -18,9 +18,9 @@ if (valid_call($_POST["class"], $_POST["method"])) {
 	$proxy = new $_POST["class"]($database);
 	$result = array();
 	if (isset($_POST["params"])) {
-		$result = $proxy -> $_POST["method"]($_POST["params"]);
+		$result = $proxy -> $_POST["method"]($feedback, $_POST["params"]);
 	} else {
-		$result = $proxy -> $_POST["method"]();
+		$result = $proxy -> $_POST["method"]($feedback);
 	}
 	$result["success"] = "true";
 
@@ -28,4 +28,3 @@ if (valid_call($_POST["class"], $_POST["method"])) {
 } else {
 	echo json_encode(array("success" => "false"));
 }
-?>

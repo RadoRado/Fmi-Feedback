@@ -2,11 +2,13 @@
 
 class TeachersProxy extends DatabaseAware {
 
-    public function getTeachers($params = null) {
-		global $feedback;		
-		
+    public function getTeachers($model, $params = NULL) {
         $resultArray = array();
-        $resultArray["data"] = $feedback->getTeachersByCourseId($params["courseId"]);
+		if($params === NULL) {
+			$resultArray["data"] = $model->getTeachers();
+		} else {			
+        	$resultArray["data"] = $model->getTeachersByCourseId($params["courseId"]);
+		}
 
         return $resultArray;
     }
