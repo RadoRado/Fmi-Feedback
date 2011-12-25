@@ -4,8 +4,8 @@ class TeachersProxy extends DatabaseAware {
 
     public function getTeachers($model, $params = NULL) {
         $resultArray = array();
-		if($params === NULL) {
-			$resultArray["data"] = $model->getTeachers();
+		if((int)$params["courseId"] === -1) {
+			$resultArray["data"] = $model->getTeachers(); // all teachers
 		} else {			
         	$resultArray["data"] = $model->getTeachersByCourseId($params["courseId"]);
 		}
