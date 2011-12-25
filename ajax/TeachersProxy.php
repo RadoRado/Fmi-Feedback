@@ -6,7 +6,7 @@ class TeachersProxy extends DatabaseAware {
 		global $feedback;		
 		
         $resultArray = array();
-        $resultArray["data"] = $feedback->getTeachers($params["courseId"]);
+        $resultArray["data"] = $feedback->getTeachersByCourseId($params["courseId"]);
 
         return $resultArray;
     }

@@ -27,7 +27,7 @@ class feedback extends DatabaseAware {
         return $subjects;
     }
 	
-	public function getTeachers($courseId) {
+	public function getTeachersByCourseId($courseId) {
 		$sql = "SELECT uid, name FROM teachers 
                 WHERE uid
                 IN(
