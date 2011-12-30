@@ -41,6 +41,9 @@ namespace("FMI.Feedback.Server", function() {
 					console.log("There was an error : {0}".format(textStatus + ' ' + errorThrown));
 				}
 			});
+		},
+		linkTeachers : function(courseId/*integer | string*/, teachersId/*array of integers | strings*/, callback /*function*/) {
+			console.log(courseId, teachersId);
 		}
 	}
 });

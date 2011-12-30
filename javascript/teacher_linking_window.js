@@ -3,7 +3,10 @@ namespace("FMI.Feedback.Linker", function() {
 		isOpened : false,
 		componentId : "",
 		courseLabel : "",
-		teachersInputId : ""
+		courseId : -1,
+		teachersInputId : "",
+		readyButtonId : "",
+		teacherListId : ""
 	};
 
 	return {
@@ -34,6 +37,15 @@ namespace("FMI.Feedback.Linker", function() {
 
 			$(readyButton).bind("click", function(event, ui) {
 				console.log("ready button clicked");
+				var ids = [], el = null;
+				el = $("#{0}".format(_private.teacherListId));
+				$(el).children().each(function(index, item) {
+					ids.push($(item).children("input[type=hidden]").val());
+				})
+				
+				FMI.Feedback.Server.linkTeachers(_private.courseId, ids, function(data) {
+					console.log("Linking is done, here is the data : ", data);
+				});
 			});
 
 			FMI.Feedback.Server.getTeachers(-1/*all teachers*/, function(data) {
@@ -46,7 +58,25 @@ namespace("FMI.Feedback.Linker", function() {
 				}
 
 				$("#{0}".format(_private.teachersInputId)).autocomplete({
-					source : names
+					source : names,
+					select : function(event, ui) {
+						var tId = FMI.Feedback.Linker.teacherNameToId[ui.item.value], element = "";
+						console.log(tId);
+						if( typeof (tId) === "undefined") {
+							console.log("Error when selecting teacher for linking");
+							return false;
+						}
+						element = "<div><input type='hidden' value='{0}' />{1} | <a href='#' class='removeLinkedTeacher'>Махни</a><br /></div>";
+						element = element.format(tId, ui.item.value);
+						$("#{0}".format(_private.teacherListId)).append(element);
+						ui.item.value = "";
+
+						// maybe not the best solution
+						$(".removeLinkedTeacher").click(function(event) {
+							event.preventDefault();
+							$(this).parent().remove();
+						});
+					}
 				});
 			})
 		},

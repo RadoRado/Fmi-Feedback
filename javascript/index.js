@@ -23,15 +23,18 @@ $(document).ready(function() {
 	var handleTeachersCombo = function(data) {
 		if(data['success']) {
 			console.log(data);
-			var cnt = FMI.Feedback.Util.appendToCombo("teacherbox", data, "uid", "name"), courseLabel = "";
+			var cnt = FMI.Feedback.Util.appendToCombo("teacherbox", data, "uid", "name"), courseLabel = "", courseId = -1;
 
 			if(cnt === 0) {
 				courseLabel = $("#coursebox").val();
+				courseId = $("#courseId").val();
 				FMI.Feedback.Linker.open({
 					componentId : "linkerWindow",
 					teachersInputId : "teachersAutoComplete",
 					readyButtonId : "imReadyLinking",
-					courseLabel : courseLabel
+					teacherListId : "teacherList",
+					courseLabel : courseLabel,
+					courseId : courseId
 				});
 			}
 		}
