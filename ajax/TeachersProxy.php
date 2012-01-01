@@ -12,4 +12,9 @@ class TeachersProxy extends DatabaseAware {
 
         return $resultArray;
     }
+	
+	public function linkTeachers($model, $params = NULL) {
+		$ret = $model->linkTeachers($params["courseId"], $params["teachersId"]);
+		return array("row_count" => $ret);
+	}
 }
