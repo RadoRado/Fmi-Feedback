@@ -44,7 +44,8 @@ namespace("FMI.Feedback.Linker", function() {
 				})
 				
 				FMI.Feedback.Server.linkTeachers(_private.courseId, ids, function(data) {
-					console.log("Linking is done, here is the data : ", data);
+					$(w).dialog("close");
+					FMI.Feedback.UI.updateTeachersUI(_private.courseId);
 				});
 			});
 

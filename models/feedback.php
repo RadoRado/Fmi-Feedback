@@ -66,6 +66,7 @@ class feedback extends DatabaseAware {
 			$this -> database -> commit();
 
 		} catch (PDOException $ex) {
+			$this->database->rollBack();	
 			return false;
 		}
 		return $rowCount;

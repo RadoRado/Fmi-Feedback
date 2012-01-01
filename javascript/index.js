@@ -1,4 +1,31 @@
+namespace("FMI.Feedback.UI", function() {
+	return {
+		updateTeachersUI : function(courseId) {
+			FMI.Feedback.Server.getTeachers(courseId, function(data) {
+				if(data['success']) {
+					console.log(data);
+					var cnt = FMI.Feedback.Util.appendToCombo("teacherbox", data, "uid", "name"), courseLabel = "", courseId = -1;
+
+					if(cnt === 0) {
+						courseLabel = $("#coursebox").val();
+						courseId = $("#courseId").val();
+						FMI.Feedback.Linker.open({
+							componentId : "linkerWindow",
+							teachersInputId : "teachersAutoComplete",
+							readyButtonId : "imReadyLinking",
+							teacherListId : "teacherList",
+							courseLabel : courseLabel,
+							courseId : courseId
+						});
+					}
+				}
+			})
+		}
+	}
+});
+
 $(document).ready(function() {
+
 	FMI.Feedback.Server.getCourses(function(data) {
 		console.log(data);
 		var self = FMI.Feedback.Server;
@@ -14,32 +41,11 @@ $(document).ready(function() {
 					$("#coursebox").trigger('change');
 					var courseId = self.findCourseId(ui.item.value);
 					$("#courseId").val(courseId).trigger('change');
-					self.getTeachers(courseId, handleTeachersCombo);
+					FMI.Feedback.UI.updateTeachersUI(courseId);
 				}
 			});
 		}
 	});
-	
-	var handleTeachersCombo = function(data) {
-		if(data['success']) {
-			console.log(data);
-			var cnt = FMI.Feedback.Util.appendToCombo("teacherbox", data, "uid", "name"), courseLabel = "", courseId = -1;
-
-			if(cnt === 0) {
-				courseLabel = $("#coursebox").val();
-				courseId = $("#courseId").val();
-				FMI.Feedback.Linker.open({
-					componentId : "linkerWindow",
-					teachersInputId : "teachersAutoComplete",
-					readyButtonId : "imReadyLinking",
-					teacherListId : "teacherList",
-					courseLabel : courseLabel,
-					courseId : courseId
-				});
-			}
-		}
-	};
-
 	$('.radio').click(function() {
 		var $wrapper = $(this).parents('.radiowrapper');
 
