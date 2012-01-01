@@ -4,7 +4,7 @@ header('Content-type: application/json');
 require_once ("../include_me.php");
 
 class Gateway extends DatabaseAware {
-	private $proxyArray = array("CoursesProxy" => array("getCourses"), "TeachersProxy" => array("getTeachers"), "FeedbackProxy" => array("sendFeedback"), "FollowUp" => array("count"));
+	private $proxyArray = array();
 	
 	public function delegate($request, $model) {
 		if($this->isValidCall($request["class"], $request["method"])) {
@@ -23,6 +23,10 @@ class Gateway extends DatabaseAware {
 		}
 	}
 	
+	public function addProxy($className, $methodsArray) {
+		$this->proxyArray[$className] = $methodsArray;
+	}
+	
 	private function isValidCall($className, $methodName) {
 		if (isset($this->proxyArray[$className])) {
 			return in_array($methodName, $this->proxyArray[$className]);
@@ -33,5 +37,11 @@ class Gateway extends DatabaseAware {
 }
 
 $gateway = new Gateway($database);
+// add the classes adn their corresponding methods
+$gateway->addProxy("CoursesProxy", array("getCourses"));
+$gateway->addProxy("TeachersProxy", array("getTeachers"));
+$gateway->addProxy("FeedbackProxy", array("sendFeedback"));
+$gateway->addProxy("FollowUp", array("count"));
+
 $res = $gateway->delegate($_POST, $feedback);
 echo $res;
