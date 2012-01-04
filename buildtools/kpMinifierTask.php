@@ -93,9 +93,8 @@ class kpMinifierTask extends Task {
 				$fullPath = realpath($fs -> getDir($this -> project));
 				print($fullPath);
 				foreach ($files as $file) {
-					print($file);
 					$fileExt = array_shift(array_reverse(explode(".", $file)));
-					if(!in_array($fileExt, $extensions)) {
+					if(!in_array($fileExt, $extensions) || strpos($file, "min") !== FALSE) {
 						continue;
 					}
 					$this -> log('Minifying file ' . $file);

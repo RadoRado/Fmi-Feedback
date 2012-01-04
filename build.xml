@@ -22,11 +22,10 @@
 		<include name="**" />
 	</fileset>
 	<fileset dir="./images" id="images" description="Only PNG Images are Moved to the build folder">
-		<include name="**.png" />
+		<include name="**" />
 	</fileset>
 	<fileset dir="./javascript" id="javascript">
 		<include name="**" />
-		<exclude name="**.txt" />
 	</fileset>
 	<fileset dir="./models" id="models">
 		<include name="**.php" />
@@ -55,9 +54,9 @@
 	<!-- Target: minify-js                             -->
 	<!-- ============================================  -->
 	<taskdef name="kpminifier" classname="${buildtools}.kpMinifierTask"  />
-	<target name="minify-js" depends="prepare">
+	<target name="minify-js">
 		<echo msg="Trying to minify something" />
-		<kpminifier yuiPath="./${buildtools}/yuicompressor-2.4.7.jar" targetDir="./${builddir}/min">
+		<kpminifier yuiPath="./${buildtools}/yuicompressor-2.4.7.jar" targetDir="./${builddir}/javascript">
 			<fileset refid="javascript" />
 		</kpminifier>
 	</target>
@@ -87,9 +86,7 @@
 			<fileset refid="images" />
 		</copy>
 		<echo msg="Copying ./javascript/ source files to ./${builddir}/javascript/ directory..." />
-		<copy todir="./${builddir}/javascript/">
-			<fileset refid="javascript" />
-		</copy>
+		<phingcall target="minify-js" />
 		<echo msg="Copying ./models/ to ./${builddir}/models/ directory..." />
 		<copy todir="./${builddir}/models/">
 			<fileset refid="models" />
