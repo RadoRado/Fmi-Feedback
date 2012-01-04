@@ -4,3 +4,4 @@ show_feedback.php
 ajax/proxy_tester.php
 build/
 deploy.properties
+*.jar

@@ -4,6 +4,7 @@
 
 	<property name="package"  value="${phing.project.name}" override="true" />
 	<property name="builddir" value="./build" override="true" />
+	<property name="buildtools" value="./buildtools" override="true" />
 	<property name="srcdir"   value="${project.basedir}" override="true" />
 	<!-- ============================================  -->
 	<!-- Filesets                              		   -->
@@ -23,12 +24,9 @@
 	<fileset dir="./images" id="images" description="Only PNG Images are Moved to the build folder">
 		<include name="**.png" />
 	</fileset>
-	<fileset dir="./javascript" id="javascript_source">
+	<fileset dir="./javascript" id="javascript">
 		<include name="**" />
-		<exclude name="**.png" />
-	</fileset>
-	<fileset dir="./javascript/ui/css/smoothness/images" id="javascript_ui_images">
-		<include name="**.png" />
+		<exclude name="**.txt" />
 	</fileset>
 	<fileset dir="./models" id="models">
 		<include name="**.php" />
@@ -52,6 +50,16 @@
 	<target name="clean">
 		<echo msg="Cleaning build directory..." />
 		<delete dir="${builddir}" />
+	</target>
+	<!-- ============================================  -->
+	<!-- Target: minify-js                             -->
+	<!-- ============================================  -->
+	<taskdef name="kpminifier" classname="${buildtools}.kpMinifierTask"  />
+	<target name="minify-js" depends="prepare">
+		<echo msg="Trying to minify something" />
+		<kpminifier yuiPath="./${buildtools}/yuicompressor-2.4.7.jar" targetDir="./${builddir}/min">
+			<fileset refid="javascript" />
+		</kpminifier>
 	</target>
 	<!-- ============================================  -->
 	<!-- Target: build                                 -->
@@ -80,11 +88,7 @@
 		</copy>
 		<echo msg="Copying ./javascript/ source files to ./${builddir}/javascript/ directory..." />
 		<copy todir="./${builddir}/javascript/">
-			<fileset refid="javascript_source" />
-		</copy>
-		<echo msg="Copying ./javascript/ui/css/smoothness/images image files to ./${builddir}/javascript/ui/css/smoothness/images directory..." />
-		<copy todir="./${builddir}/javascript/ui/css/smoothness/images">
-			<fileset refid="javascript_ui_images" />
+			<fileset refid="javascript" />
 		</copy>
 		<echo msg="Copying ./models/ to ./${builddir}/models/ directory..." />
 		<copy todir="./${builddir}/models/">
@@ -114,9 +118,9 @@
 		<echo msg="Deploying on server : ${ftp.server}" />
 		<ftpdeploy host="${ftp.server}" port="${ftp.port}"
 		username="${ftp.user}" password="${ftp.pass}"
-		dir="${ftp.remotedir}" mode="binary">
+		dir="${ftp.remotedir}" mode="binary" passive="true">
 			<fileset dir="./${builddir}">
-			<include name="**" />
+				<include name="**" />
 			</fileset>
 		</ftpdeploy>
 		<echo msg="Deployment completed" />
