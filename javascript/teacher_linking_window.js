@@ -6,7 +6,9 @@ namespace("FMI.Feedback.Linker", function() {
 		courseId : -1,
 		teachersInputId : "",
 		readyButtonId : "",
-		teacherListId : ""
+		teacherListId : "",
+		modal : false,
+		position : ["right", "top"]
 	};
 
 	return {
@@ -25,7 +27,8 @@ namespace("FMI.Feedback.Linker", function() {
 			readyButton = $(w).find("#{0}".format(_private.readyButtonId));
 
 			$(w).dialog({
-				modal : true,
+				modal : _private.modal,
+				position : _private.position,
 				width : 450,
 				title : "Връзване на преподавател с предмет"
 			}).css("visibility", "visible");
