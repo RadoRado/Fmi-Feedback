@@ -8,6 +8,7 @@ require_once 'phing/Task.php';
  * Task to compress files using YUI Compressor.
  *
  * @author      Keith Pope
+ * Additional logic : RadoRado
  */
 class kpMinifierTask extends Task {
 	/**

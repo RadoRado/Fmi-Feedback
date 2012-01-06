@@ -39,16 +39,18 @@
 
 </div>
 
+<!--
 <div id="completedWrapper">
 <div id='completed'>	
 <img width='227' height='85' src='images/exp-bar.png' />	
 </div>	
 </div>
+-->
 <form id="just_form" method="post" action="">
 <div id='arrows_background'>
 	
 	<div class="first_question">
-	   <input type="text" class="panelselect" id="coursebox" name="coursebox" value="{$coursebox}" />
+	   <input type="text" class="panelselect" id="coursebox" name="coursebox" value="{$coursebox}" placeholder="Въведете предмет на кирилица" />
        <input type="hidden" id="courseId" name="courseId" value="{$courseId}" />
 	</div>
 	

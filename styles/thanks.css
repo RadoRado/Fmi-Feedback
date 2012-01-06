@@ -23,3 +23,8 @@
 .no:hover {
 	background-color: #FF6C00;
 }
+
+#content {
+	width : 800px;
+	margin : 0px auto;
+}

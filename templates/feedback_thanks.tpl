@@ -14,7 +14,7 @@
          
     </head> 
     <body> 
-        <div>
+        <div id="content">
         	<form id="gamifiedEducation">
         		<input type="hidden" value="{$feedbackId}" id="feedbackId" />
         		<h2>А би ли желал образованието да бъде като игра ?</h2>
@@ -22,7 +22,10 @@
         		<input type="button" value="Да" class="button yes" />
         		<input type="button" value="Не" class="button no" />
         	</form>
-			<h2 id="thankYouMessage">Благодаря за обратната връзка. Твоето мнение е важно за бъдещето на Факултета :)</h2>
+        	<div id="thankYouMessage">
+				<h2>Благодаря за обратната връзка. Твоето мнение е важно за бъдещето на Факултета :)</h2>
+				Ако искаш, <a href="http://game-craft.com/fmifeedback/"><strong>може да дадеш още обратна връзка!</strong></a>
+        	</div>
         </div>
     </body> 
 </html>

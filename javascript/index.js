@@ -71,6 +71,7 @@ $(document).ready(function() {
 
 		$wrapper.find('input[type=hidden]').val(val);
 	});
+	/*
 	var top = $('#completed').offset().top - parseFloat($('#completed').css('marginTop').replace(/auto/, 0));
 	$(window).scroll(function(event) {
 
@@ -83,14 +84,15 @@ $(document).ready(function() {
 			$('#completed').removeClass('fixed');
 		}
 	});
+	*/
 	function show_hide_answer() {
 		if($("#checkme").is(":checked")) {
 			//show the hidden div
-			$("#student_answer").show(800);
+			$("#student_answer").show();
 			$("#ready_button").css("margin-top", "-20px");
 		} else {
 			//otherwise, hide it
-			$("#student_answer").hide("fast");
+			$("#student_answer").hide();
 			$("#ready_button").css("margin-top", "10px");
 		}
 	}

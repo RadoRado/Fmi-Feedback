@@ -1,9 +1,24 @@
 <?php
+/**
+ * All AJAX calls go here
+ * @author RadoRado
+ */
+
+/**
+ * JSON is the default transport serialization
+ */
 header('Content-type: application/json');
 
 require_once ("../include_me.php");
 
+/**
+ * Simple encapsulation for the Gateway class
+ * Proxies and their methods are added via addProxy($className, $methodsArray) method
+ */
 class Gateway extends DatabaseAware {
+	/**
+	 * Assoc array that holds the proxy classes and the methods that can be called
+	 */	
 	private $proxyArray = array();
 
 	public function delegate($request, $model) {
@@ -31,14 +46,14 @@ class Gateway extends DatabaseAware {
 		if (isset($this -> proxyArray[$className])) {
 			return in_array($methodName, $this -> proxyArray[$className]);
 		} else {
-			return false;
+			return FALSE;
 		}
 	}
 
 }
 
 $gateway = new Gateway($database);
-// add the classes adn their corresponding methods
+// add the classes and their corresponding methods
 $gateway -> addProxy("CoursesProxy", array("getCourses"));
 $gateway -> addProxy("TeachersProxy", array("getTeachers", "linkTeachers"));
 $gateway -> addProxy("FeedbackProxy", array("sendFeedback"));

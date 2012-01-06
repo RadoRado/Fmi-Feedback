@@ -20,7 +20,7 @@ namespace("FMI.Feedback.Linker", function() {
 					_private[configOption] = config[configOption];
 				}
 			}
-
+			$("#teacherListId").html("");
 			console.log(_private);
 			w = $("#{0}".format(_private.componentId));
 			$($(w).find(".courseTitle")[0]).html(_private.courseLabel);
