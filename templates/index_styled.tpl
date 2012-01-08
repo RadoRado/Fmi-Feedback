@@ -8,6 +8,9 @@
 
         <script type="text/javascript" src="javascript/jquery-ui-1.8.16.custom.min.js"></script>
 
+		<script type="text/javascript" src="javascript/jquery.qtip.min.js"></script>
+        <link type="text/css" href="styles/jquery.qtip.min.css" rel="stylesheet" />
+		
         <script type="text/javascript" src="javascript/additional_prototypes.js"></script> 
         <script type="text/javascript" src="javascript/validator.js"></script>
         <script type="text/javascript" src="javascript/main.js"></script> 
@@ -66,16 +69,16 @@
 	
 	
 	<div class="radiowrapper emoticons_1">
-                                <div class="radio sad {if $courseEmoticon == -1}selected{/if}"></div>
-                                <div class="radio neutral {if $courseEmoticon == 0}selected{/if}"></div>
-                                <div class="radio happy {if $courseEmoticon == 1}selected{/if}"></div>
+                                <div class="radio sad {if $courseEmoticon == -1}selected{/if}" alt="Не съм доволен"></div>
+                                <div class="radio neutral {if $courseEmoticon == 0}selected{/if}" alt="Мнението ми е неутрално"></div>
+                                <div class="radio happy {if $courseEmoticon == 1}selected{/if}" alt="Доволен съм"></div>
                                 <input type="hidden" name="courseEmoticon" value="{$courseEmoticon}" />
     </div>
 	
 	<div class="radiowrapper emoticons_2">
-                                <div class="radio sad {if $subjectEmoticon == -1}selected{/if}"></div>
-                                <div class="radio neutral {if $subjectEmoticon == 0}selected{/if}"></div>
-                                <div class="radio happy {if $subjectEmoticon == 1}selected{/if}"></div>
+                                <div class="radio sad {if $subjectEmoticon == -1}selected{/if}" alt="Не съм доволен"></div>
+                                <div class="radio neutral {if $subjectEmoticon == 0}selected{/if}" alt="Мнението ми е неутрално"></div>
+                                <div class="radio happy {if $subjectEmoticon == 1}selected{/if}" alt="Доволен съм"></div>
                                 <input type="hidden" name="subjectEmoticon" value="{$subjectEmoticon}" />
     </div>
 	

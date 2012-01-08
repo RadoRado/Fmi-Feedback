@@ -50,6 +50,16 @@ $(document).ready(function() {
 			});
 		}
 	});
+	$(".radio").qtip({
+		content : {
+			attr : "alt"
+		},
+		position : {
+			my : "bottom center",
+			at : "top center"
+		}
+
+	});
 	$('.radio').click(function() {
 		var $wrapper = $(this).parents('.radiowrapper');
 
@@ -72,19 +82,19 @@ $(document).ready(function() {
 		$wrapper.find('input[type=hidden]').val(val);
 	});
 	/*
-	var top = $('#completed').offset().top - parseFloat($('#completed').css('marginTop').replace(/auto/, 0));
-	$(window).scroll(function(event) {
+	 var top = $('#completed').offset().top - parseFloat($('#completed').css('marginTop').replace(/auto/, 0));
+	 $(window).scroll(function(event) {
 
-		// what the y position of the scroll is
-		var y = $(this).scrollTop();
+	 // what the y position of the scroll is
+	 var y = $(this).scrollTop();
 
-		if(y >= top) {
-			$('#completed').addClass('fixed');
-		} else {
-			$('#completed').removeClass('fixed');
-		}
-	});
-	*/
+	 if(y >= top) {
+	 $('#completed').addClass('fixed');
+	 } else {
+	 $('#completed').removeClass('fixed');
+	 }
+	 });
+	 */
 	function show_hide_answer() {
 		if($("#checkme").is(":checked")) {
 			//show the hidden div
