@@ -20,6 +20,10 @@ namespace("FMI.Feedback.UI", function() {
 });
 
 $(document).ready(function() {
+	if($.browser.msie) {
+		alert("You are using Internet Explorer and there are some HTML 5 things that does not work here. For full experience, use another browser");
+	}
+	
 	var ui = FMI.Feedback.UI;
 
 	FMI.Feedback.Server.getCourses(function(data) {
@@ -42,7 +46,7 @@ $(document).ready(function() {
 			});
 		}
 	});
-	
+
 	$(".radio").qtip({
 		content : {
 			attr : "alt"
