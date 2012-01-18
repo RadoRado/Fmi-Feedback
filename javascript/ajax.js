@@ -41,31 +41,6 @@ namespace("FMI.Feedback.Server", function() {
 					console.log("There was an error : {0}".format(textStatus + ' ' + errorThrown));
 				}
 			});
-		},
-		linkTeachers : function(courseId/*integer | string*/, teachersId/*array of integers | strings*/, callback /*function*/) {
-			teachersId = teachersId.map(function(item){
-				return parseInt(item);
-			});
-			console.log(courseId, teachersId);			
-			$.ajax({
-				dataType : 'json',
-				url : FMI.Feedback.basePath,
-				context : this,
-				type : 'POST',
-				cache : false,
-				data : {
-					'class' : 'TeachersProxy',
-					'method' : 'linkTeachers',
-					'params' : {
-						"courseId" : courseId,
-						"teachersId" : teachersId
-					}
-				},
-				success : callback,
-				error : function(jqXHR, textStatus, errorThrown) {
-					console.log("There was an error : {0}".format(textStatus + ' ' + errorThrown));
-				}
-			});
 		}
 	}
 });

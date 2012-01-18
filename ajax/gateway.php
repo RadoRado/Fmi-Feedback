@@ -55,7 +55,7 @@ class Gateway extends DatabaseAware {
 $gateway = new Gateway($database);
 // add the classes and their corresponding methods
 $gateway -> addProxy("CoursesProxy", array("getCourses"));
-$gateway -> addProxy("TeachersProxy", array("getTeachers", "linkTeachers"));
+$gateway -> addProxy("TeachersProxy", array("getTeachers"));
 $gateway -> addProxy("FeedbackProxy", array("sendFeedback"));
 $gateway -> addProxy("FollowUp", array("count"));
 

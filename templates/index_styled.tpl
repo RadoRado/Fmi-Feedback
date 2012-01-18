@@ -13,8 +13,7 @@
 		
         <script type="text/javascript" src="javascript/additional_prototypes.js"></script> 
         <script type="text/javascript" src="javascript/validator.js"></script>
-        <script type="text/javascript" src="javascript/main.js"></script> 
-        <script type="text/javascript" src="javascript/teacher_linking_window.js"></script>         
+        <script type="text/javascript" src="javascript/main.js"></script>
         <script type="text/javascript" src="javascript/ajax.js"></script>
         <script type="text/javascript" src="javascript/index.js"></script>
 				

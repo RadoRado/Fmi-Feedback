@@ -4,24 +4,11 @@ namespace("FMI.Feedback.UI", function() {
 			FMI.Feedback.Server.getTeachers(courseId, function(data) {
 				if(data['success']) {
 					console.log(data);
-					var cnt = FMI.Feedback.Util.appendToCombo("teacherbox", data, "uid", "name"), courseLabel = "", courseId = -1, modal = false, position = ["right", "top"];
+					var cnt = FMI.Feedback.Util.appendToCombo("teacherbox", data, "uid", "name");
 
 					if(cnt === 0) {
-						modal = true;
-						position = "center";
+						// handle no teachers case
 					}
-					courseLabel = $("#coursebox").val();
-					courseId = $("#courseId").val();
-					FMI.Feedback.Linker.open({
-						componentId : "linkerWindow",
-						teachersInputId : "teachersAutoComplete",
-						readyButtonId : "imReadyLinking",
-						teacherListId : "teacherList",
-						courseLabel : courseLabel,
-						courseId : courseId,
-						modal : modal,
-						position : position
-					});
 				}
 			})
 		},
