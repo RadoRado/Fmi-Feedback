@@ -52,7 +52,7 @@
 <div id='arrows_background'>
 	
 	<div class="first_question">
-	   <input type="text" class="panelselect" id="coursebox" name="coursebox" value="{$coursebox}" placeholder="Въведете предмет на кирилица" />
+	   <input type="text" class="panelselect" id="coursebox" name="coursebox" value="{$coursebox}" placeholder="Въведи предмет на кирилица" />
        <input type="hidden" id="courseId" name="courseId" value="{$courseId}" />
 	</div>
 	
@@ -61,7 +61,7 @@
 							{foreach from=$teacherList item=v}
 							<option value="{$v['uid']}" {if $teacherbox == $v['uid']}selected="selected"{/if}>{$v['name']}</option>
 							{foreachelse}
-							<option value="-1">Изберете предмет</option>
+							<option value="-1">Първо избери предмет</option>
 							{/foreach}
 				        </select>
 	</div>
@@ -82,24 +82,24 @@
     </div>
 	
 	<div class = 'div_possitive_feedback' >
-	<label class='feedback'>Вашето позитивно мнение:</label>
+	<label class='feedback'>Твоето позитивно мнение:</label>
 	<br>
 	<textarea class = 'input_possitive_feedback' rows="2" cols="20" name="positive">{$positive}</textarea>
 	</div>
 
 	<div class="div_negative_feedback" >
-	<label class="feedback">Вашето негативно мнение:</label>
+	<label class="feedback">Твоето негативно мнение:</label>
 	<br>
 	<textarea class="input_negative_feedback" rows="2" cols="20" name="negative">{$negative}</textarea>
 	</div>
 
 	<div id="owl_question">
 		<div id="owl_question_text">
-			Благодарим за вашата информация! 
+			Благодарим за информацията! 
 			<br/>
-			Искате ли да кажете вашите 
+			Искаш ли да си кажеш 
 			<br/>
-			<em>име</em> и <em>специалност</em>?
+			<em>името</em> и <em>специалността</em>?
 			<br />
 			<input type="checkbox" name="authenticated" id="checkme" value="yes" {if $authenticated}checked="checked"{/if} />
 		</div>
@@ -128,18 +128,5 @@
 </div>
 
 </form>
-
-<div id="linkerWindow" style="visibility:hidden">
-	<p>Кой преподава по <span class="courseTitle"></span>?</p>
-	<br />
-	<label for="teachersAutoComplete">Име на преподавателя:</label>
-	<input id="teachersAutoComplete" type="text" />
-	<br />
-	<p>Посочени:</p>
-	<div id="teacherList">
-	</div>
-	<br />
-	<input type="button" value="Готов съм!" id="imReadyLinking" />
-</div>
 </body>
 </html>
