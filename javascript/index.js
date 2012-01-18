@@ -26,26 +26,15 @@ namespace("FMI.Feedback.UI", function() {
 			})
 		},
 		placeTooltips : function() {
-			$(".radio").qtip({
-				content : {
-					attr : "alt"
-				},
-				position : {
-					my : "bottom center",
-					at : "top center"
-				}
-
-			});
-
 			$(".radio").qtip("toggle", false);
-			$(".radio.selected").qtip("toggle", true);
+			$(".selected").qtip("toggle", true);
 		}
 	}
 });
 
 $(document).ready(function() {
 	var ui = FMI.Feedback.UI;
-	
+
 	FMI.Feedback.Server.getCourses(function(data) {
 		console.log(data);
 		var self = FMI.Feedback.Server;
@@ -61,14 +50,24 @@ $(document).ready(function() {
 					$("#coursebox").trigger('change');
 					var courseId = self.findCourseId(ui.item.value);
 					$("#courseId").val(courseId).trigger('change');
-					ui.updateTeachersUI(courseId);
+					FMI.Feedback.UI.updateTeachersUI(courseId);
 				}
 			});
 		}
 	});
-
-	ui.placeTooltips();
 	
+	$(".radio").qtip({
+		content : {
+			attr : "alt"
+		},
+		position : {
+			my : "bottom center",
+			at : "top center"
+		}
+	});
+
+	//ui.placeTooltips();
+
 	$(".radio").click(function() {
 		var $wrapper = $(this).parents('.radiowrapper');
 
@@ -77,7 +76,7 @@ $(document).ready(function() {
 
 		// Set this as selected
 		$(this).addClass('selected');
-		ui.placeTooltips();
+		//ui.placeTooltips();
 
 		// Change the hidden field
 		var val;
