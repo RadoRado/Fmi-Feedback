@@ -5,6 +5,17 @@
 Целта е да се събира обратна връзка за преподаватели и предмети и редовно да се изпраща email до декана с нея.
 
 # Как да допринеса ? #
-Ако искаш да се включиш и да допринесеш за системата, трябва да направиш следните две неща
-1) email radoslav@game-craft.com
-2) Fork & Develop & Pull Request
+Ако искаш да се включиш и да допринесеш за системата, трябва да направиш следните две неща:
++ email на radoslav@game-craft.com
++ Fork & Develop & Pull Request
+Всеки, който допринесе с нещо, ще влезе в humans.txt
+
+# Какво има за допринасяне ? #
+Доста неща. Архитектурата не е перфектна, има и бъгове (срещат се по JavaScript-a).
+Списък с неща за разработка
++ Unit testing for the PHP server side
++ Unit testing for the JS frontend
++ Visualization for the given feedback
+
+# Хора, които са допринесли #
+Провери humans.txt :) Там я има цялата информация
