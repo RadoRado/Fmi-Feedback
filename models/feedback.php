@@ -66,8 +66,8 @@ class feedback extends DatabaseAware {
 			$this -> database -> commit();
 
 		} catch (PDOException $ex) {
-			$this->database->rollBack();	
-			return false;
+			$this -> database -> rollBack();
+			return FALSE;
 		}
 		return $rowCount;
 	}
@@ -108,7 +108,7 @@ class feedback extends DatabaseAware {
 		$this -> database -> exec("INSERT INTO feedback (course_id, teacher_id, positive_text, negative_text, student_id, course_rating, teacher_rating) VALUES (?, ?, ?, ?, ?, ?, ?)", array((int)$courseId, (int)$teacherId, $positiveText, $negativeText, $studentId, (int)$courseRating, (int)$teacherRating));
 
 		$feedbackId = $this -> database -> lastInsertId();
-		return $feedbackId;
+		return array($feedbackId, $studentId);
 	}
 
 	public function insertStudent($name, $subject_id) {
@@ -116,13 +116,24 @@ class feedback extends DatabaseAware {
 
 		$uid = $res -> fetchColumn();
 
-		if ($uid !== false) {
+		if ($uid !== FALSE) {
 			return $uid;
 		}
 
 		$this -> database -> exec("INSERT INTO students (name, subject_id) VALUES (?, ?)", array($name, (int)$subject_id));
 
 		return $this -> database -> lastInsertId();
+	}
+
+	public function hasStudentAnswered($studentId) {
+		if($studentId === NULL) {
+			return FALSE;
+		}
+		
+		$sql = "SELECT id FROM gamified WHERE student_id = ?";
+		$res = $this -> database -> query($sql, array((int)$studentId));
+
+		return $res -> fetchColumn() !== FALSE;
 	}
 
 	public function validateSubject($id) {

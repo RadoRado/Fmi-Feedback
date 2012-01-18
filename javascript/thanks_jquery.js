@@ -9,8 +9,8 @@ namespace("FMI.Feedback.Thanks", function() {
 $(document).ready(function() {
 	$("#thankYouMessage").hide();
 	$(".button").click(function() {
-		var payload = $(this).attr("class").replace("button ", ""), feedbackId = $("#feedbackId").val();
-
+		var payload = $(this).attr("class").replace("button ", ""), feedbackId = $("#feedbackId").val(), studentId = $("#studentId").val();
+		
 		$.ajax({
 			type : "POST",
 			url : FMI.Feedback.basePath,
@@ -19,7 +19,8 @@ $(document).ready(function() {
 				"method" : "count",
 				"params" : {
 					gamified : payload,
-					feedbackId : feedbackId
+					feedbackId : feedbackId,
+					studentId : studentId
 				}
 			},
 			success : function(data) {

@@ -17,6 +17,8 @@
         <div id="content">
         	<form id="gamifiedEducation">
         		<input type="hidden" value="{$feedbackId}" id="feedbackId" />
+        		<input type="hidden" value="{$studentId}" id="studentId" />
+        		<input type="hidden" value="{$hasStudentAnswered}" id="hasStudentAnswered" />
         		<h2>А би ли желал образованието да бъде като игра ?</h2>
         		<br />
         		<input type="button" value="Да" class="button yes" />
