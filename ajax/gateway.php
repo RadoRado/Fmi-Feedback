@@ -1,14 +1,16 @@
 <?php
 /**
  * All AJAX calls go here
+ * JSON is the default transport serialization
  * @author RadoRado
  */
-
-/**
- * JSON is the default transport serialization
- */
+ob_start("ob_gzhandler");
 header('Content-type: application/json');
 
+/**
+ * Database connection is made here
+ * Feedback model is created here
+ * */
 require_once ("../include_me.php");
 
 /**
@@ -21,6 +23,12 @@ class Gateway extends DatabaseAware {
 	 */	
 	private $proxyArray = array();
 
+	/**
+	 * Creates an instance of the called proxy class and calls the requested method
+	 * The result is returned as an JSON encoded array
+	 * @param $request - an assoc array that represents the request variables (i.e $_POST)
+	 * @param $model - the model that is passed to the proxy classes. Used mainly for the feedback
+	 */
 	public function delegate($request, $model) {
 		if ($this -> isValidCall($request["class"], $request["method"])) {
 			$proxy = new $request["class"]($this -> database);
@@ -53,12 +61,16 @@ class Gateway extends DatabaseAware {
 }
 
 $gateway = new Gateway($database);
+
 // add the classes and their corresponding methods
 $gateway -> addProxy("CoursesProxy", array("getCourses"));
 $gateway -> addProxy("TeachersProxy", array("getTeachers"));
 $gateway -> addProxy("FeedbackProxy", array("sendFeedback"));
 $gateway -> addProxy("FollowUp", array("count"));
 
+/**
+ * Serve only POST method for now
+ * */
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 	$res = $gateway -> delegate($_POST, $feedback);
