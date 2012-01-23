@@ -34,10 +34,6 @@ if (isset($_POST['positive'])) {
 		$feedbackId = $idsArray[0];
 		$studentId = $idsArray[1];
 
-		if ($studentId === NULL) {
-			$studentId = -1;
-		}
-
 		$smarty -> assign("feedbackId", $feedbackId);
 		$smarty -> assign("studentId", $studentId);
 		$smarty -> assign("hasStudentAnswered", $feedback -> hasStudentAnswered($studentId) ? "yes" : "no");

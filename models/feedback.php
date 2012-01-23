@@ -130,9 +130,9 @@ class feedback extends DatabaseAware {
 			return FALSE;
 		}
 		
-		$sql = "SELECT id FROM gamified WHERE student_id = ?";
+		$sql = "SELECT id FROM gamified WHERE student_id = ? LIMIT 1";
 		$res = $this -> database -> query($sql, array((int)$studentId));
-
+		
 		return $res -> fetchColumn() !== FALSE;
 	}
 
