@@ -6,19 +6,19 @@ class FeedbackPacker extends DatabaseAware {
 	 * No student names are included
 	 */
 	public function packFeedback() {
-		$feedbackSql = "SELECT uid, positive_text, negative_text, course_id, teacher_id, course_rating, teacher_rating FROM feedback";
+		$feedbackSql = "SELECT uid, positive_text, negative_text, course_id, teacher_id, course_rating, teacher_rating, created FROM feedback";
 		$feedbackRes = $this -> database -> query($feedbackSql);
 
 		/*assoc array*/
 		$result = array();
 
 		while ($feedbackRow = $feedbackRes -> fetch()) {
-			$result[$feedbackRow -> uid] = array("possitive" => $feedbackRow -> positive_text, "negative" => $feedbackRow -> negative_text, "rating" => $feedbackRow -> teacher_rating, "courseName" => "", "teacherName" => "");
+			$result[$feedbackRow -> uid] = array("possitive" => $feedbackRow -> positive_text, "negative" => $feedbackRow -> negative_text, "rating" => $feedbackRow -> teacher_rating, "courseName" => "", "teacherName" => "", "createdDate" => $feedbackRow -> created);
 
 			$result[$feedbackRow -> uid]["teacherName"] = $this -> teacherNameById($feedbackRow -> teacher_id);
 			$result[$feedbackRow -> uid]["courseName"] = $this -> courseNameById($feedbackRow -> course_id);
 		}
-		
+
 		return $result;
 	}
 
