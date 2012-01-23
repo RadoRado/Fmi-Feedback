@@ -5,7 +5,7 @@
  * CLASS_FOLDERS points is an array of class-containing folders that are relative to the root directory!!
  * CLASS_EXTENSION is the file extension of the PHP file where the class resides		
  */
-$configuration["CLASS_FOLDERS"] = array("classes", "ajax");
+$configuration["CLASS_FOLDERS"] = array("classes", "ajax", "models");
 $configuration["CLASS_EXTENSION"] = "php";
 
 

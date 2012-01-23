@@ -36,6 +36,10 @@
 	<fileset dir="./templates" id="templates">
 		<include name="**.tpl" />
 	</fileset>
+	
+	<fileset dir="./pack" id="pack">
+		<include name="**.php" />
+	</fileset>
 	<!-- ============================================  -->
 	<!-- Target: prepare                               -->
 	<!-- ============================================  -->
@@ -98,6 +102,10 @@
 		<echo msg="Copying ./templates/ to ./${builddir}/templates/ directory..." />
 		<copy todir="./${builddir}/templates/">
 			<fileset refid="templates" />
+		</copy>
+		<echo msg="Copying ./pack/ to ./${builddir}/pack/ directory..." />
+		<copy todir="./${builddir}/pack/">
+			<fileset refid="pack" />
 		</copy>
 		<echo msg="Copying all the files from the . directoty" />
 		<echo msg="Copying index.php" />
