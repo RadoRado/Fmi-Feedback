@@ -21,4 +21,4 @@
 * Visualization for the given feedback
 
 # Хора, които са допринесли
-Провери [humans.txt](https://github.com/RadoRado/Fmi-Feedback/blob/master/README.markdown) :) Там я има цялата информация
+Провери [humans.txt](https://github.com/RadoRado/Fmi-Feedback/blob/master/humans.txt) :) Там я има цялата информация
