@@ -29,5 +29,6 @@
 				Ако искаш, <a href="http://game-craft.com/fmifeedback/"><strong>може да дадеш още обратна връзка!</strong></a>
         	</div>
         </div>
+        {include file="analytics.tpl"}
     </body> 
 </html>

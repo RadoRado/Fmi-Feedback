@@ -128,5 +128,6 @@
 </div>
 
 </form>
+{include file="analytics.tpl"}
 </body>
 </html>
