@@ -23,7 +23,7 @@ $(document).ready(function() {
 	if($.browser.msie) {
 		alert("You are using Internet Explorer and there are some HTML 5 things that does not work here. For full experience, use another browser");
 	}
-	
+
 	var ui = FMI.Feedback.UI;
 
 	FMI.Feedback.Server.getCourses(function(data) {
@@ -81,20 +81,18 @@ $(document).ready(function() {
 
 		$wrapper.find('input[type=hidden]').val(val);
 	});
-	/*
-	 var top = $('#completed').offset().top - parseFloat($('#completed').css('marginTop').replace(/auto/, 0));
-	 $(window).scroll(function(event) {
+	var top = $('#completed').offset().top - parseFloat($('#completed').css('marginTop').replace(/auto/, 0));
+	$(window).scroll(function(event) {
 
-	 // what the y position of the scroll is
-	 var y = $(this).scrollTop();
+		// what the y position of the scroll is
+		var y = $(this).scrollTop();
 
-	 if(y >= top) {
-	 $('#completed').addClass('fixed');
-	 } else {
-	 $('#completed').removeClass('fixed');
-	 }
-	 });
-	 */
+		if(y >= top) {
+			$('#completed').addClass('fixed');
+		} else {
+			$('#completed').removeClass('fixed');
+		}
+	});
 	function show_hide_answer() {
 		if($("#checkme").is(":checked")) {
 			//show the hidden div

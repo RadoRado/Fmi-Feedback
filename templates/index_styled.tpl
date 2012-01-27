@@ -41,13 +41,13 @@
 
 </div>
 
-<!--
+
 <div id="completedWrapper">
-<div id='completed'>	
-<img width='227' height='85' src='images/exp-bar.png' />	
+<div id='completed'>
+<a target="_blank" href="https://github.com/RadoRado/Fmi-Feedback/blob/master/README.markdown">За какво става на върпос ?</a>
 </div>	
 </div>
--->
+
 <form id="just_form" method="post" action="">
 <div id='arrows_background'>
 	
