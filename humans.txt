@@ -1,0 +1,24 @@
+/* TEAM */      
+Name: Radoslav Georgiev, Co-Founder of GameCraft
+Site: http://rado-dev.com/
+Email: radoslav@game-craft.com
+Twitter: @Rado_g           
+Location: Sofia, Bulgaria
+
+Name: Peter Petrov, Web Designer @ GameCraft
+Email: pesho@game-craft.com          
+Location: Sofia, Bulgaria
+
+Name: Damqn Stanchev, Web Freelancer
+Email: wyand@abv.bg
+Twitter: @webigniter           
+Location: Sofia, Bulgaria
+
+Name: Georgy Angelov, Web Freelancer
+Site: http://gangelov.net/
+Twitter: @stormbreakerbg
+
+/* SITE */
+Last update: (YYYY/MM/DD) 2012/01/27   
+Standards: HTML5               
+Components: jQuery
