@@ -24,7 +24,7 @@
 * email на radoslav@game-craft.com
 * Fork & Develop & Send Pull Requests
 
-Всеки, който допринесе с нещо, ще влезе в humans.txt
+Всеки, който допринесе с нещо, ще влезе в humans.txt!
 
 # Какво има за допринасяне ?
 Доста неща. Архитектурата не е перфектна, има и бъгове (срещат се по JavaScript-a).
