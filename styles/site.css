@@ -197,6 +197,7 @@ input.student_name {
 	/* just used to show how to include the margin in the effect */
 	margin-top: 20px;
 	padding-top: 19px;
+	border-radius: 20px;
 }
 #completed.fixed {
 	position: fixed;
