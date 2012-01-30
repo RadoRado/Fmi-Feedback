@@ -1,0 +1,30 @@
+.button {
+	width: 300px;
+	height: 100px;
+	font-size: 18px;
+	padding: 5px;
+	background-color: #dcdcdc;
+	border: 1px solid #666;
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+.yes {
+	background-color: #6EAC2C;
+}
+
+.yes:hover {
+	background-color : #ACDD4A;
+}
+.no {
+	background-color: #CD0A0A;
+}
+
+.no:hover {
+	background-color: #FF6C00;
+}
+
+#content {
+	width : 800px;
+	margin : 0px auto;
+}

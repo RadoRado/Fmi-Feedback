@@ -1,127 +1,100 @@
 html {
-	/*
-    background: none repeat scroll 0 0 #DDDDDD;
-    */
-    background-image: url('../images/background-pattern.png'); 
+	background-image: url('../images/background-pattern.png');
 }
-
 @font-face {
-    font-family: 'eurofurencelightRegular';
-    src: url('../fonts/eurofurence-webfont.eot');
-    src: url('../fonts/eurofurence-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/eurofurence-webfont.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-
-body {
 	font-family: 'eurofurencelightRegular';
+	src: url('../fonts/eurofurence-webfont.eot');
+	src: url('../fonts/eurofurence-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/eurofurence-webfont.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
 }
-
+body {
+	/*font-family:'eurofurencelightRegular';*/
+}
 label.feedback {
 	font-family: eurofurencelightRegular;
 	font-size: 22px;
 	font-weight: bold;
 	color: #369be1;
-	
 	margin: 0 0 0 20px;
 }
-select {
+select, input {
 	width: 215px;
 	height: 42px;
 }
-
 em {
-	font-style:normal;
+	font-style: normal;
 	color: #ff6c00;
-	border-bottom:1px dotted #000000;
+	border-bottom: 1px dotted #000000;
 }
-
 #header {
 	margin: 0 auto;
 	width: 891px;
-	
 }
-
 #header_bg {
 	margin: 0 auto;
 	height: 202px;
-	background-image: url('../images/header-repeat.png'); 
+	background-image: url('../images/header-repeat.png');
 	background-repeat: repeat-x;
 	width: 100%;
-	
 }
-
 #arrows_background {
 	margin: 40px auto;
 	height: 1600px;
 	width: 900px;
 	background-image: url('../images/arrows-background.png');
-	background-repeat:no-repeat;
+	background-repeat: no-repeat;
 }
-
 .first_question {
 	float: left;
-    margin-left: 305px;
-    margin-top: 10px;
+	margin-left: 305px;
+	margin-top: 10px;
 }
-
-
 .second_question {
-    float: left;
-    margin-left: 305px;
-    margin-top: 110px;
+	float: left;
+	margin-left: 305px;
+	margin-top: 110px;
 }
-
 .emoticons_1 {
 	float: right;
 	margin-right: 180px;
 	margin-top: -40px;
 	position: relative;
 }
-
 .emoticons_2 {
-    float: left;
-    left: 66px;
-    margin-top: 100px;
-    position: relative;
+	float: left;
+	left: 66px;
+	margin-top: 100px;
+	position: relative;
 }
-
 .div_possitive_feedback {
 	float: left;
 	resize: none;
 	margin: 333px 0 0 130px;
 }
-
 .div_negative_feedback {
 	float: left;
 	resize: none;
 	margin: 333px 0 0 80px;
-	
 }
-
 .input_possitive_feedback {
 	width: 284px;
 	height: 252px;
 	resize: none;
 }
-
 .input_negative_feedback {
 	width: 284px;
 	height: 252px;
 	resize: none;
 }
-
 #owl_question {
 	float: left;
-    margin-left: 130px;
+	margin-left: 130px;
 	margin-top: 180px;
-    width: 547px;
-    height: 213px;
-    z-index: 2;
+	width: 547px;
+	height: 213px;
+	z-index: 2;
 }
-
 #owl_question_text {
 	font-family: eurofurencelightRegular;
 	font-size: 23px;
@@ -134,16 +107,14 @@ em {
 	z-index: 10;
 	font-weight: bold;
 }
-
-#student_answer{
+#student_answer {
 	background-image: url("../images/student-answer.png");
-    background-repeat: no-repeat;
-    float: right;
-    height: 291px;
-    margin: -40px 150px;
-    width: 692px;
+	background-repeat: no-repeat;
+	float: right;
+	height: 291px;
+	margin: -40px 150px -80px 150px;
+	width: 692px;
 }
-
 #student_answer_text {
 	font-family: eurofurencelightRegular;
 	font-size: 22px;
@@ -151,67 +122,118 @@ em {
 	text-align: left;
 	line-height: 150%;
 	font-weight: bold;
-	
 	position: absolute;
-	float:right;
-    margin-left: 50px;
-    margin-top: 68px;
+	float: right;
+	margin-left: 50px;
+	margin-top: 68px;
 	z-index: 10;
 }
-
-input.student_name{
+input.student_name {
 	height: 42px;
 	width: 300px;
 	font-size: 22px;
 }
-
 .student_row2 {
-	font-style:normal;
-	postition: absolute;
+	font-style: normal;
+	position: absolute;
 }
-
-#ready_button, #ready_button:hover, #ready_button:active {
+#sendButton, #sendButton:hover, #sendButton:active {
 	background: url('../images/ready-buttons.png') no-repeat 0 0;
 	border: none;
-    
 	float: right;
-    height: 102px;
-    margin: -20px 380px;
-    width: 311px;
+	height: 102px;
+	margin: 0px 380px;
+	width: 311px;
+	cursor: pointer;
 }
-
-
 #ready_button {
-	background-position:top;
+	background-position: top;
 }
-
-
-
 #ready_button:hover {
 	background-position: center;
 }
-
-#ready_button:active {    
+#ready_button:active {
 	background-position: bottom;
 }
-
-
-#completedWrapper { 
-  right: 10px;
-  position: absolute;
-  margin-left: 35px;
-  width: 227px;
+.radiowrapper .sad {
+	background-image: url("../images/emoticon1.png");
 }
-
+.radiowrapper .sad:hover, .radiowrapper .sad.selected {
+	background-image: url("../images/icon_sad_color.png");
+}
+.radiowrapper .neutral {
+	background-image: url("../images/emoticon2.png");
+}
+.radiowrapper .neutral:hover, .radiowrapper .neutral.selected {
+	background-image: url("../images/icon_neutral_color.png");
+}
+.radiowrapper .happy {
+	background-image: url("../images/emoticon3.png");
+}
+.radiowrapper .happy:hover, .radiowrapper .happy.selected {
+	background-image: url("../images/icon_happy_color.png");
+}
+.radio {
+	display: inline-block;
+	width: 42px;
+	height: 42px;
+	cursor: pointer;
+}
+#completedWrapper {
+	right: 10px;
+	position: absolute;
+	margin-left: 35px;
+	width: 227px;
+	cursor: pointer;
+}
 #completed {
-  position: absolute;
-  top: 0;
-  /* just used to show how to include the margin in the effect */
-  margin-top: 20px;
-  padding-top: 19px;
+	width: 250px;
+	height: 100px;
+	text-align: center;
+	font-size: 30px;
+	background-color: #63AFE5;
+	position: absolute;
+	top: 0;
+	/* just used to show how to include the margin in the effect */
+	margin-top: 20px;
+	padding-top: 19px;
+	border-radius: 20px;
 }
-
 #completed.fixed {
-  position: fixed;
-  top: 0;
+	position: fixed;
+	top: 0;
+}
+#recaptcha {
+	float: right;
+	margin: 0 380px;
+	height: 150px;
+}
+#error_message_wrap {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	z-index: 15;
+}
+#error_message {
+	width: 450px;
+	margin: 10px auto;
+	font-weight: bold;
+	font-size: 26px;
+	padding: 5px;
+	vertical-align: middle;
+	background-color: white;
+	background-color: rgba(255, 255, 255, 0.95);
+	border: 1px dashed black;
+	box-shadow: 0 2px 15px #ccc;
+	/* Error image */
+	padding-left: 30px;
+	background-image: url('../images/error.png');
+	background-position: 10px center;
+	background-repeat: no-repeat;
+}
+.courseTitle {
+	color: red;
+	font-weight: bold;
 }

@@ -5,7 +5,7 @@
  * CLASS_FOLDERS points is an array of class-containing folders that are relative to the root directory!!
  * CLASS_EXTENSION is the file extension of the PHP file where the class resides		
  */
-$configuration["CLASS_FOLDERS"] = array("classes", "ajax");
+$configuration["CLASS_FOLDERS"] = array("classes", "ajax", "models");
 $configuration["CLASS_EXTENSION"] = "php";
 
 
@@ -25,9 +25,23 @@ function fmifeedback_autoload($className) {
     global $configuration;
 
     // adapt the class name to the file name
-    $className = call_user_func($configuration["ADAPT_FUNCTION"], $className);
+    $lowerCaseClassName = call_user_func($configuration["ADAPT_FUNCTION"], $className);
 
     foreach ($configuration["CLASS_FOLDERS"] as $classFolder) {
+        $path = dirname(__FILE__)
+                . DIRECTORY_SEPARATOR
+                . $classFolder
+                . DIRECTORY_SEPARATOR
+                . $lowerCaseClassName
+                . "."
+                . $configuration["CLASS_EXTENSION"];
+
+        if (file_exists($path)) {
+            require_once($path);
+            break;
+        }
+        
+        // Try with the untouched class name
         $path = dirname(__FILE__)
                 . DIRECTORY_SEPARATOR
                 . $classFolder
@@ -35,7 +49,7 @@ function fmifeedback_autoload($className) {
                 . $className
                 . "."
                 . $configuration["CLASS_EXTENSION"];
-
+                
         if (file_exists($path)) {
             require_once($path);
             break;

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="FmiFeedback" default="dist">
+
+	<property name="package"  value="${phing.project.name}" override="true" />
+	<property name="builddir" value="./build" override="true" />
+	<property name="buildtools" value="./buildtools" override="true" />
+	<property name="srcdir"   value="${project.basedir}" override="true" />
+	<!-- ============================================  -->
+	<!-- Filesets                              		   -->
+	<!-- ============================================  -->
+	<fileset dir="./config" id="config">
+		<include name="**.php" />
+	</fileset>
+	<fileset dir="./classes" id="classes">
+		<include name="**" />
+	</fileset>
+	<fileset dir="./ajax" id="ajax">
+		<include name="**.php" />
+	</fileset>
+	<fileset dir="./fonts" id="fonts">
+		<include name="**" />
+	</fileset>
+	<fileset dir="./images" id="images" description="Only PNG Images are Moved to the build folder">
+		<include name="**" />
+	</fileset>
+	<fileset dir="./javascript" id="javascript">
+		<include name="**" />
+	</fileset>
+	<fileset dir="./models" id="models">
+		<include name="**.php" />
+	</fileset>
+	<fileset dir="./styles" id="styles">
+		<include name="**.css" />
+	</fileset>
+	<fileset dir="./templates" id="templates">
+		<include name="**.tpl" />
+	</fileset>
+	
+	<fileset dir="./pack" id="pack">
+		<include name="**.php" />
+	</fileset>
+	<!-- ============================================  -->
+	<!-- Target: prepare                               -->
+	<!-- ============================================  -->
+	<target name="prepare">
+		<echo msg="Making directory ${builddir}" />
+		<mkdir dir="${builddir}" />
+	</target>
+	<!-- ============================================  -->
+	<!-- Target: clean                                 -->
+	<!-- ============================================  -->
+	<target name="clean">
+		<echo msg="Cleaning build directory..." />
+		<delete dir="${builddir}" />
+	</target>
+	<!-- ============================================  -->
+	<!-- Target: minify-js                             -->
+	<!-- ============================================  -->
+	<taskdef name="kpminifier" classname="${buildtools}.kpMinifierTask"  />
+	<target name="minify-js">
+		<echo msg="Trying to minify something" />
+		<kpminifier yuiPath="./${buildtools}/yuicompressor-2.4.7.jar" targetDir="./${builddir}/javascript">
+			<fileset refid="javascript" />
+		</kpminifier>
+	</target>
+	<!-- ============================================  -->
+	<!-- Target: build                                 -->
+	<!-- ============================================  -->
+	<target name="build" depends="prepare">
+		<echo msg="Copying files to ${builddir} directory..." />
+		<echo msg="Copying ./config/ to ./${builddir}/config/ directory..." />
+		<copy todir="./${builddir}/config/">
+			<fileset refid="config" />
+		</copy>
+		<echo msg="Copying ./classes/ to ./${builddir}/classes/ directory..." />
+		<copy todir="./${builddir}/classes/">
+			<fileset refid="classes" />
+		</copy>
+		<echo msg="Copying ./ajax/ to ./${builddir}/ajax/ directory..." />
+		<copy todir="./${builddir}/ajax/">
+			<fileset refid="ajax" />
+		</copy>
+		<echo msg="Copying ./fonts/ to ./${builddir}/fonts/ directory..." />
+		<copy todir="./${builddir}/fonts/">
+			<fileset refid="fonts" />
+		</copy>
+		<echo msg="Copying ./images/ to ./${builddir}/images/ directory..." />
+		<copy todir="./${builddir}/images/">
+			<fileset refid="images" />
+		</copy>
+		<echo msg="Copying ./javascript/ source files to ./${builddir}/javascript/ directory..." />
+		<phingcall target="minify-js" />
+		<echo msg="Copying ./models/ to ./${builddir}/models/ directory..." />
+		<copy todir="./${builddir}/models/">
+			<fileset refid="models" />
+		</copy>
+		<echo msg="Copying ./styles/ to ./${builddir}/styles/ directory..." />
+		<copy todir="./${builddir}/styles/">
+			<fileset refid="styles" />
+		</copy>
+		<echo msg="Copying ./templates/ to ./${builddir}/templates/ directory..." />
+		<copy todir="./${builddir}/templates/">
+			<fileset refid="templates" />
+		</copy>
+		<echo msg="Copying ./pack/ to ./${builddir}/pack/ directory..." />
+		<copy todir="./${builddir}/pack/">
+			<fileset refid="pack" />
+		</copy>
+		<echo msg="Copying all the files from the . directoty" />
+		<echo msg="Copying index.php" />
+		<copy file="./index.php" tofile="./${builddir}/index.php" />
+		<echo msg="Copying class_loader.php" />
+		<copy file="./class_loader.php" tofile="./${builddir}/class_loader.php" />
+		<echo msg="Copying include_me.php" />
+		<copy file="./include_me.php" tofile="./${builddir}/include_me.php" />
+	</target>
+	<property file="deploy.properties"/>
+	<!-- ============================================  -->
+	<!-- Target: Deploy                                 -->
+	<!-- ============================================  -->
+	<target name="deploy" depends="build">
+		<echo msg="Deploying on server : ${ftp.server}" />
+		<ftpdeploy host="${ftp.server}" port="${ftp.port}"
+		username="${ftp.user}" password="${ftp.pass}"
+		dir="${ftp.remotedir}" mode="binary" passive="true">
+			<fileset dir="./${builddir}">
+				<include name="**" />
+			</fileset>
+		</ftpdeploy>
+		<echo msg="Deployment completed" />
+	</target>
+</project>
