@@ -15,6 +15,7 @@ Twitter: @webigniter
 Location: Sofia, Bulgaria
 
 Name: Georgy Angelov, Web Freelancer
+Email: georgyangelov@gmail.com
 Site: http://gangelov.net/
 Twitter: @stormbreakerbg
 

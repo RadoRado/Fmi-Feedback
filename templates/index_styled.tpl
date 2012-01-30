@@ -44,7 +44,7 @@
 
 <div id="completedWrapper">
 <div id='completed'>
-<a target="_blank" href="https://github.com/RadoRado/Fmi-Feedback/blob/master/README.markdown">За какво става на върпос ?</a>
+<a target="_blank" href="https://github.com/RadoRado/Fmi-Feedback/blob/master/README.markdown">За какво става върпос ?</a>
 </div>	
 </div>
 
