@@ -18,10 +18,6 @@ label.feedback {
 	color: #369be1;
 	margin: 0 0 0 20px;
 }
-select, input {
-	width: 215px;
-	height: 42px;
-}
 em {
 	font-style: normal;
 	color: #ff6c00;
