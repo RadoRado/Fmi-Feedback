@@ -10,4 +10,10 @@ $database = new Database('mysql:dbname='.$db_config['DB_NAME'].';host='.$db_conf
 	PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES UTF8"
 ));
 
+/**
+ * Init all models
+ */
+
 $feedback = new feedback($database);
+$courseModel = new Course($database);
+$teacherModel = new Teacher($database);
