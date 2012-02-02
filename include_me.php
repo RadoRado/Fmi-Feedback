@@ -17,3 +17,4 @@ $database = new Database('mysql:dbname='.$db_config['DB_NAME'].';host='.$db_conf
 $feedback = new feedback($database);
 $courseModel = new Course($database);
 $teacherModel = new Teacher($database);
+$gamifiedModel = new Gamified($database);

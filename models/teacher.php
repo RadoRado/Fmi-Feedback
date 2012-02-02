@@ -15,7 +15,7 @@ class Teacher extends DatabaseAware {
                     FROM teacher_to_course 
                     WHERE course_id = ?)";
 
-		$res = $this -> database -> query($sql, array((int)$courseId));
+		$res = $this -> database -> query($sql, array((int)$id));
 
 		return $res -> fetchAll(PDO::FETCH_ASSOC);
 	}
