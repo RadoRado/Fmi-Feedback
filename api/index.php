@@ -36,7 +36,7 @@ $app -> get('/course/', function() use ($courseModel) {
 $app -> get('/teacherByCourse/:id/', function($id) use ($teacherModel) {
 	$result = $teacherModel -> getByCourseId($id);
 	echo json_encode($result);
-}) -> conditions(array("id" => '^[0-9]+$'));
+});
 
 $app -> post("/followup/", function() use ($gamifiedModel) {
 	$value = ($_POST["gamified"] === "yes" ? 1 : 0);
