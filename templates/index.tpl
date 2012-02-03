@@ -7,6 +7,9 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.2.2/underscore-min.js"></script>
 	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.5.3/backbone-min.js"></script>
+	<script src="javascript/kendo/kendo.all.min.js"></script>
+		<link href="styles/kendo/kendo.common.min.css" rel="stylesheet" />
+		<link href="styles/kendo/kendo.metro.min.css" rel="stylesheet" />
     <link type="text/css" href="styles/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
     <script type="text/javascript" src="javascript/jquery-ui-1.8.16.custom.min.js"></script>
 	<script type="text/javascript" src="javascript/jquery.qtip.min.js"></script>
