@@ -53,7 +53,7 @@
 <form id="just_form" method="post" action="">
 <div id='arrows_background'>
 	
-	<div class="first_question">
+	<div id="courseInputContainer" class="first_question">
 	   <input type="text" class="panelselect" id="coursebox" name="coursebox" value="{$coursebox}" placeholder="Въведи предмет на кирилица" />
        <input type="hidden" id="courseId" name="courseId" value="{$courseId}" />
 	</div>
