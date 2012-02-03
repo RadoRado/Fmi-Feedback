@@ -24,29 +24,36 @@ $(document).ready(function() {
 		alert("You are using Internet Explorer and there are some HTML 5 things that does not work here. For full experience, use another browser");
 	}
 
-	var ui = FMI.Feedback.UI;
-
-	FMI.Feedback.Server.getCourses(function(data) {
-		console.log(data);
-		var self = FMI.Feedback.Server;
-		if(data["success"]) {
-			FMI.Feedback.ajaxSuggestResp = data["data"];
-			for(var i in FMI.Feedback.ajaxSuggestResp) {
-				FMI.Feedback.ajaxSuggestRespSuggests[FMI.Feedback.ajaxSuggestResp[i]["name"]] = FMI.Feedback.ajaxSuggestResp[i]["id"];
-				FMI.Feedback.ajaxSuggestRespNamesOnly.push(FMI.Feedback.ajaxSuggestResp[i]["name"]);
-			}
-			$("#coursebox").autocomplete({
-				source : FMI.Feedback.ajaxSuggestRespNamesOnly,
-				select : function(event, ui) {
-					$("#coursebox").trigger('change');
-					var courseId = self.findCourseId(ui.item.value);
-					$("#courseId").val(courseId).trigger('change');
-					FMI.Feedback.UI.updateTeachersUI(courseId);
-				}
-			});
-		}
+	var courses = new CoursesCollection();
+	var coursesView = new CourseInputView({
+		collection : courses
 	});
 
+	courses.fetch();
+
+	var ui = FMI.Feedback.UI;
+	/*
+	 FMI.Feedback.Server.getCourses(function(data) {
+	 console.log(data);
+	 var self = FMI.Feedback.Server;
+	 if(data["success"]) {
+	 FMI.Feedback.ajaxSuggestResp = data["data"];
+	 for(var i in FMI.Feedback.ajaxSuggestResp) {
+	 FMI.Feedback.ajaxSuggestRespSuggests[FMI.Feedback.ajaxSuggestResp[i]["name"]] = FMI.Feedback.ajaxSuggestResp[i]["id"];
+	 FMI.Feedback.ajaxSuggestRespNamesOnly.push(FMI.Feedback.ajaxSuggestResp[i]["name"]);
+	 }
+	 $("#coursebox").autocomplete({
+	 source : FMI.Feedback.ajaxSuggestRespNamesOnly,
+	 select : function(event, ui) {
+	 $("#coursebox").trigger('change');
+	 var courseId = self.findCourseId(ui.item.value);
+	 $("#courseId").val(courseId).trigger('change');
+	 FMI.Feedback.UI.updateTeachersUI(courseId);
+	 }
+	 });
+	 }
+	 });
+	 */
 	$(".radio").qtip({
 		content : {
 			attr : "alt"

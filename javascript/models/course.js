@@ -11,4 +11,4 @@
 			return "/fmifeedback/api" + "/course";
 		}
 	});
-}());
+}(jQuery));

@@ -27,20 +27,21 @@
 	<fileset dir="./javascript" id="javascript">
 		<include name="**" />
 	</fileset>
+	<fileset dir="./styles/kendo/Metro" id="kendo-theme">
+		<include name="**" />
+	</fileset>
 	<fileset dir="./models" id="models">
 		<include name="**.php" />
 	</fileset>
 	<fileset dir="./styles" id="styles">
-		<include name="**.css" />
+		<include name="**" />
 	</fileset>
 	<fileset dir="./templates" id="templates">
 		<include name="**.tpl" />
 	</fileset>
-	
 	<fileset dir="./pack" id="pack">
 		<include name="**.php" />
 	</fileset>
-	
 	<fileset dir="./api" id="api">
 		<include name="**" />
 	</fileset>
@@ -95,6 +96,9 @@
 		</copy>
 		<echo msg="Copying ./javascript/ source files to ./${builddir}/javascript/ directory..." />
 		<phingcall target="minify-js" />
+		<copy todir="./${builddir}/styles/kendo/Metro/">
+			<fileset refid="kendo-theme" />
+		</copy>
 		<echo msg="Copying ./models/ to ./${builddir}/models/ directory..." />
 		<copy todir="./${builddir}/models/">
 			<fileset refid="models" />
