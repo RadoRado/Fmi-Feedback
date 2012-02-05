@@ -1,11 +1,3 @@
-namespace("FMI.Feedback.Thanks", function() {
-	var _private = {};
-
-	return {
-
-	}
-});
-
 $(document).ready(function() {
 	$("#thankYouMessage").hide();
 

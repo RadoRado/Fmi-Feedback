@@ -20,11 +20,9 @@
      
      
     <script type="text/javascript" src="javascript/validator.js"></script>
-    <script type="text/javascript" src="javascript/main.js"></script>
-    <script type="text/javascript" src="javascript/ajax.js"></script>
     <script type="text/javascript" src="javascript/index.js"></script>
 				
-		<script>
+		<script type="text/javascript">
 			$(function(){
 				{$validatorCode}
 			});
