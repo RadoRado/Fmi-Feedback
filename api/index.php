@@ -41,7 +41,6 @@ $app -> get('/teacherByCourse/:id/', function($id) use ($teacherModel) {
 $app -> post("/followup/", function() use ($gamifiedModel, $app) {
 	$request = array();
 	parse_str($app -> request() -> getBody(), $request);
-	echo json_encode($request);
 	$gamifiedModel -> create($request["gamified"], $request["feedbackId"], $request["studentId"]);
 });
 
