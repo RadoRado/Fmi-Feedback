@@ -24,13 +24,17 @@ $(document).ready(function() {
 		alert("You are using Internet Explorer and there are some HTML 5 things that does not work here. For full experience, use another browser");
 	}
 
-	var ui = FMI.Feedback.UI, courseInputView = null, coursesCollection = null, sharedCourseModel = null;
+	var ui = FMI.Feedback.UI, courseInputView = null, teacherSelectView = null, coursesCollection = null, sharedCourseModel = null;
 	coursesCollection = new CoursesCollection();
 	sharedCourseModel = new CourseModel(); /*used for communicating between views*/
 	
 	courseInputView = new CourseInputView({
 		 collection : coursesCollection,
 		 sharedCourse : sharedCourseModel
+	});
+	
+	teacherSelectView = new TeacherSelectView({
+		sharedCourse : sharedCourseModel
 	});
 	
 	sharedCourseModel.bind("change", function() {

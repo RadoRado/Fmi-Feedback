@@ -16,6 +16,7 @@
     <script type="text/javascript" src="javascript/models/teacher.js"></script>
     <script type="text/javascript" src="javascript/models/course.js"></script>
     <script type="text/javascript" src="javascript/views/courseinput.js"></script>
+    <script type="text/javascript" src="javascript/views/teacherselect.js"></script>
      
      
     <script type="text/javascript" src="javascript/validator.js"></script>
