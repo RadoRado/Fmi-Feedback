@@ -1,11 +1,3 @@
-namespace("FMI.Feedback.Thanks", function() {
-	var _private = {};
-
-	return {
-
-	}
-});
-
 $(document).ready(function() {
 	$("#thankYouMessage").hide();
 
@@ -16,18 +8,16 @@ $(document).ready(function() {
 	} else {
 		$(".button").click(function() {
 			var payload = $(this).attr("class").replace("button ", ""), feedbackId = $("#feedbackId").val(), studentId = $("#studentId").val();
-
+			if(studentId === "") {
+				studentId = -1;
+			}
 			$.ajax({
 				type : "POST",
-				url : FMI.Feedback.basePath,
+				url : "/fmifeedback/api/followup/",
 				data : {
-					"class" : "FollowUp",
-					"method" : "count",
-					"params" : {
-						gamified : payload,
-						feedbackId : feedbackId,
-						studentId : studentId
-					}
+					"gamified" : payload,
+					"feedbackId" : feedbackId,
+					"studentId" : studentId
 				},
 				success : function(data) {
 					$("#gamifiedEducation").hide("fast");

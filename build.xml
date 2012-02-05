@@ -15,9 +15,6 @@
 	<fileset dir="./classes" id="classes">
 		<include name="**" />
 	</fileset>
-	<fileset dir="./ajax" id="ajax">
-		<include name="**.php" />
-	</fileset>
 	<fileset dir="./fonts" id="fonts">
 		<include name="**" />
 	</fileset>
@@ -39,6 +36,10 @@
 	
 	<fileset dir="./pack" id="pack">
 		<include name="**.php" />
+	</fileset>
+	
+	<fileset dir="./api" id="api">
+		<include name="**" />
 	</fileset>
 	<!-- ============================================  -->
 	<!-- Target: prepare                               -->
@@ -77,10 +78,6 @@
 		<copy todir="./${builddir}/classes/">
 			<fileset refid="classes" />
 		</copy>
-		<echo msg="Copying ./ajax/ to ./${builddir}/ajax/ directory..." />
-		<copy todir="./${builddir}/ajax/">
-			<fileset refid="ajax" />
-		</copy>
 		<echo msg="Copying ./fonts/ to ./${builddir}/fonts/ directory..." />
 		<copy todir="./${builddir}/fonts/">
 			<fileset refid="fonts" />
@@ -106,6 +103,10 @@
 		<echo msg="Copying ./pack/ to ./${builddir}/pack/ directory..." />
 		<copy todir="./${builddir}/pack/">
 			<fileset refid="pack" />
+		</copy>
+		<echo msg="Copying ./api/ to ./${builddir}/api/ directory..." />
+		<copy todir="./${builddir}/api/">
+			<fileset refid="api" />
 		</copy>
 		<echo msg="Copying all the files from the . directoty" />
 		<echo msg="Copying index.php" />

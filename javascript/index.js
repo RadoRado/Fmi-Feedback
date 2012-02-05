@@ -1,51 +1,24 @@
-namespace("FMI.Feedback.UI", function() {
-	return {
-		updateTeachersUI : function(courseId) {
-			FMI.Feedback.Server.getTeachers(courseId, function(data) {
-				if(data['success']) {
-					console.log(data);
-					var cnt = FMI.Feedback.Util.appendToCombo("teacherbox", data, "uid", "name");
-
-					if(cnt === 0) {
-						// handle no teachers case
-					}
-				}
-			})
-		},
-		placeTooltips : function() {
-			$(".radio").qtip("toggle", false);
-			$(".selected").qtip("toggle", true);
-		}
-	}
-});
-
 $(document).ready(function() {
 	if($.browser.msie) {
 		alert("You are using Internet Explorer and there are some HTML 5 things that does not work here. For full experience, use another browser");
 	}
 
-	var ui = FMI.Feedback.UI;
+	var courseInputView = null, teacherSelectView = null, coursesCollection = null, sharedCourseModel = null;
+	coursesCollection = new CoursesCollection();
+	sharedCourseModel = new CourseModel(); /*used for communicating between views*/
 
-	FMI.Feedback.Server.getCourses(function(data) {
-		console.log(data);
-		var self = FMI.Feedback.Server;
-		if(data["success"]) {
-			FMI.Feedback.ajaxSuggestResp = data["data"];
-			for(var i in FMI.Feedback.ajaxSuggestResp) {
-				FMI.Feedback.ajaxSuggestRespSuggests[FMI.Feedback.ajaxSuggestResp[i]["name"]] = FMI.Feedback.ajaxSuggestResp[i]["id"];
-				FMI.Feedback.ajaxSuggestRespNamesOnly.push(FMI.Feedback.ajaxSuggestResp[i]["name"]);
-			}
-			$("#coursebox").autocomplete({
-				source : FMI.Feedback.ajaxSuggestRespNamesOnly,
-				select : function(event, ui) {
-					$("#coursebox").trigger('change');
-					var courseId = self.findCourseId(ui.item.value);
-					$("#courseId").val(courseId).trigger('change');
-					FMI.Feedback.UI.updateTeachersUI(courseId);
-				}
-			});
-		}
+	courseInputView = new CourseInputView({
+		collection : coursesCollection,
+		sharedCourse : sharedCourseModel
 	});
+	teacherSelectView = new TeacherSelectView({
+		sharedCourse : sharedCourseModel
+	});
+
+	sharedCourseModel.bind("change", function() {
+		console.log("something changed");
+	});
+	coursesCollection.fetch();
 
 	$(".radio").qtip({
 		content : {
@@ -57,8 +30,6 @@ $(document).ready(function() {
 		}
 	});
 
-	//ui.placeTooltips();
-
 	$(".radio").click(function() {
 		var $wrapper = $(this).parents('.radiowrapper');
 
@@ -67,7 +38,6 @@ $(document).ready(function() {
 
 		// Set this as selected
 		$(this).addClass('selected');
-		//ui.placeTooltips();
 
 		// Change the hidden field
 		var val;
@@ -117,4 +87,5 @@ $(document).ready(function() {
 	} else {
 		$("input.student_name").css("margin-bottom", "5px");
 	}
+
 });

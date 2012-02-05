@@ -5,3 +5,5 @@ ajax/proxy_tester.php
 build/
 deploy.properties
 *.jar
+javascript/kendo/
+styles/kendo/

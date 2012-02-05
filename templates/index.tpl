@@ -1,25 +1,28 @@
-
 <!DOCTYPE html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta property="og:title" content="Система за обратна връзка към ФМИ" />
 	<meta property="og:image" content="http://game-craft.com/fmifeedback/images/owl-head.png" />
     <link rel="stylesheet" type="text/css" href="styles/site.css" />
-     <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <link type="text/css" href="styles/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
-
-        <script type="text/javascript" src="javascript/jquery-ui-1.8.16.custom.min.js"></script>
-
-		<script type="text/javascript" src="javascript/jquery.qtip.min.js"></script>
-        <link type="text/css" href="styles/jquery.qtip.min.css" rel="stylesheet" />
-		
-        <script type="text/javascript" src="javascript/additional_prototypes.js"></script> 
-        <script type="text/javascript" src="javascript/validator.js"></script>
-        <script type="text/javascript" src="javascript/main.js"></script>
-        <script type="text/javascript" src="javascript/ajax.js"></script>
-        <script type="text/javascript" src="javascript/index.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.2.2/underscore-min.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.5.3/backbone-min.js"></script>
+    <link type="text/css" href="styles/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+    <script type="text/javascript" src="javascript/jquery-ui-1.8.16.custom.min.js"></script>
+	<script type="text/javascript" src="javascript/jquery.qtip.min.js"></script>
+    <link type="text/css" href="styles/jquery.qtip.min.css" rel="stylesheet" />	
+    <script type="text/javascript" src="javascript/additional_prototypes.js"></script>
+    
+    <script type="text/javascript" src="javascript/models/teacher.js"></script>
+    <script type="text/javascript" src="javascript/models/course.js"></script>
+    <script type="text/javascript" src="javascript/views/courseinput.js"></script>
+    <script type="text/javascript" src="javascript/views/teacherselect.js"></script>
+     
+     
+    <script type="text/javascript" src="javascript/validator.js"></script>
+    <script type="text/javascript" src="javascript/index.js"></script>
 				
-		<script>
+		<script type="text/javascript">
 			$(function(){
 				{$validatorCode}
 			});
@@ -53,7 +56,7 @@
 <form id="just_form" method="post" action="">
 <div id='arrows_background'>
 	
-	<div class="first_question">
+	<div id="courseInputContainer" class="first_question">
 	   <input type="text" class="panelselect" id="coursebox" name="coursebox" value="{$coursebox}" placeholder="Въведи предмет на кирилица" />
        <input type="hidden" id="courseId" name="courseId" value="{$courseId}" />
 	</div>
