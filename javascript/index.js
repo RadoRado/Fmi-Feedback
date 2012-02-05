@@ -57,8 +57,6 @@ $(document).ready(function() {
 		}
 	});
 
-	//ui.placeTooltips();
-
 	$(".radio").click(function() {
 		var $wrapper = $(this).parents('.radiowrapper');
 
@@ -67,7 +65,6 @@ $(document).ready(function() {
 
 		// Set this as selected
 		$(this).addClass('selected');
-		//ui.placeTooltips();
 
 		// Change the hidden field
 		var val;
@@ -81,6 +78,7 @@ $(document).ready(function() {
 
 		$wrapper.find('input[type=hidden]').val(val);
 	});
+
 	var top = $('#completed').offset().top - parseFloat($('#completed').css('marginTop').replace(/auto/, 0));
 	$(window).scroll(function(event) {
 
@@ -93,6 +91,7 @@ $(document).ready(function() {
 			$('#completed').removeClass('fixed');
 		}
 	});
+	
 	function show_hide_answer() {
 		if($("#checkme").is(":checked")) {
 			//show the hidden div
@@ -112,9 +111,11 @@ $(document).ready(function() {
 	$("#checkme").click(function() {
 		show_hide_answer();
 	});
+
 	if($.browser.msie || $.browser.mozilla || $.browser.opera) {
 		$("input.student_name").css("margin-bottom", "0px");
 	} else {
 		$("input.student_name").css("margin-bottom", "5px");
 	}
+
 });
