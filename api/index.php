@@ -38,9 +38,11 @@ $app -> get('/teacherByCourse/:id/', function($id) use ($teacherModel) {
 	echo json_encode($result);
 });
 
-$app -> post("/followup/", function() use ($gamifiedModel) {
-	$value = ($_POST["gamified"] === "yes" ? 1 : 0);
-	$gamifiedModel -> create($value, $_POST["feedbackId"], $_POST["studentId"]);
+$app -> post("/followup/", function() use ($gamifiedModel, $app) {
+	$request = array();
+	parse_str($app -> request() -> getBody(), $request);
+	echo json_encode($request);
+	$gamifiedModel -> create($request["gamified"], $request["feedbackId"], $request["studentId"]);
 });
 
 $app -> run();
