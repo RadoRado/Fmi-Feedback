@@ -1,7 +1,7 @@
 ( function($) {
 	CourseModel = Backbone.Model.extend({
 		defaults : {
-			id : -1,
+			uid : -1,
 			name : ""
 		}
 	});
@@ -11,4 +11,4 @@
 			return "/fmifeedback/api" + "/course";
 		}
 	});
-}());
+}(jQuery));

@@ -24,29 +24,42 @@ $(document).ready(function() {
 		alert("You are using Internet Explorer and there are some HTML 5 things that does not work here. For full experience, use another browser");
 	}
 
-	var ui = FMI.Feedback.UI;
-
-	FMI.Feedback.Server.getCourses(function(data) {
-		console.log(data);
-		var self = FMI.Feedback.Server;
-		if(data["success"]) {
-			FMI.Feedback.ajaxSuggestResp = data["data"];
-			for(var i in FMI.Feedback.ajaxSuggestResp) {
-				FMI.Feedback.ajaxSuggestRespSuggests[FMI.Feedback.ajaxSuggestResp[i]["name"]] = FMI.Feedback.ajaxSuggestResp[i]["id"];
-				FMI.Feedback.ajaxSuggestRespNamesOnly.push(FMI.Feedback.ajaxSuggestResp[i]["name"]);
-			}
-			$("#coursebox").autocomplete({
-				source : FMI.Feedback.ajaxSuggestRespNamesOnly,
-				select : function(event, ui) {
-					$("#coursebox").trigger('change');
-					var courseId = self.findCourseId(ui.item.value);
-					$("#courseId").val(courseId).trigger('change');
-					FMI.Feedback.UI.updateTeachersUI(courseId);
-				}
-			});
-		}
+	var ui = FMI.Feedback.UI, courseInputView = null, coursesCollection = null, sharedCourseModel = null;
+	coursesCollection = new CoursesCollection();
+	sharedCourseModel = new CourseModel(); /*used for communicating between views*/
+	
+	courseInputView = new CourseInputView({
+		 collection : coursesCollection,
+		 sharedCourse : sharedCourseModel
 	});
-
+	
+	sharedCourseModel.bind("change", function() {
+		console.log("something changed");
+	});
+	
+	coursesCollection.fetch();
+	/*
+	 FMI.Feedback.Server.getCourses(function(data) {
+	 console.log(data);
+	 var self = FMI.Feedback.Server;
+	 if(data["success"]) {
+	 FMI.Feedback.ajaxSuggestResp = data["data"];
+	 for(var i in FMI.Feedback.ajaxSuggestResp) {
+	 FMI.Feedback.ajaxSuggestRespSuggests[FMI.Feedback.ajaxSuggestResp[i]["name"]] = FMI.Feedback.ajaxSuggestResp[i]["id"];
+	 FMI.Feedback.ajaxSuggestRespNamesOnly.push(FMI.Feedback.ajaxSuggestResp[i]["name"]);
+	 }
+	 $("#coursebox").autocomplete({
+	 source : FMI.Feedback.ajaxSuggestRespNamesOnly,
+	 select : function(event, ui) {
+	 $("#coursebox").trigger('change');
+	 var courseId = self.findCourseId(ui.item.value);
+	 $("#courseId").val(courseId).trigger('change');
+	 FMI.Feedback.UI.updateTeachersUI(courseId);
+	 }
+	 });
+	 }
+	 });
+	 */
 	$(".radio").qtip({
 		content : {
 			attr : "alt"
@@ -78,7 +91,6 @@ $(document).ready(function() {
 
 		$wrapper.find('input[type=hidden]').val(val);
 	});
-
 	var top = $('#completed').offset().top - parseFloat($('#completed').css('marginTop').replace(/auto/, 0));
 	$(window).scroll(function(event) {
 
@@ -91,7 +103,6 @@ $(document).ready(function() {
 			$('#completed').removeClass('fixed');
 		}
 	});
-	
 	function show_hide_answer() {
 		if($("#checkme").is(":checked")) {
 			//show the hidden div
@@ -111,7 +122,6 @@ $(document).ready(function() {
 	$("#checkme").click(function() {
 		show_hide_answer();
 	});
-
 	if($.browser.msie || $.browser.mozilla || $.browser.opera) {
 		$("input.student_name").css("margin-bottom", "0px");
 	} else {

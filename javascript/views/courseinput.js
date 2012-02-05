@@ -4,10 +4,25 @@
 			this.collection.bind('reset', this.render, this /*context*/);
 		},
 		render : function() {
-			var data = [];
+			var data = [], namesHash = {}, courseName = "", sharedCourse = this.options.sharedCourse;
 			this.collection.each(function(model) {
-				data.push(model.get("name"));
-			});	
+				courseName = model.get("name");
+				data.push(courseName);
+				namesHash[courseName] = model.get("uid");
+			});
+
+			$("#coursebox").autocomplete({
+				source : data,
+				select : function(event, ui) {
+					$("#coursebox").trigger('change');
+					var courseId = namesHash[ui.item.value];
+					$("#courseId").val(courseId).trigger('change');
+					sharedCourse.set({
+						name : ui.item.value,
+						uid : courseId
+					});
+				}
+			});
 		}
 	});
-}());
+}(jQuery));

@@ -14,4 +14,4 @@
 			return "/fmifeedback/api" + "/teacherByCourse/" + this.selectedCourseId;
 		}
 	});
-}());
+}(jQuery));
