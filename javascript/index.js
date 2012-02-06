@@ -68,24 +68,22 @@ $(document).ready(function() {
 			//show the hidden div
 			$("#student_answer").show();
 			$("#ready_button").css("margin-top", "-20px");
+			$("#sendButton").css("margin-bottom", "50px");
 		} else {
 			//otherwise, hide it
 			$("#student_answer").hide();
-			$("#ready_button").css("margin-top", "10px");
+			$("#recaptcha_widget_div").css("margin-top", "10px");
+			$("#recaptcha_widget_div").css("margin-bottom", "15px");
 		}
 	}
 
 	//Hide div w/id extra
 	show_hide_answer();
 
+
 	// Add onclick handler to checkbox w/id checkme
 	$("#checkme").click(function() {
 		show_hide_answer();
 	});
-	if($.browser.msie || $.browser.mozilla || $.browser.opera) {
-		$("input.student_name").css("margin-bottom", "0px");
-	} else {
-		$("input.student_name").css("margin-bottom", "5px");
-	}
-
 });
+

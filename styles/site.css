@@ -1,3 +1,26 @@
+/* START OF RESETER */
+html, body, div, span, applet, object, iframe,
+p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+u, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+
 html {
 	background-image: url('../images/background-pattern.png');
 }
@@ -18,10 +41,12 @@ label.feedback {
 	color: #369be1;
 	margin: 0 0 0 20px;
 }
-select, input {
+
+#coursebox, #teacherbox {
 	width: 215px;
-	height: 42px;
+	height: 30px;
 }
+
 em {
 	font-style: normal;
 	color: #ff6c00;
@@ -48,12 +73,12 @@ em {
 .first_question {
 	float: left;
 	margin-left: 305px;
-	margin-top: 10px;
+	margin-top: 13px;
 }
 .second_question {
 	float: left;
 	margin-left: 305px;
-	margin-top: 110px;
+	margin-top: 117px;
 }
 .emoticons_1 {
 	float: right;
@@ -129,15 +154,22 @@ em {
 	z-index: 10;
 }
 input.student_name {
-	height: 42px;
+	height: 32px;
 	width: 300px;
-	font-size: 22px;
+	font-size: 20px;
+}
+
+#subjects {
+	height: 32px;
+	width: 250px;
+	font-size: 20px;
 }
 .student_row2 {
 	font-style: normal;
 	position: absolute;
+	margin-top: 15px;
 }
-#sendButton, #sendButton:hover, #sendButton:active {
+#sendButton {
 	background: url('../images/ready-buttons.png') no-repeat 0 0;
 	border: none;
 	float: right;
@@ -146,13 +178,13 @@ input.student_name {
 	width: 311px;
 	cursor: pointer;
 }
-#ready_button {
+#sendButton {
 	background-position: top;
 }
-#ready_button:hover {
+#sendButton:hover {
 	background-position: center;
 }
-#ready_button:active {
+#sendButton:active {
 	background-position: bottom;
 }
 .radiowrapper .sad {
@@ -187,22 +219,45 @@ input.student_name {
 	cursor: pointer;
 }
 #completed {
-	width: 250px;
-	height: 100px;
+	font-family: eurofurencelightRegular;
+	font-weight: bold;
+	font-size: 28px;
+	text-decoration: none;
+	color: white;
+	width: 220px;
+	height: 80px;
 	text-align: center;
-	font-size: 30px;
-	background-color: #63AFE5;
+	background-color: #ca3c20;
 	position: absolute;
 	top: 0;
 	/* just used to show how to include the margin in the effect */
 	margin-top: 20px;
-	padding-top: 19px;
+	margin-left: 13px;
+	padding-top: 8px;
 	border-radius: 20px;
 }
 #completed.fixed {
 	position: fixed;
 	top: 0;
 }
+
+#completed a:link { 
+	color: #FFFFFF;
+	text-decoration: none;
+}
+#completed a:visited { 
+	color: #FFFFFF;
+	text-decoration: none;
+}
+#completed a:hover { 
+	color: #FFFFFF;
+	text-decoration:underline;
+}
+#completed a:active { 
+	color: #CCCCCC;
+	text-decoration: none;
+}
+
 #recaptcha {
 	float: right;
 	margin: 0 380px;

@@ -49,7 +49,10 @@
 
 <div id="completedWrapper">
 <div id='completed'>
-<a target="_blank" href="https://github.com/RadoRado/Fmi-Feedback/blob/master/README.markdown">За какво става въпрос ?</a>
+<a target="_blank" href="https://github.com/RadoRado/Fmi-Feedback/blob/master/README.markdown">
+За какво става <br>
+въпрос ?
+</a>
 </div>	
 </div>
 
@@ -107,6 +110,7 @@
 			<em>името</em> и <em>специалността</em>?
 			<br />
 			<input type="checkbox" name="authenticated" id="checkme" value="yes" {if $authenticated}checked="checked"{/if} />
+			Да, разбира се!
 		</div>
 	<img class="owl" width="547" height="213" src="images/owl-question.png" />
 	</div>
