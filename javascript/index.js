@@ -78,14 +78,10 @@ $(document).ready(function() {
 	//Hide div w/id extra
 	show_hide_answer();
 
+
 	// Add onclick handler to checkbox w/id checkme
 	$("#checkme").click(function() {
 		show_hide_answer();
 	});
-	if($.browser.msie || $.browser.mozilla || $.browser.opera) {
-		$("input.student_name").css("margin-bottom", "0px");
-	} else {
-		$("input.student_name").css("margin-bottom", "5px");
-	}
-
 });
+
