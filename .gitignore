@@ -7,3 +7,4 @@ deploy.properties
 *.jar
 javascript/kendo/
 styles/kendo/
+templates_c/
