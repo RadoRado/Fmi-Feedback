@@ -68,10 +68,12 @@ $(document).ready(function() {
 			//show the hidden div
 			$("#student_answer").show();
 			$("#ready_button").css("margin-top", "-20px");
+			$("#sendButton").css("margin-bottom", "50px");
 		} else {
 			//otherwise, hide it
 			$("#student_answer").hide();
-			$("#ready_button").css("margin-top", "10px");
+			$("#recaptcha_widget_div").css("margin-top", "10px");
+			$("#recaptcha_widget_div").css("margin-bottom", "15px");
 		}
 	}
 
