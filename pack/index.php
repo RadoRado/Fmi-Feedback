@@ -10,8 +10,10 @@ if (isset($_GET["format"]) && strtolower($_GET["format"]) === "json") {
 	header('Content-type: application/json');
 	echo json_encode($pack);
 } else {
-	echo "<pre>";
-	var_dump($pack);
-	echo "</pre>";
+	$smarty = new Smarty();
+	$smarty -> setTemplateDir("../templates/");
+	$smarty -> assign("feedbackCount", count($pack));
+	$smarty -> assign("pack", $pack);
+	$smarty -> display("pack.tpl");
 }
 ob_end_flush();
