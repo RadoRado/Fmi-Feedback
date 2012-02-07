@@ -9,10 +9,13 @@
 		<div id="feedbackContainer">
 		{foreach from=$pack item=v}
 			<h2>{$v["courseName"]}({$v["courseRating"]}) : {$v["teacherName"]}({$v["teacherRating"]}) : {$v["createdDate"]}</h2>
-				<h3>Positive</h3>
-					{$v["positive"]}
-				<h3>Negative</h3>
-					{$v["negative"]}
+				<div class="data">
+					<h3>Positive</h3>
+						{$v["positive"]}
+					<h3>Negative</h3>
+						{$v["negative"]}
+				</div>
+				<hr />
 		{/foreach}
 		</div>
 	</body>
