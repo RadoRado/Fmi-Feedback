@@ -7,8 +7,10 @@
 	<body>
 		<h1>Всичко до сега : {$feedbackCount} обратни връзки</h1>
 		<div id="feedbackContainer">
-		{foreach from=$pack item=v}
+		{foreach from=$pack item=v name=pack}
+			<a href=#{$smarty.foreach.pack.index} name="{$smarty.foreach.pack.index}">
 			<h2>{$v["courseName"]}({$v["courseRating"]}) : {$v["teacherName"]}({$v["teacherRating"]}) : {$v["createdDate"]}</h2>
+			</a>
 				<div class="data">
 					<h3>Positive</h3>
 						{$v["positive"]}
