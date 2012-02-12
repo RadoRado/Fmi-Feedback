@@ -1,0 +1,165 @@
+/* START OF RESETER */
+html, body, div, span, applet, object, iframe,
+p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+u, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* END OF RESETER */
+
+html {
+	background-image: url('../images/background-pattern.png');
+}
+
+@font-face {
+	font-family: 'eurofurencelightRegular';
+	src: url('../../fonts/eurofurence-webfont.eot');
+	src: url('../../fonts/eurofurence-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/eurofurence-webfont.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+h1{
+	font: 2.3em/1.2 Arial,Helvetica,sans-serif;
+	padding: 5px;
+	border-bottom: 2px solid #e0dede;
+	text-align: center;
+}
+
+#feedbackContainer{
+	background-color: #ffffff;
+	width: 830px;
+	margin: 20px auto 20px auto;
+	padding: 10px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	
+}
+
+.person-feedback{
+	border-bottom: 2px dotted #E0DEDE;
+}
+
+.bubble-arrow-border {
+	border-color: transparent transparent #666666 transparent;
+	border-style: solid;
+	border-width: 10px;
+	height: 0;
+	width: 0;
+	position: absolute;
+	top: -22px;
+	left: 30px;
+}
+
+.bubble-arrow {
+	border-color: transparent transparent #ffffff transparent;
+	border-style: solid;
+	border-width: 10px;
+	height: 0;
+	width: 0;
+	position: absolute;
+	top: -19px;
+	left: 30px;
+}
+
+.bubble {
+	font-family: tahoma, verdana, arial;
+	background-color: #ffffff;
+	border: 2px solid #666666;
+	font-size: 14px;
+	line-height: 1.3em;
+	margin-top: 16px;
+	margin-left: 20px;
+	margin-bottom: 30px;
+	padding: 10px;
+	position: relative;
+	
+	width: 700px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-box-shadow: 0 0 5px #888888;
+	-webkit-box-shadow: 0 0 5px #888888;
+}
+
+
+.positive, .negative{
+	font-family: 'eurofurencelightRegular';
+	font-size: 28px;
+	color: white;
+	margin-left: 20px;
+	padding-top: 10px;
+	padding-bottom: 4px;
+	padding-left: 15px;
+	
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+}
+
+.positive{
+	background-color: #63afe5;
+	width: 225px;
+}
+
+.negative{
+	background-color: #ca3c20;
+	width: 225px;
+}
+
+.positive-title, .negative-title{
+	float: right;
+	padding-top: 10px;
+}
+
+.positive-title{
+	padding-right: 25px;
+}
+
+.negative-title{
+	padding-right: 15px;
+}
+
+.course-name{
+	font-family: 'eurofurencelightRegular';
+	color: white;
+	border: 2px solid #000000;
+	background-image: url('../images/header-repeat.png');
+	background-repeat: repeat-x;
+	background-position: center;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+a:link {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #ffffff;
+	text-decoration: underline;
+}
+
+a:visited {
+	color: #999999;
+text-decoration: underline;
+	}
