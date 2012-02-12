@@ -9,11 +9,12 @@
 		
 		<div id="feedbackContainer">
 		<h1>Всичко до сега : {$feedbackCount} обратни връзки</h1>
-		<div class="anon">Поради съображения за сигурност, имената на студентите не се показват.</div>
+		<div class="special-text">Поради съображения за сигурност, имената на студентите не се показват.</div>
 		{foreach from=$pack item=v name=pack}
 			<div class="person-feedback">
-				<a href=#{$smarty.foreach.pack.index} name="{$smarty.foreach.pack.index}">
-				<h2 class="course-name">{$v["courseName"]}({$v["courseRating"]}) : {$v["teacherName"]}({$v["teacherRating"]}) : {$v["createdDate"]}</h2>
+				<a class="course" href=#{$smarty.foreach.pack.index} name="{$smarty.foreach.pack.index}">
+				<h2 class="course-name">{$v["courseName"]} {geticon rating=$v["courseRating"]} : {$v["teacherName"]} {geticon rating=$v["teacherRating"]}</h2>
+				<div class="date">Написано на {$v["createdDate"]}</div>
 				</a>
 					<div class="data">
 						<div class="positive">
@@ -36,6 +37,9 @@
 									<div class="bubble-arrow"></div>
 							</div>
 					</div>
+						<a class="back" href="http://game-craft.com/fmifeedback/" > 
+						< Върни се и дай твоето мнение
+						</a>
 			</div>	
 		{/foreach}
 		</div>
