@@ -14,8 +14,8 @@
 			<div class="person-feedback">
 				<a class="course" href=#{$smarty.foreach.pack.index} name="{$smarty.foreach.pack.index}">
 				<h2 class="course-name">{$v["courseName"]} {geticon rating=$v["courseRating"]} : {$v["teacherName"]} {geticon rating=$v["teacherRating"]}</h2>
-				<div class="date">Написано на {$v["createdDate"]}</div>
 				</a>
+				<div class="date">Написано на {$v["createdDate"]}</div>
 					<div class="data">
 						<div class="positive">
 							<img class="positive-face" width="50" height="50" src="../images/positive-face.png" alt=""/>
