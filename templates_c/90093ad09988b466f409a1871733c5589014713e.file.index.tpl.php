@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.0.8, created on 2012-02-06 14:16:05
+<?php /* Smarty version Smarty-3.0.8, created on 2012-02-12 15:39:13
          compiled from "templates/index.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:267644f2fd295d8c081-72127341%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:132844f37cf11a6f929-82363409%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '90093ad09988b466f409a1871733c5589014713e' => 
     array (
       0 => 'templates/index.tpl',
-      1 => 1328534159,
+      1 => 1329057552,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '267644f2fd295d8c081-72127341',
+  'nocache_hash' => '132844f37cf11a6f929-82363409',
   'function' => 
   array (
   ),
@@ -69,12 +69,17 @@ $_smarty_tpl->decodeProperties(array (
 
 
 <div id="completedWrapper">
-<div id='completed'>
-<a target="_blank" href="https://github.com/RadoRado/Fmi-Feedback/blob/master/README.markdown">
-За какво става <br>
-въпрос ?
-</a>
-</div>	
+	<div id='completed'>
+		<a target="_blank" href="https://github.com/RadoRado/Fmi-Feedback/blob/master/README.markdown">
+		Какво е това?
+		</a>
+		<div class="border"></div>
+		<img class="student-hat" alt="" width='44' height='35' src='images/student-hat.png' >
+		<a target="_blank" href="pack">
+		Виж мненията на <br />
+		студентите
+		</a>
+	</div>	
 </div>
 
 <form id="just_form" method="post" action="">

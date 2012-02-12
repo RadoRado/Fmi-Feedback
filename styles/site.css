@@ -211,6 +211,13 @@ input.student_name {
 	height: 42px;
 	cursor: pointer;
 }
+
+.border{
+	margin-bottom: 8px;
+	padding-bottom: 8px;
+	border-bottom: 2px dotted #E0DEDE;
+}
+
 #completedWrapper {
 	right: 10px;
 	position: absolute;
@@ -218,14 +225,21 @@ input.student_name {
 	width: 227px;
 	cursor: pointer;
 }
+
+.student-hat{
+	float: left;
+    margin-left: 10px;
+    margin-top: 7px;
+}
+
 #completed {
 	font-family: eurofurencelightRegular;
 	font-weight: bold;
-	font-size: 28px;
+	font-size: 20px;
 	text-decoration: none;
 	color: white;
 	width: 220px;
-	height: 80px;
+	height: 100px;
 	text-align: center;
 	background-color: #ca3c20;
 	position: absolute;
