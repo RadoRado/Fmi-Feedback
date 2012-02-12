@@ -36,7 +36,6 @@
 							</div>
 					</div>
 			</div>	
->>>>>>> FixedStuff
 		{/foreach}
 		</div>
 	</body>
