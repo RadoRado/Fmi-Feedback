@@ -40,11 +40,26 @@ h1{
 	text-align: center;
 }
 
-.anon{
+.special-text{
 	font: 14px Arial,Helvetica,sans-serif;
 	font-style: italic;
+	color: #000000;
 	padding-left: 10px;
 }
+
+.date{
+	font: 13px Arial,Helvetica,sans-serif;
+	font-style: italic;
+	color: #000000;
+	padding-left: 10px;
+	margin-bottom: 10px;
+}
+
+.emoticon{
+	margin-bottom: 4px;
+    vertical-align: middle;
+}
+
 #feedbackContainer{
 	background: rgba(255, 255, 255, 0.7);
 	width: 830px;
@@ -57,6 +72,7 @@ h1{
 
 .person-feedback{
 	border-bottom: 2px dotted #E0DEDE;
+	padding-bottom: 25px;
 }
 
 .bubble-arrow-border {
@@ -89,7 +105,7 @@ h1{
 	line-height: 1.3em;
 	margin-top: 16px;
 	margin-left: 20px;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 	padding: 10px;
 	position: relative;
 	
@@ -149,22 +165,35 @@ h1{
 	padding-right: 10px;
 	margin-left: 10px;
 	margin-right: 10px;
+	margin-bottom: 7px;
 	
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 }
 
-a:link {
+a.course:link {
 	color: #ffffff;
 	text-decoration: none;
 }
 
-a:hover {
+a.course:hover {
 	color: #ffffff;
 	text-decoration: underline;
 }
 
-a:visited {
+a.course:visited {
 	color: #999999;
-text-decoration: underline;
+	text-decoration: underline;
 	}
+	
+a.back{
+	font-family: tahoma, verdana, arial;
+	font-size: 16px;
+	color: #CA3C20;
+	float: right;
+	padding-right: 15px;
+}
+a.back:hover {
+	color: #942f1b;
+	text-decoration: underline;
+}
