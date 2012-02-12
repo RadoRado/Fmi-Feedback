@@ -213,7 +213,7 @@ input.student_name {
 }
 
 .border{
-	margin-bottom: 8px;
+	margin-bottom: 12px;
 	padding-bottom: 8px;
 	border-bottom: 2px dotted #E0DEDE;
 }
@@ -233,9 +233,8 @@ input.student_name {
 }
 
 #completed {
-	font-family: eurofurencelightRegular;
-	font-weight: bold;
-	font-size: 20px;
+	font-family: tahoma, verdana, arial;
+	font-size: 17px;
 	text-decoration: none;
 	color: white;
 	width: 220px;
