@@ -48,12 +48,17 @@
 
 
 <div id="completedWrapper">
-<div id='completed'>
-<a target="_blank" href="https://github.com/RadoRado/Fmi-Feedback/blob/master/README.markdown">
-За какво става <br>
-въпрос ?
-</a>
-</div>	
+	<div id='completed'>
+		<a target="_blank" href="https://github.com/RadoRado/Fmi-Feedback/blob/master/README.markdown">
+		Какво е това?
+		</a>
+		<div class="border"></div>
+		<img class="student-hat" alt="" width='44' height='35' src='images/student-hat.png' >
+		<a target="_blank" href="pack">
+		Виж мненията на <br />
+		студентите
+		</a>
+	</div>	
 </div>
 
 <form id="just_form" method="post" action="">
