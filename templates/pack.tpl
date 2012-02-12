@@ -17,6 +17,7 @@
 					<h3>Negative</h3>
 						{$v["negative"]}
 				</div>
+				<a href="http://game-craft.com/fmifeedback/" target="_blank">Винаги може да дадеш твоето мнение</a>
 				<hr />
 		{/foreach}
 		</div>
