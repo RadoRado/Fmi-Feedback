@@ -40,6 +40,11 @@ h1{
 	text-align: center;
 }
 
+.anon{
+	font: 14px Arial,Helvetica,sans-serif;
+	font-style: italic;
+	padding-left: 10px;
+}
 #feedbackContainer{
 	background: rgba(255, 255, 255, 0.7);
 	width: 830px;
