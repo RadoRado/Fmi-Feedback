@@ -23,7 +23,7 @@
 						</div>
 						
 						<div class="bubble">
-								{$v["positive"]}
+								{$v["positive"]|default:'<span class="gray">Не е въведен текст</span>'}
 								<div class="bubble-arrow-border"></div>
 								<div class="bubble-arrow"></div>
 						</div>
@@ -32,7 +32,7 @@
 							<div class="negative-title">Отрицателно</div>
 						</div>
 							<div class="bubble">
-									{$v["negative"]}
+									{$v["negative"]|default:'<span class="gray">Не е въведен текст</span>'}
 									<div class="bubble-arrow-border"></div>
 									<div class="bubble-arrow"></div>
 							</div>
