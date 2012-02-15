@@ -11,7 +11,7 @@
 			this[key] = value;
 		},
 		url : function() {
-			return "/fmifeedback/api" + "/teacherByCourse/" + this.selectedCourseId;
+			return "api" + "/teacherByCourse/" + this.selectedCourseId;
 		}
 	});
 }(jQuery));

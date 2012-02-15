@@ -8,7 +8,7 @@
 	CoursesCollection = Backbone.Collection.extend({
 		model : TeacherModel,
 		url : function() {
-			return "/fmifeedback/api" + "/course";
+			return "api" + "/course";
 		}
 	});
 }(jQuery));
