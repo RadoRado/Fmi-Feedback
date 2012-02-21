@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta property="og:title" content="Система за обратна връзка към ФМИ" />
+		<meta property="og:image" content="http://game-craft.com/fmifeedback/images/header.png" />
 		<link rel="stylesheet" type="text/css" href="../styles/pack.css" />
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<title>Обратна връзка до сега</title>
