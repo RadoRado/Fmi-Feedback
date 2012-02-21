@@ -201,3 +201,7 @@ a.back:hover {
 .gray {
 	color: #828282;
 }
+
+.fb-like-placeholder {
+	visibility: hidden;
+}

@@ -4,8 +4,28 @@
 		<link rel="stylesheet" type="text/css" href="../styles/pack.css" />
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<title>Обратна връзка до сега</title>
+		
+		
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script src="../javascript/fb_lazyload.js"></script>
+		<script>
+			$(function(){
+				$.fb_lazyload('fb-like-placeholder', 'fb-like');
+			});
+		</script>
 	</head>
 	<body>
+		<div id="fb-root"></div>
+    <script>
+	(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=145461888873791";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+	</script>
+		
 		
 		<div id="feedbackContainer">
 		<h1>Всичко до сега : {$feedbackCount} обратни връзки</h1>
@@ -36,6 +56,9 @@
 									<div class="bubble-arrow-border"></div>
 									<div class="bubble-arrow"></div>
 							</div>
+
+							<div class="fb-like-placeholder" data-href="http://game-craft.com/fmifeedback/pack/#{$smarty.foreach.pack.index}" data-send="false" data-layout="box_count" data-width="450" data-show-faces="false"></div>
+							
 					</div>
 						<a class="back" href="http://game-craft.com/fmifeedback/" > 
 						< Върни се и дай твоето мнение
