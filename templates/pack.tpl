@@ -42,7 +42,7 @@
 		<div class="special-text">Поради съображения за сигурност, имената на студентите не се показват.</div>
 		{foreach from=$pack item=v name=pack}
 			<div class="person-feedback">
-				<a class="course" href=#{$smarty.foreach.pack.index} name="{$smarty.foreach.pack.index}">
+				<a class="course" href=#{$packLength - $smarty.foreach.pack.index} name="{$packLength - $smarty.foreach.pack.index}">
 				<h2 class="course-name">{$v["courseName"]} {geticon rating=$v["courseRating"]} : {$v["teacherName"]} {geticon rating=$v["teacherRating"]}</h2>
 				<div class="date">Написано на {$v["createdDate"]}</div>
 				</a>
@@ -67,7 +67,7 @@
 									<div class="bubble-arrow"></div>
 							</div>
 
-							<div class="fb-like-placeholder" data-href="{$pageUrl}#{$smarty.foreach.pack.index}" data-send="false" data-layout="box_count" data-width="450" data-show-faces="false"></div>
+							<div class="fb-like-placeholder" data-href="{$pageUrl}#{$packLength - $smarty.foreach.pack.index}" data-send="false" data-layout="box_count" data-width="450" data-show-faces="false"></div>
 					</div>
 						<a class="back" href="http://game-craft.com/fmifeedback/" > 
 						< Върни се и дай твоето мнение

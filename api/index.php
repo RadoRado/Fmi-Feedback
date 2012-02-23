@@ -17,7 +17,7 @@ $app -> notFound(function() use ($app) {
  */
 $app -> error(function() use ($app) {
 	// log error
-	//$app -> render("apiError.html");
+	$app -> render("apiError.html");
 });
 
 /**

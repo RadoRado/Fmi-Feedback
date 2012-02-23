@@ -4,7 +4,7 @@ class feedback extends DatabaseAware {
 
 	public function getSubjects() {
 		$subjects = array();
-		$subjectsQuery = "SELECT * FROM subjects";
+		$subjectsQuery = "SELECT uid, name FROM subjects";
 		$subjectsRes = $this -> database -> query($subjectsQuery);
 
 		while ($row = $subjectsRes -> fetch()) {
