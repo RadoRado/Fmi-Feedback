@@ -14,8 +14,7 @@ if (isset($_GET["format"]) && strtolower($_GET["format"]) === "json") {
 	$smarty -> setTemplateDir("../templates/");
 	$smarty -> assign("feedbackCount", count($pack));
 	$smarty -> assign("pack", $pack);
+	$smarty -> assign("pageUrl", pageUrl());
 	$smarty -> display("pack.tpl");
 }
 ob_end_flush();
-
-

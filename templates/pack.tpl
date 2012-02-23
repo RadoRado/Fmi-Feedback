@@ -67,7 +67,7 @@
 									<div class="bubble-arrow"></div>
 							</div>
 
-							<div class="fb-like-placeholder" data-href="http://game-craft.com/fmifeedback/pack/#{$smarty.foreach.pack.index}" data-send="false" data-layout="box_count" data-width="450" data-show-faces="false"></div>
+							<div class="fb-like-placeholder" data-href="{$pageUrl}#{$smarty.foreach.pack.index}" data-send="false" data-layout="box_count" data-width="450" data-show-faces="false"></div>
 					</div>
 						<a class="back" href="http://game-craft.com/fmifeedback/" > 
 						< Върни се и дай твоето мнение
