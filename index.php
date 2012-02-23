@@ -72,7 +72,6 @@ function in_the_end() {
 	} else
 		$smarty -> assign("teacherList", array());
 
-	$smarty -> assign("questions", $feedback -> getQuestions());
 	$smarty -> assign("subjects", $feedback -> getSubjects());
 	$smarty -> assign("totalFeedback", $feedback -> getFeedbackCount());
 	$smarty -> assign("recaptcha", $captchaHtml);

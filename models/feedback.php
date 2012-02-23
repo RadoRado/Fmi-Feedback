@@ -2,20 +2,6 @@
 
 class feedback extends DatabaseAware {
 
-	public function getQuestions() {
-		$questions = array();
-		// array that will hold the questions
-
-		$questionsQuery = "SELECT * FROM questions";
-		$questionsRes = $this -> database -> query($questionsQuery);
-
-		while ($row = $questionsRes -> fetch()) {
-			$questions[$row -> uid] = $row -> text;
-		}
-
-		return $questions;
-	}
-
 	public function getSubjects() {
 		$subjects = array();
 		$subjectsQuery = "SELECT * FROM subjects";
@@ -81,12 +67,10 @@ class feedback extends DatabaseAware {
 	/**
 	 * Inserts the given feedback into the database.
 	 * Also inserts all related things to the feedback as the student name (if provided)
-	 * And the answers to the questions
 	 * @param Integer $courseId - the unique id of the course
 	 * @param Integer $teacherId - the unique id of the teacher
 	 * @param String $positiveText
 	 * @param String $negativeText
-	 * @param Array $questions
 	 * @param String $studentName - if provided, delegates to insertStudent method
 	 * @param Integer $studentSubjectId - if provided, delegates to insertStudent method
 	 * @return Integer, the created feedback Id
