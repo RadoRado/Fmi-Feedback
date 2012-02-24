@@ -3,8 +3,8 @@ ob_start("ob_gzhandler");
 header('Content-type: application/json');
 require_once ("../include_me.php");
 require 'Slim/Slim.php';
-$app = new Slim();
 
+$app = new Slim();
 /**
  * Set Custom 404 page when an API method is not found
  */
@@ -17,7 +17,7 @@ $app -> notFound(function() use ($app) {
  */
 $app -> error(function() use ($app) {
 	// log error
-	$app -> render("apiError.html");
+	//$app -> render("apiError.html");
 });
 
 /**
@@ -42,6 +42,15 @@ $app -> post("/followup/", function() use ($gamifiedModel, $app) {
 	$request = array();
 	parse_str($app -> request() -> getBody(), $request);
 	$gamifiedModel -> create($request["gamified"], $request["feedbackId"], $request["studentId"]);
+});
+
+$app -> post("/link/", function() use ($app, $authentication, $feedback) {
+	if ($authentication -> checkLogin()) {
+		$request = json_decode($app -> request() -> getBody(), true);
+		$feedback -> linkTeachers($request["courseId"], array($request["teacherId"]));
+	} else {
+		echo json_encode(array("error" => "Not priviliged"));
+	}
 });
 
 $app -> run();

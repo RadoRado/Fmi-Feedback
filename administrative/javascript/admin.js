@@ -9,11 +9,17 @@ $(document).ready(function() {
 	teachersCollection.fetch();
 
 	$("#linkTeacherButton").click(function() {
-		var ctm = new CourseTeacherModel({
+		var ctm = new CourseTeacherModel();
+		ctm.save({
 			teacherId : $("#teacherId").val(),
 			courseId : $("#courseId").val()
+		}, {
+			success : function(model, data) {
+				console.log("success");
+			},
+			error : function(model, data) {
+				console.log(data);
+			}
 		});
-		console.log(ctm);
-		console.log(ctm.url);
 	});
 });

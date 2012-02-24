@@ -29,3 +29,4 @@ $feedback = new feedback($database);
 $courseModel = new Course($database);
 $teacherModel = new Teacher($database);
 $gamifiedModel = new Gamified($database);
+$authentication = new Authentication($database);
