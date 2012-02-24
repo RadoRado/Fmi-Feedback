@@ -5,21 +5,19 @@
 			name : ""
 		}
 	});
-	
-	TeachersCollection = Backbone.Collection.extend({
+	TeachersCollection = BaseCollection.extend({
 		model : TeacherModel,
 		url : function() {
-			return "api" + "/teacher/";
+			return this.baseApiPath + "/teacher/";
 		}
 	})
-	
-	TeachersByCourseCollection = Backbone.Collection.extend({
+	TeachersByCourseCollection = BaseCollection.extend({
 		model : TeacherModel,
 		set : function(key, value) {
 			this[key] = value;
 		},
 		url : function() {
-			return "api" + "/teacherByCourse/" + this.selectedCourseId;
+			return this.baseApiPath + "/teacherByCourse/" + this.selectedCourseId;
 		}
 	});
 }(jQuery));

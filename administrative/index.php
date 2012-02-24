@@ -17,8 +17,10 @@ if (!$authentication -> checkLogin()) {
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.2.2/underscore-min.js"></script>
 	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.5.3/backbone-min.js"></script>
-	<script type="text/javascript" src="../javascript/models/teacher.js"></script>
-	<script type="text/javascript" src="../javascript/models/course.js"></script>
+	
+	<script type="text/javascript" src="../javascript/models/basebackbonecollection.js?<?php echo time(); ?>"></script>
+	<script type="text/javascript" src="../javascript/models/teacher.js?<?php echo time(); ?>"></script>
+	<script type="text/javascript" src="../javascript/models/course.js?<?php echo time(); ?>"></script>
 	<title> Admin Page </title>
 </head>
 <body>

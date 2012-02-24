@@ -41,6 +41,10 @@
 	<fileset dir="./api" id="api">
 		<include name="**" />
 	</fileset>
+	
+	<fileset dir="./administrative" id="admin">
+		<include name="**" />
+	</fileset>
 	<!-- ============================================  -->
 	<!-- Target: prepare                               -->
 	<!-- ============================================  -->
@@ -107,6 +111,9 @@
 		<echo msg="Copying ./api/ to ./${builddir}/api/ directory..." />
 		<copy todir="./${builddir}/api/">
 			<fileset refid="api" />
+		</copy>
+		<copy todir="./${builddir}/administrative/">
+			<fileset refid="admin" />
 		</copy>
 		<echo msg="Copying all the files from the . directoty" />
 		<echo msg="Copying index.php" />
