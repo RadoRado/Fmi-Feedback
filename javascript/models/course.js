@@ -5,10 +5,10 @@
 			name : ""
 		}
 	});
-	CoursesCollection = Backbone.Collection.extend({
-		model : TeacherModel,
+	CoursesCollection = BaseCollection.extend({
+		model : CourseModel,
 		url : function() {
-			return "api" + "/course";
+			return this.baseApiPath + "/course";
 		}
 	});
 }(jQuery));

@@ -13,6 +13,7 @@
     <link type="text/css" href="styles/jquery.qtip.min.css" rel="stylesheet" />	
     <script type="text/javascript" src="javascript/additional_prototypes.js"></script>
     
+    <script type="text/javascript" src="javascript/models/basecollection.js"></script>
     <script type="text/javascript" src="javascript/models/teacher.js"></script>
     <script type="text/javascript" src="javascript/models/course.js"></script>
     <script type="text/javascript" src="javascript/views/courseinput.js"></script>
