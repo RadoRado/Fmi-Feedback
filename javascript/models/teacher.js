@@ -5,6 +5,14 @@
 			name : ""
 		}
 	});
+	
+	TeachersCollection = Backbone.Collection.extend({
+		model : TeacherModel,
+		url : function() {
+			return "api" + "/teacher/";
+		}
+	})
+	
 	TeachersByCourseCollection = Backbone.Collection.extend({
 		model : TeacherModel,
 		set : function(key, value) {
