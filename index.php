@@ -75,5 +75,6 @@ function in_the_end() {
 	$smarty -> assign("subjects", $feedback -> getSubjects());
 	$smarty -> assign("totalFeedback", $feedback -> getFeedbackCount());
 	$smarty -> assign("recaptcha", $captchaHtml);
+	$smarty -> assign("rand", time());
 	$smarty -> display("index.tpl");
 }
