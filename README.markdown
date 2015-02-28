@@ -1,3 +1,5 @@
+# No longer Supported. Dead Project.
+
 Липсващата система за обратна връзка.
 
 # Цел
